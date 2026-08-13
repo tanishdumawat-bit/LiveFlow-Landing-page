@@ -106,18 +106,18 @@ export function NoteTakerSection() {
           : 5;
 
   return (
-    <section id="note-taker" className="bg-[#F7F9F8] px-4 py-24 sm:px-6 lg:py-32">
+    <section id="note-taker" className="bg-surface-alt px-4 py-24 sm:px-6 lg:py-32">
       <div className="mx-auto max-w-6xl" ref={ref}>
         <div className="max-w-2xl">
-          <p className="text-xs font-semibold tracking-[0.18em] text-[#4A7C6F] uppercase">
+          <p className="text-xs font-semibold tracking-[0.18em] text-success uppercase">
             Note Taker
           </p>
           <RevealHeadline
             as="h2"
             lines={['Stop taking notes.', 'Start having conversations.']}
-            className="mt-3 text-4xl font-semibold tracking-tight text-[#2A2420] sm:text-5xl"
+            className="mt-3 text-4xl font-semibold tracking-tight text-ink sm:text-5xl"
           />
-          <p className="mt-4 text-base text-[#5C5F66] sm:text-lg">
+          <p className="mt-4 text-base text-muted sm:text-lg">
             Keep your attention on the conversation. Live Flow captures what matters.
           </p>
         </div>
@@ -128,8 +128,8 @@ export function NoteTakerSection() {
               key={label}
               className={`rounded-full border px-3 py-1 text-[11px] font-medium transition ${
                 i <= activePipe
-                  ? 'border-[#4A7C6F]/35 bg-[#4A7C6F]/12 text-[#2A2420]'
-                  : 'border-[#E6E8EC] bg-white/70 text-[#5C5F66]'
+                  ? 'border-success/35 bg-success/12 text-ink'
+                  : 'border-border bg-white/70 text-muted'
               }`}
             >
               {label}
@@ -138,9 +138,9 @@ export function NoteTakerSection() {
         </div>
 
         <div className="mt-10 grid gap-5 lg:grid-cols-2">
-          <div className="rounded-2xl border border-[#E6E8EC] bg-white p-5 sm:p-6">
+          <div className="rounded-2xl border border-border bg-white p-5 sm:p-6">
             <div className="mb-4 flex items-center justify-between">
-              <p className="text-sm font-medium text-[#2A2420]">Meeting</p>
+              <p className="text-sm font-medium text-ink">Meeting</p>
               <VoiceFlow
                 state={phase === 'done' ? 'complete' : 'listening'}
                 className="h-6 w-20"
@@ -156,7 +156,7 @@ export function NoteTakerSection() {
                     opacity: phase === 'extracting' || phase === 'done' ? 0.45 : 1,
                     y: phase === 'extracting' && !reduce ? -4 * i : 0,
                   }}
-                  className="rounded-xl border border-[#E6E8EC] bg-[#FFFFFF] px-3 py-2.5 text-sm text-[#2A2420]"
+                  className="rounded-xl border border-border bg-background px-3 py-2.5 text-sm text-ink"
                 >
                   {line}
                 </motion.p>
@@ -164,8 +164,8 @@ export function NoteTakerSection() {
             </div>
           </div>
 
-          <div className="rounded-2xl border border-[#E6E8EC] bg-white p-5 sm:p-6">
-            <p className="text-sm font-medium text-[#2A2420]">What matters</p>
+          <div className="rounded-2xl border border-border bg-white p-5 sm:p-6">
+            <p className="text-sm font-medium text-ink">What matters</p>
             <AnimatePresence mode="wait">
               {phase !== 'done' ? (
                 <motion.p
@@ -173,7 +173,7 @@ export function NoteTakerSection() {
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
-                  className="mt-6 text-sm text-[#5C5F66]"
+                  className="mt-6 text-sm text-muted"
                 >
                   {phase === 'meeting' && 'Listening to the room…'}
                   {phase === 'transcribing' && 'Capturing the conversation…'}
@@ -187,35 +187,35 @@ export function NoteTakerSection() {
                   className="mt-5 space-y-4"
                 >
                   <div>
-                    <p className="text-[11px] font-semibold tracking-[0.14em] text-[#C4501E] uppercase">
+                    <p className="text-[11px] font-semibold tracking-[0.14em] text-primary uppercase">
                       Decision
                     </p>
-                    <p className="mt-1 text-sm text-[#2A2420]">{NOTE_EXTRACTION.decision}</p>
+                    <p className="mt-1 text-sm text-ink">{NOTE_EXTRACTION.decision}</p>
                   </div>
                   <div>
-                    <p className="text-[11px] font-semibold tracking-[0.14em] text-[#C4501E] uppercase">
+                    <p className="text-[11px] font-semibold tracking-[0.14em] text-primary uppercase">
                       Action items
                     </p>
-                    <ul className="mt-1 space-y-1 text-sm text-[#2A2420]">
+                    <ul className="mt-1 space-y-1 text-sm text-ink">
                       {NOTE_EXTRACTION.actions.map((a) => (
                         <li key={a.owner}>
                           <span className="font-medium">{a.owner}</span>
-                          <span className="text-[#5C5F66]"> → {a.task}</span>
+                          <span className="text-muted"> → {a.task}</span>
                         </li>
                       ))}
                     </ul>
                   </div>
                   <div>
-                    <p className="text-[11px] font-semibold tracking-[0.14em] text-[#C4501E] uppercase">
+                    <p className="text-[11px] font-semibold tracking-[0.14em] text-primary uppercase">
                       Next step
                     </p>
-                    <p className="mt-1 text-sm text-[#2A2420]">{NOTE_EXTRACTION.next}</p>
+                    <p className="mt-1 text-sm text-ink">{NOTE_EXTRACTION.next}</p>
                   </div>
                   <div>
-                    <p className="text-[11px] font-semibold tracking-[0.14em] text-[#C4501E] uppercase">
+                    <p className="text-[11px] font-semibold tracking-[0.14em] text-primary uppercase">
                       Follow-up
                     </p>
-                    <p className="mt-1 text-sm text-[#2A2420]">{NOTE_EXTRACTION.followUp}</p>
+                    <p className="mt-1 text-sm text-ink">{NOTE_EXTRACTION.followUp}</p>
                   </div>
                 </motion.div>
               )}
@@ -226,12 +226,12 @@ export function NoteTakerSection() {
         {/* Meeting intelligence — illustrative example numbers */}
         <div ref={intelRef} className="mt-20">
           <div className="max-w-2xl">
-            <h3 className="text-3xl font-semibold tracking-tight text-[#2A2420] sm:text-4xl">
+            <h3 className="text-3xl font-semibold tracking-tight text-ink sm:text-4xl">
               Meetings go in.
               <br />
-              <span className="font-serif italic text-[#4A7C6F]">Momentum comes out.</span>
+              <span className="font-serif italic text-success">Momentum comes out.</span>
             </h3>
-            <p className="mt-3 text-sm text-[#5C5F66]">
+            <p className="mt-3 text-sm text-muted">
               Example meeting view — illustrative numbers, not measured product metrics.
             </p>
           </div>
@@ -273,12 +273,12 @@ export function NoteTakerSection() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.05 * i }}
-                className="rounded-2xl border border-[#E6E8EC] bg-white px-5 py-4"
+                className="rounded-2xl border border-border bg-white px-5 py-4"
               >
-                <p className="text-[11px] font-medium tracking-wide text-[#5C5F66] uppercase">
+                <p className="text-[11px] font-medium tracking-wide text-muted uppercase">
                   {card.label}
                 </p>
-                <p className="mt-2 font-serif text-3xl tracking-tight text-[#2A2420]">
+                <p className="mt-2 font-serif text-3xl tracking-tight text-ink">
                   {card.value}
                 </p>
               </motion.div>

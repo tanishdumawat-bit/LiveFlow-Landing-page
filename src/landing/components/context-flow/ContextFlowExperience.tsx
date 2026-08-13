@@ -11,6 +11,7 @@ import {
 } from '../../data/contextFlow';
 import { AppWindow } from './AppWindow';
 import { FlowProgress } from './FlowProgress';
+import { theme } from '../../../theme/tokens';
 
 const PHASE_ORDER: FlowPhase[] = ['speak', 'understand', 'transform', 'deliver'];
 
@@ -75,22 +76,22 @@ export function ContextFlowExperience() {
       id="context"
       ref={sectionRef}
       aria-labelledby="context-flow-heading"
-      className="bg-[#FFFFFF] px-4 py-24 sm:px-6 lg:py-28"
+      className="bg-background px-4 py-24 sm:px-6 lg:py-28"
     >
       <div className="mx-auto max-w-5xl">
         <div className="mx-auto max-w-2xl text-center">
-          <p className="text-xs font-semibold tracking-[0.18em] text-[#C4501E] uppercase">
+          <p className="text-xs font-semibold tracking-[0.18em] text-primary uppercase">
             Context
           </p>
           <h2
             id="context-flow-heading"
-            className="mt-3 text-4xl font-semibold tracking-tight text-[#2A2420] sm:text-5xl"
+            className="mt-3 text-4xl font-semibold tracking-tight text-ink sm:text-5xl"
           >
             One thought.
             <br />
-            <span className="font-serif italic text-[#C4501E]">The right words.</span>
+            <span className="font-serif italic text-primary">The right words.</span>
           </h2>
-          <p className="mt-4 text-base text-[#5C5F66] sm:text-lg">
+          <p className="mt-4 text-base text-muted sm:text-lg">
             Same voice. Different apps. Live Flow shapes the output for where you are.
           </p>
         </div>
@@ -101,13 +102,12 @@ export function ContextFlowExperience() {
 
         <div className="mt-10 grid gap-5 lg:grid-cols-[0.9fr_1.1fr]">
           {/* Left: voice + steps */}
-          <div className="rounded-[28px] border border-[#E6E8EC] bg-[#FAFBFC] p-5 sm:p-6">
+          <div className="rounded-[28px] border border-border bg-surface-alt p-5 sm:p-6">
             <div className="flex items-center gap-3">
               <motion.div
                 className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full text-white"
                 style={{
-                  background:
-                    'radial-gradient(circle at 40% 35%, #D36A3A 0%, #C4501E 55%, #8A4A24 100%)',
+                  background: theme.micOrb,
                 }}
                 animate={
                   reduce || phase !== 'speak'
@@ -128,8 +128,8 @@ export function ContextFlowExperience() {
                 </svg>
               </motion.div>
               <div>
-                <p className="text-sm font-semibold text-[#2A2420]">Live Flow</p>
-                <p className="text-xs text-[#5C5F66]">
+                <p className="text-sm font-semibold text-ink">Live Flow</p>
+                <p className="text-xs text-muted">
                   {phase === 'speak' && 'Listening…'}
                   {phase === 'understand' && 'Reading context…'}
                   {phase === 'transform' && 'Shaping output…'}
@@ -151,7 +151,7 @@ export function ContextFlowExperience() {
               />
             </div>
 
-            <p className="mt-5 text-base font-medium leading-relaxed text-[#2A2420]">
+            <p className="mt-5 text-base font-medium leading-relaxed text-ink">
               “{CONTEXT_FLOW_SPEECH}”
             </p>
 
@@ -164,16 +164,16 @@ export function ContextFlowExperience() {
                     key={id}
                     className={`rounded-xl border px-2.5 py-2 text-center ${
                       on
-                        ? 'border-[#C4501E]/30 bg-[#C4501E]/08'
-                        : 'border-[#E6E8EC] bg-white'
+                        ? 'border-primary/30 bg-primary/8'
+                        : 'border-border bg-white'
                     }`}
                   >
-                    <p className="text-[10px] font-semibold tracking-wide text-[#5C5F66]">
+                    <p className="text-[10px] font-semibold tracking-wide text-muted">
                       {meta.n}
                     </p>
                     <p
                       className={`text-[11px] font-medium ${
-                        on ? 'text-[#C4501E]' : 'text-[#5C5F66]'
+                        on ? 'text-primary' : 'text-muted'
                       }`}
                     >
                       {meta.title}
@@ -183,12 +183,12 @@ export function ContextFlowExperience() {
               })}
             </div>
 
-            <p className="mt-4 text-sm text-[#5C5F66]">{phaseMeta.body}</p>
+            <p className="mt-4 text-sm text-muted">{phaseMeta.body}</p>
           </div>
 
           {/* Right: apps + result */}
-          <div className="rounded-[28px] border border-[#E6E8EC] bg-white p-5 shadow-[0_16px_48px_rgba(42,36,32,0.05)] sm:p-6">
-            <p className="text-[11px] font-semibold tracking-[0.14em] text-[#5C5F66] uppercase">
+          <div className="rounded-[28px] border border-border bg-white p-5 shadow-card sm:p-6">
+            <p className="text-[11px] font-semibold tracking-[0.14em] text-muted uppercase">
               Choose where it goes
             </p>
             <div className="mt-3 flex flex-wrap gap-2">
@@ -201,9 +201,9 @@ export function ContextFlowExperience() {
                     onClick={() => selectApp(d.id)}
                     className="inline-flex items-center gap-2 rounded-full border px-3 py-1.5 text-xs font-medium transition"
                     style={{
-                      borderColor: on ? `${d.accent}66` : '#E6E8EC',
-                      background: on ? `${d.accent}12` : '#FAFBFC',
-                      color: '#2A2420',
+                      borderColor: on ? `${d.accent}66` : theme.border,
+                      background: on ? `${d.accent}12` : theme.surfaceAlt,
+                      color: theme.ink,
                     }}
                   >
                     <span className="h-1.5 w-1.5 rounded-full" style={{ background: d.accent }} />
@@ -221,7 +221,7 @@ export function ContextFlowExperience() {
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
-                    className="flex h-[200px] items-center justify-center rounded-2xl border border-dashed border-[#E6E8EC] bg-[#FAFBFC] text-sm text-[#5C5F66]"
+                    className="flex h-[200px] items-center justify-center rounded-2xl border border-dashed border-border bg-surface-alt text-sm text-muted"
                   >
                     {phase === 'speak' ? 'Hearing your thought…' : 'Understanding context…'}
                   </motion.div>
@@ -242,8 +242,8 @@ export function ContextFlowExperience() {
               </AnimatePresence>
             </div>
 
-            <p className="mt-4 text-center text-xs text-[#5C5F66]">
-              Same speech · <span className="font-medium text-[#2A2420]">{destination.name}</span> ·{' '}
+            <p className="mt-4 text-center text-xs text-muted">
+              Same speech · <span className="font-medium text-ink">{destination.name}</span> ·{' '}
               {destination.tone}
             </p>
           </div>

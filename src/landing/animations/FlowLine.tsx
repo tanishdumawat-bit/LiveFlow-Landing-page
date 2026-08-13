@@ -1,4 +1,5 @@
 import { motion, useReducedMotion } from 'motion/react';
+import { theme } from '../../theme/tokens';
 
 type FlowLineProps = {
   className?: string;
@@ -24,9 +25,9 @@ export function FlowLine({ className = '', vertical = false }: FlowLineProps) {
         />
         <defs>
           <linearGradient id="flowV" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%" stopColor="#5ce1e6" stopOpacity="0.1" />
-            <stop offset="50%" stopColor="#7c5cff" stopOpacity="0.9" />
-            <stop offset="100%" stopColor="#5ce1e6" stopOpacity="0.15" />
+            <stop offset="0%" stopColor={theme.accent} stopOpacity="0.1" />
+            <stop offset="50%" stopColor={theme.primary} stopOpacity="0.9" />
+            <stop offset="100%" stopColor={theme.accent} stopOpacity="0.15" />
           </linearGradient>
         </defs>
       </svg>
@@ -49,7 +50,7 @@ export function FlowLine({ className = '', vertical = false }: FlowLineProps) {
       {!reduce && (
         <motion.circle
           r="2.5"
-          fill="#9b87ff"
+          fill={theme.primary}
           animate={{ offsetDistance: ['0%', '100%'] }}
           style={{ offsetPath: 'path("M0 12 C40 4 80 20 120 12 S200 4 240 12 S280 18 320 12")' }}
           transition={{ duration: 2.8, repeat: Infinity, ease: 'linear' }}
@@ -57,9 +58,9 @@ export function FlowLine({ className = '', vertical = false }: FlowLineProps) {
       )}
       <defs>
         <linearGradient id="flowH" x1="0" y1="0" x2="1" y2="0">
-          <stop offset="0%" stopColor="#5ce1e6" stopOpacity="0.15" />
-          <stop offset="50%" stopColor="#7c5cff" stopOpacity="1" />
-          <stop offset="100%" stopColor="#5ce1e6" stopOpacity="0.2" />
+          <stop offset="0%" stopColor={theme.accent} stopOpacity="0.15" />
+          <stop offset="50%" stopColor={theme.primary} stopOpacity="1" />
+          <stop offset="100%" stopColor={theme.accent} stopOpacity="0.2" />
         </linearGradient>
       </defs>
     </svg>

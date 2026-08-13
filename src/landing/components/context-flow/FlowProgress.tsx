@@ -12,9 +12,9 @@ export function FlowProgress({ phase, reduce }: Props) {
   return (
     <div className="mx-auto w-full max-w-2xl" aria-label="Context flow progress">
       <div className="relative grid grid-cols-4 gap-2">
-        <div className="pointer-events-none absolute top-2 right-[12%] left-[12%] h-px bg-[#E6E8EC]" />
+        <div className="pointer-events-none absolute top-2 right-[12%] left-[12%] h-px bg-border" />
         <motion.div
-          className="pointer-events-none absolute top-2 left-[12%] h-px origin-left bg-[#C4501E]"
+          className="pointer-events-none absolute top-2 left-[12%] h-px origin-left bg-primary"
           animate={{ width: `${(Math.max(active, 0) / 3) * 76}%` }}
           transition={{ duration: reduce ? 0 : 0.45, ease: [0.22, 1, 0.36, 1] }}
         />
@@ -26,15 +26,15 @@ export function FlowProgress({ phase, reduce }: Props) {
               <span
                 className={`block h-2.5 w-2.5 rounded-full transition ${
                   current
-                    ? 'scale-125 bg-[#C4501E] shadow-[0_0_12px_rgba(196,80,30,0.45)]'
+                    ? 'scale-125 bg-primary shadow-[0_0_12px_color-mix(in_srgb,var(--primary)_45%,transparent)]'
                     : on
-                      ? 'bg-[#C4501E]'
-                      : 'bg-[#C8CCD4]'
+                      ? 'bg-primary'
+                      : 'bg-filler'
                 }`}
               />
               <span
                 className={`text-center text-[10px] font-medium tracking-wide sm:text-[11px] ${
-                  current ? 'text-[#C4501E]' : on ? 'text-[#2A2420]' : 'text-[#5C5F66]'
+                  current ? 'text-primary' : on ? 'text-ink' : 'text-muted'
                 }`}
               >
                 <span className="mr-1 opacity-60">{step.n}</span>

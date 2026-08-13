@@ -9,6 +9,7 @@ import {
   getDiffApp,
   type DiffAppId,
 } from '../data/difference';
+import { theme } from '../../theme/tokens';
 
 /**
  * Compact differentiation: Transcribe → Improve → Understand + adapt.
@@ -52,18 +53,18 @@ export function DifferenceDemo() {
   }, [inView, reduce]);
 
   return (
-    <section id="difference" ref={sectionRef} className="bg-[#FFFFFF] px-4 py-24 sm:px-6 lg:py-28">
+    <section id="difference" ref={sectionRef} className="bg-background px-4 py-24 sm:px-6 lg:py-28">
       <div className="mx-auto max-w-5xl">
         <div className="mx-auto max-w-2xl text-center">
-          <p className="text-xs font-semibold tracking-[0.18em] text-[#C4501E] uppercase">
+          <p className="text-xs font-semibold tracking-[0.18em] text-primary uppercase">
             The difference
           </p>
-          <h2 className="mt-3 text-4xl font-semibold tracking-tight text-[#2A2420] sm:text-5xl">
+          <h2 className="mt-3 text-4xl font-semibold tracking-tight text-ink sm:text-5xl">
             Same speech.
             <br />
-            <span className="font-serif italic text-[#C4501E]">Different result.</span>
+            <span className="font-serif italic text-primary">Different result.</span>
           </h2>
-          <p className="mt-4 text-base text-[#5C5F66] sm:text-lg">
+          <p className="mt-4 text-base text-muted sm:text-lg">
             Transcribe. Improve. Or understand — and put it where it belongs.
           </p>
         </div>
@@ -78,8 +79,8 @@ export function DifferenceDemo() {
               key={item.label}
               className={`rounded-full border px-3 py-1.5 transition ${
                 item.on
-                  ? 'border-[#C4501E]/35 bg-[#C4501E]/10 text-[#C4501E]'
-                  : 'border-[#E6E8EC] bg-[#F5F6F8] text-[#5C5F66]'
+                  ? 'border-primary/35 bg-primary/10 text-primary'
+                  : 'border-border bg-surface-alt text-muted'
               }`}
             >
               {item.label}: {item.verb}
@@ -87,9 +88,9 @@ export function DifferenceDemo() {
           ))}
         </div>
 
-        <div className="mt-10 rounded-[28px] border border-[#E6E8EC] bg-[#FAFBFC] p-5 shadow-[0_16px_48px_rgba(42,36,32,0.05)] sm:p-8">
+        <div className="mt-10 rounded-[28px] border border-border bg-surface-alt p-5 shadow-card sm:p-8">
           <div className="flex items-center justify-between gap-3">
-            <p className="text-[11px] font-semibold tracking-[0.14em] text-[#5C5F66] uppercase">
+            <p className="text-[11px] font-semibold tracking-[0.14em] text-muted uppercase">
               You speak
             </p>
             <VoiceFlow
@@ -98,7 +99,7 @@ export function DifferenceDemo() {
               showParticles={false}
             />
           </div>
-          <p className="mt-3 text-base font-medium leading-relaxed text-[#2A2420] sm:text-lg">
+          <p className="mt-3 text-base font-medium leading-relaxed text-ink sm:text-lg">
             “{DIFF_YOU_SPEAK}”
           </p>
 
@@ -110,15 +111,15 @@ export function DifferenceDemo() {
                   initial={{ opacity: 0, y: 8 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -6 }}
-                  className="rounded-2xl border border-[#E6E8EC] bg-white p-4"
+                  className="rounded-2xl border border-border bg-white p-4"
                 >
-                  <p className="text-[11px] font-semibold tracking-wide text-[#5C5F66] uppercase">
+                  <p className="text-[11px] font-semibold tracking-wide text-muted uppercase">
                     Traditional · Transcribe
                   </p>
-                  <p className="mt-2 text-sm leading-relaxed text-[#2A2420]">
+                  <p className="mt-2 text-sm leading-relaxed text-ink">
                     {DIFF_TRADITIONAL.split(/(um|I think)/g).map((part, i) =>
                       /^(um|I think)$/i.test(part) ? (
-                        <span key={i} className="rounded-sm bg-[#C4501E]/10 text-[#8A4A24]">
+                        <span key={i} className="rounded-sm bg-primary/10 text-primary-dark">
                           {part}
                         </span>
                       ) : (
@@ -135,12 +136,12 @@ export function DifferenceDemo() {
                   initial={{ opacity: 0, y: 8 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -6 }}
-                  className="rounded-2xl border border-[#4A7C6F]/25 bg-white p-4"
+                  className="rounded-2xl border border-success/25 bg-white p-4"
                 >
-                  <p className="text-[11px] font-semibold tracking-wide text-[#4A7C6F] uppercase">
+                  <p className="text-[11px] font-semibold tracking-wide text-success uppercase">
                     AI dictation · Improve
                   </p>
-                  <p className="mt-2 text-sm leading-relaxed text-[#2A2420]">{DIFF_AI_CLEAN}</p>
+                  <p className="mt-2 text-sm leading-relaxed text-ink">{DIFF_AI_CLEAN}</p>
                 </motion.div>
               )}
 
@@ -160,8 +161,8 @@ export function DifferenceDemo() {
                         onClick={() => setAppId(a.id)}
                         className="rounded-full border px-3 py-1.5 text-xs font-medium"
                         style={{
-                          borderColor: a.id === appId ? `${a.accent}66` : '#E6E8EC',
-                          background: a.id === appId ? `${a.accent}12` : '#fff',
+                          borderColor: a.id === appId ? `${a.accent}66` : theme.border,
+                          background: a.id === appId ? `${a.accent}12` : theme.card,
                         }}
                       >
                         <span
@@ -182,15 +183,15 @@ export function DifferenceDemo() {
                       className="overflow-hidden rounded-2xl border bg-white"
                       style={{ borderColor: `${app.accent}44` }}
                     >
-                      <div className="flex items-center gap-2 border-b border-[#E6E8EC] px-4 py-2.5">
+                      <div className="flex items-center gap-2 border-b border-border px-4 py-2.5">
                         <span className="h-2 w-2 rounded-full" style={{ background: app.accent }} />
-                        <span className="text-xs font-semibold text-[#2A2420]">{app.name}</span>
-                        <span className="text-[11px] text-[#5C5F66]">→ {app.format}</span>
+                        <span className="text-xs font-semibold text-ink">{app.name}</span>
+                        <span className="text-[11px] text-muted">→ {app.format}</span>
                       </div>
-                      <pre className="whitespace-pre-wrap bg-[#FAFBFC] px-4 py-4 font-sans text-[13px] leading-relaxed text-[#2A2420]">
+                      <pre className="whitespace-pre-wrap bg-surface-alt px-4 py-4 font-sans text-[13px] leading-relaxed text-ink">
                         {app.output}
                       </pre>
-                      <p className="border-t border-[#E6E8EC] px-4 py-2 text-[11px] text-[#5C5F66]">
+                      <p className="border-t border-border px-4 py-2 text-[11px] text-muted">
                         {app.contextLine}
                       </p>
                     </motion.div>
@@ -201,9 +202,9 @@ export function DifferenceDemo() {
           </div>
         </div>
 
-        <p className="mt-8 text-center text-sm text-[#5C5F66]">
+        <p className="mt-8 text-center text-sm text-muted">
           Traditional writes what you said. AI can clean it up.{' '}
-          <span className="font-medium text-[#2A2420]">
+          <span className="font-medium text-ink">
             Live Flow understands — and adapts to the app.
           </span>
         </p>

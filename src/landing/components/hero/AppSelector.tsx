@@ -1,20 +1,20 @@
 import { motion, useReducedMotion } from 'motion/react';
 import { HERO_APPS, type HeroAppId } from '../../data/heroShowcase';
+import { mix, theme } from '../../../theme/tokens';
 
 type Props = {
   activeId: HeroAppId;
   onSelect: (id: HeroAppId) => void;
 };
 
-/** Workspace navigation — not a tab bar of equal cards. */
 export function AppSelector({ activeId, onSelect }: Props) {
   const reduce = useReducedMotion();
 
   return (
     <div
       role="tablist"
-      aria-label="Navigate workspace destinations"
-      className="mx-auto flex w-full max-w-3xl flex-wrap items-center justify-center gap-2"
+      aria-label="Choose application context"
+      className="flex flex-wrap items-center justify-center gap-2 sm:gap-2.5"
     >
       {HERO_APPS.map((app) => {
         const active = app.id === activeId;
@@ -26,33 +26,29 @@ export function AppSelector({ activeId, onSelect }: Props) {
             aria-selected={active}
             aria-controls={`hero-card-${app.id}`}
             onClick={() => onSelect(app.id)}
-            whileHover={reduce ? undefined : { y: -2 }}
+            whileHover={reduce ? undefined : { y: -1, scale: 1.02 }}
             whileTap={reduce ? undefined : { scale: 0.98 }}
-            animate={reduce || !active ? undefined : { y: [0, -1, 0] }}
-            transition={
-              active
-                ? { duration: 2.2, repeat: Infinity, ease: 'easeInOut' }
-                : { type: 'spring', stiffness: 400, damping: 28 }
-            }
-            className="relative inline-flex h-9 items-center gap-2 rounded-full border px-3.5 text-[13px] font-medium tracking-tight whitespace-nowrap sm:px-4"
+            transition={{ type: 'spring', stiffness: 400, damping: 28 }}
+            className="relative rounded-full px-3.5 py-1.5 text-[13px] font-medium tracking-tight transition-colors sm:px-4 sm:py-2"
             style={{
-              color: active ? '#2A2420' : '#8A8F98',
-              background: active ? '#FFFFFF' : 'rgba(255,255,255,0.55)',
-              borderColor: active ? app.accent : 'rgba(230,232,236,0.7)',
+              color: active ? theme.ink : theme.muted,
+              background: active ? theme.card : theme.surfaceAlt,
+              border: `1px solid ${active ? app.accent : theme.border}`,
               boxShadow: active
-                ? `0 8px 22px rgba(42,36,32,0.1), 0 0 0 1px ${app.accent}30, 0 0 18px ${app.accent}22`
+                ? `0 8px 24px ${mix(theme.ink, 8)}, 0 0 0 1px ${app.accent}33`
                 : 'none',
             }}
           >
-            <span
-              className="h-1.5 w-1.5 shrink-0 rounded-full"
-              style={{
-                background: app.accent,
-                opacity: active ? 1 : 0.45,
-                boxShadow: active ? `0 0 8px ${app.accent}` : 'none',
-              }}
-            />
-            {app.name}
+            <span className="inline-flex items-center gap-2">
+              <span
+                className="h-1.5 w-1.5 rounded-full"
+                style={{
+                  background: app.accent,
+                  opacity: active ? 1 : 0.75,
+                }}
+              />
+              {app.name}
+            </span>
           </motion.button>
         );
       })}

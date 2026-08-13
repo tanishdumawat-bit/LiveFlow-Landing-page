@@ -1,5 +1,6 @@
 import { AnimatePresence, motion, useReducedMotion } from 'motion/react';
 import { getApp, type FlowStage, type HeroAppId } from '../../data/heroShowcase';
+import { mix, theme } from '../../../theme/tokens';
 
 type Props = {
   stage: FlowStage | 'idle';
@@ -15,7 +16,7 @@ function AudioBars({ active }: { active: boolean }) {
       {[0.35, 0.7, 0.5, 0.95, 0.45, 0.8, 0.55, 0.75].map((h, i) => (
         <motion.span
           key={i}
-          className="w-[3px] rounded-full bg-[#4A7C6F]"
+          className="w-[3px] rounded-full bg-success"
           animate={
             reduce || !active
               ? { height: 6 + h * 8, opacity: 0.4 }
@@ -102,12 +103,12 @@ export function FloatingWidget({ stage, activeAppId, seconds, onMicClick }: Prop
       />
 
       <div
-        className="relative flex items-center justify-between gap-4 rounded-[999px] border border-[#E6E8EC] bg-white px-5 py-4 shadow-[0_16px_48px_rgba(42,36,32,0.10)] sm:px-7 sm:py-5"
+        className="relative flex items-center justify-between gap-4 rounded-[999px] border border-border bg-white px-5 py-4 shadow-card-md sm:px-7 sm:py-5"
       >
         <div className="flex min-w-0 flex-1 flex-col gap-1.5 pl-1">
           <div className="flex items-center gap-2.5">
-            <span className="text-sm font-semibold tracking-tight text-[#2A2420]">Live Flow</span>
-            <LeftWave active={live} accent={live ? '#C4501E' : accent} />
+            <span className="text-sm font-semibold tracking-tight text-ink">Live Flow</span>
+            <LeftWave active={live} accent={live ? theme.primary : accent} />
           </div>
           <AnimatePresence mode="wait">
             <motion.p
@@ -116,7 +117,7 @@ export function FloatingWidget({ stage, activeAppId, seconds, onMicClick }: Prop
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -4 }}
               className="text-xs font-medium"
-              style={{ color: live ? '#C4501E' : active ? accent : '#5C5F66' }}
+              style={{ color: live ? theme.primary : active ? accent : theme.muted }}
             >
               {STAGE_LABEL[stage]}
             </motion.p>
@@ -126,7 +127,7 @@ export function FloatingWidget({ stage, activeAppId, seconds, onMicClick }: Prop
         <div className="relative flex shrink-0 items-center justify-center">
           {!reduce && live && (
             <motion.span
-              className="absolute inset-[-10px] rounded-full border border-[#C4501E]/40"
+              className="absolute inset-[-10px] rounded-full border border-primary/40"
               animate={{ scale: [1, 1.35], opacity: [0.55, 0] }}
               transition={{ duration: 1.6, repeat: Infinity, ease: 'easeOut' }}
             />
@@ -137,10 +138,10 @@ export function FloatingWidget({ stage, activeAppId, seconds, onMicClick }: Prop
             onClick={onMicClick}
             className="relative flex h-[64px] w-[64px] items-center justify-center rounded-full text-white sm:h-[72px] sm:w-[72px]"
             style={{
-              background: 'radial-gradient(circle at 40% 35%, #D36A3A 0%, #C4501E 55%, #8A4A24 100%)',
+              background: theme.micOrb,
               boxShadow: live
-                ? '0 0 0 2px rgba(196,80,30,0.35), 0 12px 32px rgba(196,80,30,0.28)'
-                : '0 0 0 2px rgba(196,80,30,0.22), 0 10px 24px rgba(42,36,32,0.12)',
+                ? `0 0 0 2px ${mix(theme.primary, 35)}, 0 12px 32px ${mix(theme.primary, 28)}`
+                : `0 0 0 2px ${mix(theme.primary, 22)}, 0 10px 24px ${mix(theme.ink, 12)}`,
             }}
             animate={
               reduce
@@ -161,7 +162,7 @@ export function FloatingWidget({ stage, activeAppId, seconds, onMicClick }: Prop
         </div>
 
         <div className="flex flex-1 flex-col items-end gap-1.5 pr-1">
-          <span className="font-mono text-sm tabular-nums text-[#2A2420]/80">
+          <span className="font-mono text-sm tabular-nums text-ink/80">
             {mm}:{ss}
           </span>
           <AudioBars active={live} />

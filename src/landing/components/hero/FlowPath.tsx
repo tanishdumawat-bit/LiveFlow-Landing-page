@@ -1,6 +1,7 @@
 import { useId, useMemo } from 'react';
 import { motion, useReducedMotion } from 'motion/react';
 import { getApp, type FlowStage, type HeroAppId, type WorkspaceMode } from '../../data/heroShowcase';
+import { theme } from '../../../theme/tokens';
 
 type Props = {
   activeId: HeroAppId;
@@ -91,7 +92,7 @@ export function FlowPath({
     >
       <defs>
         <linearGradient id={`fp-${id}`} x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%" stopColor="#C4501E" stopOpacity="0.85" />
+          <stop offset="0%" stopColor={theme.primary} stopOpacity="0.85" />
           <stop offset="55%" stopColor={accent} stopOpacity="0.9" />
           <stop offset="100%" stopColor={accent} stopOpacity="0.35" />
         </linearGradient>
@@ -185,7 +186,7 @@ export function FlowPath({
             <motion.circle
               key={`${activeId}-${stage}-${i}`}
               r="0.32"
-              fill={i % 2 === 0 ? '#C4501E' : accent}
+              fill={i % 2 === 0 ? theme.primary : accent}
               initial={{ opacity: 0, cx: from.x, cy: from.y }}
               animate={{
                 opacity: stage === 'complete' ? [0.9, 0] : [0, 0.95, 0],

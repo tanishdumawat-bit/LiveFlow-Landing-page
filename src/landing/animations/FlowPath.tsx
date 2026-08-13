@@ -1,5 +1,6 @@
 import { useId } from 'react';
 import { motion, useReducedMotion } from 'motion/react';
+import { theme } from '../../theme/tokens';
 
 type FlowPathProps = {
   progress?: number;
@@ -19,7 +20,7 @@ export function FlowPath({
   active = true,
   className = '',
   d = DEFAULT_PATH,
-  color = '#9b87ff',
+  color = theme.primary,
 }: FlowPathProps) {
   const id = useId();
   const reduce = useReducedMotion();
@@ -29,9 +30,9 @@ export function FlowPath({
     <svg viewBox="0 0 100 100" className={className} preserveAspectRatio="none" aria-hidden="true">
       <defs>
         <linearGradient id={`${id}-g`} x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%" stopColor="#5ce1e6" stopOpacity="0.15" />
+          <stop offset="0%" stopColor={theme.accent} stopOpacity="0.15" />
           <stop offset="50%" stopColor={color} stopOpacity="1" />
-          <stop offset="100%" stopColor="#5ce1e6" stopOpacity="0.2" />
+          <stop offset="100%" stopColor={theme.accent} stopOpacity="0.2" />
         </linearGradient>
         <filter id={`${id}-glow`}>
           <feGaussianBlur stdDeviation="1.2" result="b" />

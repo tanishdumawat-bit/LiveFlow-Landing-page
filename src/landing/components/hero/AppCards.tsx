@@ -1,6 +1,7 @@
 import type { ReactNode } from 'react';
 import { AnimatePresence, motion, useReducedMotion } from 'motion/react';
 import { getApp, type FlowStage, type HeroAppId } from '../../data/heroShowcase';
+import { mix, theme } from '../../../theme/tokens';
 
 type Props = {
   activeId: HeroAppId;
@@ -52,10 +53,10 @@ function CardChrome({
       role="tabpanel"
       className="relative flex h-full flex-col overflow-hidden rounded-2xl border bg-white"
       style={{
-        borderColor: primary ? accent : '#E6E8EC',
+        borderColor: primary ? accent : theme.border,
         boxShadow: primary
-          ? `0 0 0 1px ${accent}35, 0 16px 40px rgba(42,36,32,0.10)`
-          : '0 4px 16px rgba(42,36,32,0.04)',
+          ? `0 0 0 1px ${accent}35, 0 16px 40px ${mix(theme.ink, 10)}`
+          : `0 4px 16px ${mix(theme.ink, 4)}`,
       }}
       animate={{
         opacity: primary ? 1 : 0.55,
@@ -63,15 +64,15 @@ function CardChrome({
       }}
       transition={{ type: 'spring', stiffness: 280, damping: 28 }}
     >
-      <div className="flex h-10 shrink-0 items-center gap-2 border-b border-[#E6E8EC] px-3">
+      <div className="flex h-10 shrink-0 items-center gap-2 border-b border-border px-3">
         <span className="h-2 w-2 rounded-full" style={{ background: accent }} />
-        <span className="text-[11px] font-semibold tracking-wide text-[#2A2420]">{title}</span>
+        <span className="text-[11px] font-semibold tracking-wide text-ink">{title}</span>
       </div>
-      <div className="min-h-0 flex-1 overflow-hidden px-3 py-2.5 text-[11px] leading-relaxed text-[#2A2420]">
+      <div className="min-h-0 flex-1 overflow-hidden px-3 py-2.5 text-[11px] leading-relaxed text-ink">
         {children}
       </div>
-      <div className="flex h-9 shrink-0 items-center justify-between border-t border-[#E6E8EC] px-3">
-        <span className="text-[10px] font-medium tracking-wide text-[#5C5F66]">Live Flow</span>
+      <div className="flex h-9 shrink-0 items-center justify-between border-t border-border px-3">
+        <span className="text-[10px] font-medium tracking-wide text-muted">Live Flow</span>
         <MiniWave color={accent} active={primary} />
       </div>
     </motion.div>
@@ -82,10 +83,10 @@ function GmailBody({ reveal }: { reveal: boolean }) {
   return (
     <div className="space-y-2">
       <p>
-        <span className="text-[#5C5F66]">To:</span> sarah@company.com
+        <span className="text-muted">To:</span> sarah@company.com
       </p>
       <p>
-        <span className="text-[#5C5F66]">Subject:</span> Project update
+        <span className="text-muted">Subject:</span> Project update
       </p>
       <AnimatePresence mode="wait">
         {reveal ? (
@@ -93,7 +94,7 @@ function GmailBody({ reveal }: { reveal: boolean }) {
             key="body"
             initial={{ opacity: 0, y: 8, filter: 'blur(6px)' }}
             animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
-            className="space-y-1.5 pt-1 text-[#2A2420]"
+            className="space-y-1.5 pt-1 text-ink"
           >
             <p>Hi Sarah,</p>
             <p>
@@ -101,13 +102,13 @@ function GmailBody({ reveal }: { reveal: boolean }) {
               morning.
             </p>
             <p>Talk soon!</p>
-            <p className="text-[#5C5F66]">— Chinmay</p>
+            <p className="text-muted">— Chinmay</p>
           </motion.div>
         ) : (
           <motion.div key="empty" className="space-y-1.5 pt-2">
-            <div className="h-2 w-[80%] rounded bg-[#F5F6F8]" />
-            <div className="h-2 w-full rounded bg-[#F5F6F8]" />
-            <div className="h-2 w-[60%] rounded bg-[#F5F6F8]" />
+            <div className="h-2 w-[80%] rounded bg-surface-alt" />
+            <div className="h-2 w-full rounded bg-surface-alt" />
+            <div className="h-2 w-[60%] rounded bg-surface-alt" />
           </motion.div>
         )}
       </AnimatePresence>
@@ -118,16 +119,16 @@ function GmailBody({ reveal }: { reveal: boolean }) {
 function SlackBody({ reveal }: { reveal: boolean }) {
   return (
     <div className="space-y-2">
-      <p className="font-medium text-[#2A2420]/80"># product-team</p>
+      <p className="font-medium text-ink/80"># product-team</p>
       <AnimatePresence mode="wait">
         {reveal ? (
           <motion.div
             key="msg"
             initial={{ opacity: 0, y: 8, filter: 'blur(6px)' }}
             animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
-            className="rounded-lg bg-[#F5F6F8] p-2"
+            className="rounded-lg bg-surface-alt p-2"
           >
-            <p className="mb-1 text-[10px] font-semibold text-[#8A4A24]">Chinmay</p>
+            <p className="mb-1 text-[10px] font-semibold text-primary-dark">Chinmay</p>
             <p>
               Just a quick update — I&apos;ll have the proposal ready tomorrow morning.
               <br />
@@ -136,7 +137,7 @@ function SlackBody({ reveal }: { reveal: boolean }) {
             </p>
           </motion.div>
         ) : (
-          <motion.div key="empty" className="h-16 rounded-lg bg-[#F5F6F8]" />
+          <motion.div key="empty" className="h-16 rounded-lg bg-surface-alt" />
         )}
       </AnimatePresence>
     </div>
@@ -146,23 +147,23 @@ function SlackBody({ reveal }: { reveal: boolean }) {
 function NotionBody({ reveal }: { reveal: boolean }) {
   return (
     <div className="space-y-2">
-      <p className="text-sm font-semibold text-[#2A2420]">Project Update</p>
+      <p className="text-sm font-semibold text-ink">Project Update</p>
       <p>
-        <span className="text-[#5C5F66]">Status:</span> In Progress
+        <span className="text-muted">Status:</span> In Progress
       </p>
-      <p className="text-[#5C5F66]">Update</p>
+      <p className="text-muted">Update</p>
       <AnimatePresence mode="wait">
         {reveal ? (
           <motion.div key="n" initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
             <p className="mb-2">&quot;I&apos;ll have the proposal ready tomorrow morning.&quot;</p>
-            <p className="text-[#5C5F66]">Next Steps</p>
+            <p className="text-muted">Next Steps</p>
             <ul className="mt-1 list-disc space-y-0.5 pl-4">
               <li>Review proposal</li>
               <li>Finalize deck</li>
             </ul>
           </motion.div>
         ) : (
-          <div className="h-12 rounded bg-[#F5F6F8]" />
+          <div className="h-12 rounded bg-surface-alt" />
         )}
       </AnimatePresence>
     </div>
@@ -172,18 +173,18 @@ function NotionBody({ reveal }: { reveal: boolean }) {
 function ChatGptBody({ reveal }: { reveal: boolean }) {
   return (
     <div className="space-y-2">
-      <p className="text-[#5C5F66]">User</p>
-      <p className="rounded-lg bg-[#F5F6F8] p-2">
+      <p className="text-muted">User</p>
+      <p className="rounded-lg bg-surface-alt p-2">
         &quot;Help me draft an update to share with the team.&quot;
       </p>
-      <p className="text-[#5C5F66]">Assistant</p>
+      <p className="text-muted">Assistant</p>
       <AnimatePresence mode="wait">
         {reveal ? (
           <motion.div
             key="a"
             initial={{ opacity: 0, filter: 'blur(6px)' }}
             animate={{ opacity: 1, filter: 'blur(0px)' }}
-            className="rounded-lg border border-[#4A7C6F]/25 bg-[#4A7C6F]/08 p-2"
+            className="rounded-lg border border-success/25 bg-success/8 p-2"
           >
             Here&apos;s a concise update you can share:
             <ul className="mt-1 list-disc space-y-0.5 pl-4">
@@ -193,7 +194,7 @@ function ChatGptBody({ reveal }: { reveal: boolean }) {
             </ul>
           </motion.div>
         ) : (
-          <div className="h-14 rounded-lg bg-[#F5F6F8]" />
+          <div className="h-14 rounded-lg bg-surface-alt" />
         )}
       </AnimatePresence>
     </div>
@@ -202,7 +203,7 @@ function ChatGptBody({ reveal }: { reveal: boolean }) {
 
 function CursorBody({ reveal }: { reveal: boolean }) {
   return (
-    <pre className="overflow-hidden font-mono text-[10px] leading-relaxed text-[#4A7C6F]">
+    <pre className="overflow-hidden font-mono text-[10px] leading-relaxed text-success">
       <code>
         {`// Implement proposal
 // update flow
@@ -219,7 +220,7 @@ function CursorBody({ reveal }: { reveal: boolean }) {
 sendUpdate(update);`}
           </motion.span>
         ) : (
-          <span className="text-[#C8CCD4]">{`const update = { … }`}</span>
+          <span className="text-filler">{`const update = { … }`}</span>
         )}
       </code>
     </pre>
@@ -229,22 +230,22 @@ sendUpdate(update);`}
 function BrowserBody({ reveal }: { reveal: boolean }) {
   return (
     <div className="space-y-2">
-      <p className="font-semibold text-[#2A2420]">Project Roadmap</p>
-      <p className="text-[#5C5F66]">Latest update</p>
+      <p className="font-semibold text-ink">Project Roadmap</p>
+      <p className="text-muted">Latest update</p>
       <AnimatePresence mode="wait">
         {reveal ? (
           <motion.p key="b" initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
             Proposal will be ready tomorrow morning.
           </motion.p>
         ) : (
-          <div className="h-3 w-4/5 rounded bg-[#F5F6F8]" />
+          <div className="h-3 w-4/5 rounded bg-surface-alt" />
         )}
       </AnimatePresence>
       <div className="mt-2 flex h-12 items-end gap-1.5">
         {[40, 65, 45, 80, 55, 70].map((h, i) => (
           <motion.div
             key={i}
-            className="flex-1 rounded-t-sm bg-[#4A7C6F]/35"
+            className="flex-1 rounded-t-sm bg-success/35"
             initial={{ height: 8 }}
             animate={{ height: reveal ? h * 0.45 : 10 + (i % 3) * 6 }}
             transition={{ delay: i * 0.05, type: 'spring', stiffness: 200, damping: 20 }}

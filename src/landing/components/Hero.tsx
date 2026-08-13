@@ -236,21 +236,7 @@ export function Hero() {
             backgroundImage: 'url(/assets/hero-desk.png)',
           }}
         />
-        <div
-          className="absolute inset-0"
-          style={{
-            background: `
-              linear-gradient(180deg,
-                rgba(255,255,255,0.55) 0%,
-                rgba(255,255,255,0.28) 18%,
-                rgba(255,255,255,0.18) 40%,
-                rgba(255,255,255,0.35) 62%,
-                rgba(255,255,255,0.82) 100%
-              ),
-              radial-gradient(ellipse 70% 45% at 50% 22%, rgba(255,255,255,0.55), transparent 68%)
-            `,
-          }}
-        />
+        <div className="overlay-hero absolute inset-0" />
       </div>
 
       <div className="relative z-10 mx-auto flex w-full max-w-5xl flex-col items-center">
@@ -259,7 +245,7 @@ export function Hero() {
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.05, duration: 0.55, ease: easeOut }}
-            className="mb-3 text-xs font-semibold tracking-[0.22em] text-[#C4501E] uppercase"
+            className="mb-3 text-xs font-semibold tracking-[0.22em] text-primary uppercase"
           >
             A voice layer for your Mac
           </motion.p>
@@ -267,7 +253,7 @@ export function Hero() {
           <h1 className="text-balance text-4xl font-semibold leading-[1.06] tracking-tight sm:text-5xl lg:text-[3.65rem]">
             <span className="block overflow-hidden pb-1">
               <motion.span
-                className="inline-block text-[#2A2420]"
+                className="inline-block text-ink"
                 initial={{ y: '110%', opacity: 0 }}
                 animate={{ y: '0%', opacity: 1 }}
                 transition={{ delay: 0.12, duration: 0.85, ease: easeOut }}
@@ -277,7 +263,7 @@ export function Hero() {
             </span>
             <span className="block overflow-hidden">
               <motion.span
-                className="inline-block font-serif italic text-[#C4501E]"
+                className="inline-block font-serif italic text-primary"
                 initial={{ y: '110%', opacity: 0 }}
                 animate={{ y: '0%', opacity: 1 }}
                 transition={{ delay: 0.28, duration: 0.9, ease: easeOut }}
@@ -291,7 +277,7 @@ export function Hero() {
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.42, duration: 0.7, ease: easeOut }}
-            className="mt-4 max-w-lg text-base leading-relaxed text-[#3F434A] sm:text-lg"
+            className="mt-4 max-w-lg text-base leading-relaxed text-muted sm:text-lg"
           >
             Live Flow understands your context and puts your words exactly where they need to be.
           </motion.p>
@@ -304,7 +290,7 @@ export function Hero() {
           >
             <MagneticButton
               href={DOWNLOAD_URL}
-              className="inline-flex h-11 items-center gap-2 rounded-full bg-[#C4501E] px-6 text-sm font-semibold text-white shadow-[0_10px_28px_rgba(196,80,30,0.28)] hover:bg-[#8A4A24]"
+              className="inline-flex h-11 items-center gap-2 rounded-full bg-primary px-6 text-sm font-semibold text-white shadow-cta-lg hover:bg-primary-dark"
             >
               <DownloadIcon />
               Download for Mac
@@ -312,7 +298,7 @@ export function Hero() {
             <motion.a
               href="#context"
               whileHover={reduce ? undefined : { y: -1 }}
-              className="inline-flex h-11 items-center gap-2 rounded-full border border-white/80 bg-white/80 px-5 text-sm font-medium text-[#2A2420] shadow-[0_6px_20px_rgba(42,36,32,0.06)] backdrop-blur-md transition hover:bg-white"
+              className="inline-flex h-11 items-center gap-2 rounded-full border border-white/80 bg-white/80 px-5 text-sm font-medium text-ink shadow-card backdrop-blur-md transition hover:bg-white"
             >
               <PlayIcon />
               See how it works
@@ -323,7 +309,7 @@ export function Hero() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.6, duration: 0.5 }}
-            className="mt-5 flex flex-row flex-wrap items-center justify-center gap-x-6 gap-y-2 text-[12px] text-[#3F434A]"
+            className="mt-5 flex flex-row flex-wrap items-center justify-center gap-x-6 gap-y-2 text-[12px] text-muted"
           >
             {[
               'Works across your Mac',
@@ -332,7 +318,7 @@ export function Hero() {
               'Built for macOS',
             ].map((item) => (
               <li key={item} className="inline-flex items-center gap-1.5">
-                <span className="h-1 w-1 shrink-0 rounded-full bg-[#C4501E]" aria-hidden="true" />
+                <span className="h-1 w-1 shrink-0 rounded-full bg-primary" aria-hidden="true" />
                 {item}
               </li>
             ))}
@@ -346,7 +332,7 @@ export function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.72, duration: 0.85, ease: easeOut }}
         >
-          <div className="relative overflow-hidden rounded-[28px] border border-white/70 bg-white/85 px-3 py-7 shadow-[0_30px_90px_rgba(42,36,32,0.12)] backdrop-blur-xl sm:rounded-[32px] sm:px-6 sm:py-9">
+          <div className="relative overflow-hidden rounded-[28px] border border-white/70 bg-white/85 px-3 py-7 shadow-stage backdrop-blur-xl sm:rounded-[32px] sm:px-6 sm:py-9">
             <StageGlow accent={accent} live={live} />
 
             <div className="relative z-10 mx-auto flex w-full max-w-5xl flex-col items-center">
@@ -358,14 +344,14 @@ export function Hero() {
                     initial={{ opacity: 0, y: 4 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -4 }}
-                    className="inline-flex h-7 items-center gap-2 rounded-full border border-[#E6E8EC]/90 bg-white/90 px-3 text-[11px] font-medium text-[#2A2420]"
+                    className="inline-flex h-7 items-center gap-2 rounded-full border border-border/90 bg-white/90 px-3 text-[11px] font-medium text-ink"
                   >
                     <span
                       className="h-1.5 w-1.5 rounded-full"
                       style={{ background: accent, boxShadow: `0 0 8px ${accent}` }}
                     />
                     {mode === 'ecosystem' ? 'All apps' : getApp(activeId).name}
-                    <span className="text-[#C8CCD4]">·</span>
+                    <span className="text-filler">·</span>
                     {stageLabel}
                   </motion.span>
                 </AnimatePresence>
@@ -379,8 +365,6 @@ export function Hero() {
                 <LiveTranscript
                   stage={stage}
                   accent={accent}
-                  appName={getApp(activeId).name}
-                  contextFlash={contextFlash}
                 />
               </div>
 

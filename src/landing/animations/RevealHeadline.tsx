@@ -20,7 +20,7 @@ export function RevealHeadline({
     return (
       <Tag className={className}>
         {lines.map((line, i) => (
-          <span key={line} className={`block ${accentLineIndex === i ? 'text-[#8A4A24]' : ''}`}>
+          <span key={line} className={`block ${accentLineIndex === i ? 'text-primary-dark' : ''}`}>
             {line}
           </span>
         ))}
@@ -33,7 +33,7 @@ export function RevealHeadline({
       {lines.map((line, lineIndex) => (
         <span key={line} className="block overflow-hidden pb-[0.08em]">
           <motion.span
-            className={`inline-block ${accentLineIndex === lineIndex ? 'text-[#8A4A24]' : ''}`}
+            className={`inline-block ${accentLineIndex === lineIndex ? 'text-primary-dark' : ''}`}
             initial={{
               y: '110%',
               opacity: 0,

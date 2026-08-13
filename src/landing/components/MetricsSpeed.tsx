@@ -122,17 +122,17 @@ function MovingCurveText({ active }: { active: boolean }) {
       <defs>
         <path id="flowTextCurve" d="M 10 105 Q 140 8, 260 42 T 510 18" fill="none" />
         <linearGradient id="curveFade" x1="0" y1="0" x2="1" y2="0">
-          <stop offset="0%" stopColor="#2A2420" stopOpacity="0" />
-          <stop offset="10%" stopColor="#2A2420" stopOpacity="1" />
-          <stop offset="90%" stopColor="#2A2420" stopOpacity="1" />
-          <stop offset="100%" stopColor="#2A2420" stopOpacity="0" />
+          <stop offset="0%" stopColor="var(--ink)" stopOpacity="0" />
+          <stop offset="10%" stopColor="var(--ink)" stopOpacity="1" />
+          <stop offset="90%" stopColor="var(--ink)" stopOpacity="1" />
+          <stop offset="100%" stopColor="var(--ink)" stopOpacity="0" />
         </linearGradient>
       </defs>
       <text
         fill="url(#curveFade)"
         fontSize="14"
         fontWeight="500"
-        fontFamily="Inter, ui-sans-serif, system-ui, sans-serif"
+        fontFamily="Plus Jakarta Sans, ui-sans-serif, system-ui, sans-serif"
         letterSpacing="0.02em"
       >
         <textPath ref={pathRef} href="#flowTextCurve" startOffset="0%">
@@ -160,7 +160,7 @@ export function MetricsSpeed() {
       ref={sectionRef}
       id="speed"
       aria-label="Speed comparison"
-      className="relative overflow-hidden bg-[#F5F6F8] px-4 py-24 sm:px-6 lg:py-32"
+      className="relative overflow-hidden bg-surface-alt px-4 py-24 sm:px-6 lg:py-32"
     >
       <div className="relative mx-auto max-w-5xl text-center">
         <motion.h2
@@ -168,7 +168,7 @@ export function MetricsSpeed() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.6 }}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          className="font-serif text-4xl leading-[1.15] tracking-tight text-[#2A2420] sm:text-5xl lg:text-6xl"
+          className="font-serif text-4xl leading-[1.15] tracking-tight text-ink sm:text-5xl lg:text-6xl"
         >
           Your keyboard has a <em className="italic">speed limit.</em>
         </motion.h2>
@@ -178,7 +178,7 @@ export function MetricsSpeed() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.6 }}
           transition={{ delay: 0.12, duration: 0.7 }}
-          className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-[#5C5F66] sm:text-lg"
+          className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-muted sm:text-lg"
         >
           Typing tops out around 35 WPM. Speaking lands closer to 180–200+. Live Flow is built so
           your words keep up — up to about 5× faster than a keyboard.
@@ -190,18 +190,18 @@ export function MetricsSpeed() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.4 }}
             transition={{ delay: 0.15, duration: 0.75, ease: [0.16, 1, 0.3, 1] }}
-            className="relative flex min-h-[280px] flex-col overflow-hidden rounded-[28px] border border-[#E6E8EC] bg-[#FFFFFF] p-7 text-left sm:min-h-[320px] sm:p-8"
+            className="relative flex min-h-[280px] flex-col overflow-hidden rounded-[28px] border border-border bg-background p-7 text-left sm:min-h-[320px] sm:p-8"
           >
-            <p className="text-sm font-medium text-[#5C5F66]">Keyboard</p>
+            <p className="text-sm font-medium text-muted">Keyboard</p>
             <AnimatedWpm
               value={KEYBOARD_WPM}
               inView={inView}
-              className="mt-2 font-serif text-5xl tracking-tight text-[#2A2420] sm:text-6xl"
+              className="mt-2 font-serif text-5xl tracking-tight text-ink sm:text-6xl"
             />
 
             <div className="relative mt-8 h-16 overflow-hidden">
               <motion.p
-                className="absolute whitespace-nowrap text-sm leading-relaxed text-[#5C5F66]/70"
+                className="absolute whitespace-nowrap text-sm leading-relaxed text-muted/70"
                 animate={reduce || !live ? { x: 0 } : { x: ['0%', '-45%'] }}
                 transition={{ duration: 18, repeat: Infinity, ease: 'linear' }}
               >
@@ -212,7 +212,7 @@ export function MetricsSpeed() {
             </div>
 
             <div className="mt-auto pt-10">
-              <span className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-[#E6E8EC] bg-[#FFFFFF] text-[#5C5F66]">
+              <span className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-border bg-background text-muted">
                 <MicIcon />
               </span>
             </div>
@@ -223,7 +223,7 @@ export function MetricsSpeed() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.4 }}
             transition={{ delay: 0.28, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            className="relative flex min-h-[320px] flex-col overflow-hidden rounded-[28px] border border-[#E6E8EC] text-left shadow-[0_24px_60px_rgba(42,36,32,0.10)] sm:min-h-[360px]"
+            className="relative flex min-h-[320px] flex-col overflow-hidden rounded-[28px] border border-border text-left shadow-card-lg sm:min-h-[360px]"
           >
             <motion.div
               className="absolute inset-0 scale-110 bg-cover bg-center"
@@ -232,31 +232,25 @@ export function MetricsSpeed() {
                 backgroundImage: 'url(/assets/metrics-flow-bg.png)',
               }}
             />
-            <div
-              className="absolute inset-0"
-              style={{
-                background:
-                  'linear-gradient(180deg, rgba(255,255,255,0.94) 0%, rgba(255,255,255,0.78) 42%, rgba(245,246,248,0.96) 100%)',
-              }}
-            />
+            <div className="overlay-metrics absolute inset-0" />
 
             <div className="relative z-10 flex h-full flex-col p-7 sm:p-8">
-              <p className="text-sm font-medium text-[#8A4A24]">Live Flow</p>
+              <p className="text-sm font-medium text-primary-dark">Live Flow</p>
               <div className="mt-2 flex items-baseline gap-2">
                 <AnimatedWpm
                   value={FLOW_WPM}
                   inView={inView}
-                  className="font-serif text-5xl tracking-tight text-[#2A2420] sm:text-6xl lg:text-7xl"
+                  className="font-serif text-5xl tracking-tight text-ink sm:text-6xl lg:text-7xl"
                 />
               </div>
-              <p className="mt-1 text-xs text-[#8A4A24]/80">Illustrative · ~180–200+ speaking pace</p>
+              <p className="mt-1 text-xs text-primary-dark/80">Illustrative · ~180–200+ speaking pace</p>
 
-              <div className="pointer-events-none relative mt-6 flex-1 drop-shadow-[0_1px_0_rgba(255,255,255,0.9)]">
+              <div className="pointer-events-none relative mt-6 flex-1 drop-shadow-[0_1px_0_color-mix(in_srgb,var(--card)_90%,transparent)]">
                 <MovingCurveText active={live} />
               </div>
 
               <div className="relative z-10 mt-auto flex justify-center pt-4">
-                <div className="inline-flex items-center gap-3 rounded-full border border-[#8A4A24]/25 bg-[#2A2420] px-5 py-2.5 shadow-[0_12px_40px_rgba(42,36,32,0.25)]">
+                <div className="inline-flex items-center gap-3 rounded-full border border-primary-dark/25 bg-ink px-5 py-2.5 shadow-ink">
                   <VoiceBars active={live} />
                 </div>
               </div>

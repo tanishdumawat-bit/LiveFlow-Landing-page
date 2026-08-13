@@ -35,7 +35,7 @@ export function TextTransform({ from, to, phase, className = '' }: TextTransform
 
   if (reduce) {
     return (
-      <p className={`whitespace-pre-wrap text-[15px] leading-relaxed text-[#2A2420] ${className}`}>
+      <p className={`whitespace-pre-wrap text-[15px] leading-relaxed text-ink ${className}`}>
         {phase === 'transformed' ? to : from}
       </p>
     );
@@ -51,7 +51,7 @@ export function TextTransform({ from, to, phase, className = '' }: TextTransform
             animate={{ opacity: 1, clipPath: 'inset(0 0% 0 0)' }}
             exit={{ opacity: 0, filter: 'blur(4px)' }}
             transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
-            className="whitespace-pre-wrap text-[15px] leading-relaxed text-[#2A2420]"
+            className="whitespace-pre-wrap text-[15px] leading-relaxed text-ink"
           >
             <WordLayer text={from} />
           </motion.p>
@@ -72,7 +72,7 @@ export function TextTransform({ from, to, phase, className = '' }: TextTransform
                 letterSpacing: ['0em', '0.02em', '0.01em'],
               }}
               transition={{ duration: 1.1, repeat: Infinity, ease: 'easeInOut' }}
-              className="whitespace-pre-wrap text-[15px] leading-relaxed text-[#5C5F66]"
+              className="whitespace-pre-wrap text-[15px] leading-relaxed text-muted"
             >
               {from}
             </motion.p>
@@ -80,7 +80,7 @@ export function TextTransform({ from, to, phase, className = '' }: TextTransform
               className="pointer-events-none absolute inset-y-0 w-20"
               style={{
                 background:
-                  'linear-gradient(90deg, transparent, rgba(196,80,30,0.28), rgba(74,124,111,0.18), transparent)',
+                  'linear-gradient(90deg, transparent, color-mix(in srgb, var(--primary) 28%, transparent), color-mix(in srgb, var(--accent) 35%, transparent), transparent)',
               }}
               initial={{ left: '-25%' }}
               animate={{ left: '110%' }}
@@ -97,7 +97,7 @@ export function TextTransform({ from, to, phase, className = '' }: TextTransform
             animate={{ opacity: 1, y: 0, filter: 'blur(0px)', scale: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
-            className="whitespace-pre-wrap text-[15px] leading-relaxed text-[#2A2420]"
+            className="whitespace-pre-wrap text-[15px] leading-relaxed text-ink"
           >
             <WordLayer text={to} />
           </motion.p>

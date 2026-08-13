@@ -1,5 +1,6 @@
 import { useId, useMemo } from 'react';
 import { motion, useReducedMotion } from 'motion/react';
+import { theme } from '../../theme/tokens';
 
 export type VoiceFlowState = 'idle' | 'listening' | 'processing' | 'transcribing' | 'complete';
 
@@ -36,8 +37,8 @@ export function VoiceFlow({
   const reduce = useReducedMotion();
   const amp = amplitude ?? STATE_AMP[state];
   const active = state !== 'idle' && state !== 'complete';
-  const color = state === 'listening' || state === 'transcribing' ? '#C4501E' : '#4A7C6F';
-  const secondary = '#C8CCD4';
+  const color = state === 'listening' || state === 'transcribing' ? theme.primary : theme.success;
+  const secondary = theme.filler;
 
   const paths = useMemo(
     () => ({

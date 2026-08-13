@@ -9,7 +9,7 @@ function FaqWave({ pulse }: { pulse: boolean }) {
   const reduce = useReducedMotion();
   return (
     <div className="flex items-center gap-2">
-      <span className="relative flex h-7 w-7 items-center justify-center overflow-hidden rounded-full border border-[#E6E8EC] bg-[#FFFFFF]">
+      <span className="relative flex h-7 w-7 items-center justify-center overflow-hidden rounded-full border border-border bg-background">
         <VoiceFlow
           state={pulse && !reduce ? 'listening' : 'idle'}
           amplitude={pulse ? 0.85 : 0.4}
@@ -17,7 +17,7 @@ function FaqWave({ pulse }: { pulse: boolean }) {
           showParticles={false}
         />
       </span>
-      <span className="text-[11px] font-medium tracking-wide text-[#5C5F66]">Live Flow</span>
+      <span className="text-[11px] font-medium tracking-wide text-muted">Live Flow</span>
     </div>
   );
 }
@@ -74,7 +74,7 @@ export function FaqSection() {
       ref={sectionRef}
       id="faq"
       aria-labelledby={`${baseId}-heading`}
-      className="relative overflow-hidden bg-[#FFFFFF] px-4 py-24 sm:px-6 lg:py-32"
+      className="relative overflow-hidden bg-background px-4 py-24 sm:px-6 lg:py-32"
     >
       <div className="relative mx-auto max-w-[1200px]">
         <div className="mb-10 text-center sm:mb-14">
@@ -83,7 +83,7 @@ export function FaqSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.8 }}
             transition={{ duration: 0.55, ease: EASE }}
-            className="text-xs font-semibold tracking-[0.2em] text-[#C4501E] uppercase"
+            className="text-xs font-semibold tracking-[0.2em] text-primary uppercase"
           >
             FAQs
           </motion.p>
@@ -93,7 +93,7 @@ export function FaqSection() {
             whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
             viewport={{ once: true, amount: 0.7 }}
             transition={{ delay: 0.08, duration: 0.75, ease: [0.16, 1, 0.3, 1] }}
-            className="mt-3 font-serif text-4xl tracking-tight text-[#2A2420] sm:text-5xl lg:text-6xl"
+            className="mt-3 font-serif text-4xl tracking-tight text-ink sm:text-5xl lg:text-6xl"
           >
             Good <em className="italic">questions.</em>
           </motion.h2>
@@ -105,17 +105,17 @@ export function FaqSection() {
           whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
           viewport={{ once: true, amount: 0.2 }}
           transition={{ delay: 0.15, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          className="hidden overflow-hidden rounded-[32px] border border-[#E6E8EC] bg-[#F5F6F8] shadow-[0_24px_60px_rgba(42,36,32,0.08)] lg:grid lg:min-h-[560px] lg:grid-cols-[0.95fr_1.15fr]"
+          className="hidden overflow-hidden rounded-[32px] border border-border bg-surface-alt shadow-card-lg lg:grid lg:min-h-[560px] lg:grid-cols-[0.95fr_1.15fr]"
         >
           <motion.div
             initial={reduce ? false : { opacity: 0, x: -12 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.28, duration: 0.55, ease: EASE }}
-            className="flex flex-col border-r border-[#E6E8EC]/80 bg-[#EFE4D2]/90"
+            className="flex flex-col border-r border-border/80 bg-surface/90"
           >
-            <div className="border-b border-[#E6E8EC]/70 px-7 py-5">
-              <p className="text-xs font-semibold tracking-[0.16em] text-[#5C5F66] uppercase">
+            <div className="border-b border-border/70 px-7 py-5">
+              <p className="text-xs font-semibold tracking-[0.16em] text-muted uppercase">
                 Questions
               </p>
             </div>
@@ -162,20 +162,20 @@ export function FaqSection() {
                     transition={{ type: 'spring', stiffness: 400, damping: 32 }}
                     className={`group relative flex w-full items-center gap-3 rounded-2xl px-4 py-3.5 text-left text-[15px] leading-snug transition-colors ${
                       selected
-                        ? 'bg-[#C4501E]/12 font-medium text-[#2A2420] shadow-[inset_0_0_0_1px_rgba(196,80,30,0.18)]'
-                        : 'text-[#5C5F66] hover:bg-white/45 hover:text-[#2A2420]'
+                        ? 'bg-primary/12 font-medium text-ink shadow-[inset_0_0_0_1px_color-mix(in_srgb,var(--primary)_18%,transparent)]'
+                        : 'text-muted hover:bg-white/45 hover:text-ink'
                     }`}
                   >
                     <span
                       className={`absolute top-1/2 left-1.5 h-6 w-[3px] -translate-y-1/2 rounded-full transition ${
-                        selected ? 'bg-[#C4501E] opacity-100' : 'bg-[#C4501E] opacity-0 group-hover:opacity-30'
+                        selected ? 'bg-primary opacity-100' : 'bg-primary opacity-0 group-hover:opacity-30'
                       }`}
                       aria-hidden="true"
                     />
                     <span className="pl-2">{item.question}</span>
                     <motion.span
                       aria-hidden="true"
-                      className={`ml-auto text-[#C4501E] transition ${selected ? 'opacity-100' : 'opacity-0 group-hover:opacity-50'}`}
+                      className={`ml-auto text-primary transition ${selected ? 'opacity-100' : 'opacity-0 group-hover:opacity-50'}`}
                       animate={selected && !reduce ? { x: [0, 3, 0] } : { x: 0 }}
                       transition={{ duration: 0.45 }}
                     >
@@ -192,9 +192,9 @@ export function FaqSection() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.36, duration: 0.55, ease: EASE }}
-            className="flex flex-col bg-[#FFFFFF]/55 px-8 py-7"
+            className="flex flex-col bg-background/55 px-8 py-7"
           >
-            <p className="text-xs font-semibold tracking-[0.16em] text-[#5C5F66] uppercase">
+            <p className="text-xs font-semibold tracking-[0.16em] text-muted uppercase">
               Answer
             </p>
 
@@ -217,11 +217,11 @@ export function FaqSection() {
                   transition={{ duration: reduce ? 0 : 0.35, ease: EASE }}
                   className="flex flex-1 flex-col"
                 >
-                  <p className="text-sm font-medium text-[#8A4A24]">{active.question}</p>
-                  <div className="mt-4 flex-1 rounded-[22px] border border-[#E6E8EC] bg-white p-6 shadow-[0_12px_36px_rgba(42,36,32,0.05)]">
-                    <p className="text-[17px] leading-relaxed text-[#2A2420]">{active.answer}</p>
+                  <p className="text-sm font-medium text-primary-dark">{active.question}</p>
+                  <div className="mt-4 flex-1 rounded-[22px] border border-border bg-white p-6 shadow-card">
+                    <p className="text-[17px] leading-relaxed text-ink">{active.answer}</p>
                     {active.detail && (
-                      <p className="mt-4 text-[15px] leading-relaxed text-[#5C5F66]">
+                      <p className="mt-4 text-[15px] leading-relaxed text-muted">
                         {active.detail}
                       </p>
                     )}
@@ -229,9 +229,9 @@ export function FaqSection() {
                 </motion.div>
               </AnimatePresence>
 
-              <div className="mt-6 flex items-center justify-between border-t border-[#E6E8EC]/70 pt-5">
+              <div className="mt-6 flex items-center justify-between border-t border-border/70 pt-5">
                 <FaqWave pulse={wavePulse} />
-                <span className="text-[11px] text-[#5C5F66]/80">
+                <span className="text-[11px] text-muted/80">
                   {FAQ_ITEMS.findIndex((q) => q.id === activeId) + 1} / {FAQ_ITEMS.length}
                 </span>
               </div>
@@ -252,7 +252,7 @@ export function FaqSection() {
             return (
               <div
                 key={item.id}
-                className="overflow-hidden rounded-2xl border border-[#E6E8EC] bg-white"
+                className="overflow-hidden rounded-2xl border border-border bg-white"
               >
                 <button
                   type="button"
@@ -267,11 +267,11 @@ export function FaqSection() {
                     }
                   }}
                   className={`flex w-full items-center justify-between gap-3 px-4 py-4 text-left text-[15px] font-medium ${
-                    open ? 'bg-[#C4501E]/08 text-[#2A2420]' : 'text-[#2A2420]'
+                    open ? 'bg-primary/8 text-ink' : 'text-ink'
                   }`}
                 >
                   {item.question}
-                  <span className="text-[#C4501E]">{open ? '−' : '+'}</span>
+                  <span className="text-primary">{open ? '−' : '+'}</span>
                 </button>
                 <AnimatePresence initial={false}>
                   {open && (
@@ -283,10 +283,10 @@ export function FaqSection() {
                       transition={{ duration: 0.32, ease: EASE }}
                       className="overflow-hidden"
                     >
-                      <div className="border-t border-[#E6E8EC] bg-[#FFFFFF]/60 px-4 py-4">
-                        <p className="text-[15px] leading-relaxed text-[#2A2420]">{item.answer}</p>
+                      <div className="border-t border-border bg-background/60 px-4 py-4">
+                        <p className="text-[15px] leading-relaxed text-ink">{item.answer}</p>
                         {item.detail && (
-                          <p className="mt-3 text-sm leading-relaxed text-[#5C5F66]">
+                          <p className="mt-3 text-sm leading-relaxed text-muted">
                             {item.detail}
                           </p>
                         )}

@@ -28,7 +28,7 @@ export function TextMorph({ from, to, phase, className = '' }: TextMorphProps) {
           }
           exit={reduce ? { opacity: 0 } : { opacity: 0, filter: 'blur(4px)', y: -4 }}
           transition={{ duration: phase === 'processing' ? 1.2 : 0.45, ease: [0.22, 1, 0.36, 1] }}
-          className="whitespace-pre-wrap text-[15px] leading-relaxed text-[#f5f5f7]"
+          className="whitespace-pre-wrap text-[15px] leading-relaxed text-background"
         >
           {text}
         </motion.p>
@@ -39,7 +39,7 @@ export function TextMorph({ from, to, phase, className = '' }: TextMorphProps) {
           className="pointer-events-none absolute inset-y-0 w-16 from-transparent to-transparent"
           style={{
             backgroundImage:
-              'linear-gradient(to right, transparent, rgba(155,135,255,0.4), transparent)',
+              'linear-gradient(to right, transparent, color-mix(in srgb, var(--primary) 40%, transparent), transparent)',
           }}
           initial={{ left: '-20%' }}
           animate={{ left: '110%' }}

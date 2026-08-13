@@ -1,4 +1,5 @@
 import { motion, useReducedMotion } from 'motion/react';
+import { theme } from '../../../theme/tokens';
 
 /** Soft organic energy paths weaving between cards — decorative SVG layer. */
 export function FlowConnections({ accent }: { accent: string }) {
@@ -14,9 +15,9 @@ export function FlowConnections({ accent }: { accent: string }) {
     >
       <defs>
         <linearGradient id="heroFlowGrad" x1="0" y1="0" x2="1" y2="0">
-          <stop offset="0%" stopColor="#C4501E" stopOpacity="0.45" />
-          <stop offset="45%" stopColor="#C8CCD4" stopOpacity="0.4" />
-          <stop offset="100%" stopColor="#4A7C6F" stopOpacity="0.4" />
+          <stop offset="0%" stopColor={theme.primary} stopOpacity="0.45" />
+          <stop offset="45%" stopColor={theme.filler} stopOpacity="0.4" />
+          <stop offset="100%" stopColor={theme.accent} stopOpacity="0.4" />
         </linearGradient>
         <filter id="heroFlowBlur" x="-20%" y="-40%" width="140%" height="180%">
           <feGaussianBlur stdDeviation="2" />

@@ -21,7 +21,7 @@ import { HashPageTransition } from './animations/HashPageTransition';
 export function LandingPage() {
   return (
     <SmoothScroll>
-      <div className="min-h-screen bg-[#FFFFFF] text-[#2A2420]">
+      <div className="min-h-screen bg-background text-ink">
         <AmbientBackground />
         <HashPageTransition />
         <Navbar />
