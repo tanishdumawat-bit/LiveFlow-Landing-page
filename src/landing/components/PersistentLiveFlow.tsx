@@ -1,5 +1,6 @@
 import { motion, useReducedMotion, useScroll, useMotionValueEvent } from 'motion/react';
 import { useState } from 'react';
+import { LiveFlowMark } from './brand/LiveFlowLogo';
 
 /**
  * Small persistent Live Flow presence that stays visible while exploring the page.
@@ -27,14 +28,10 @@ export function PersistentLiveFlow() {
       }}
       transition={{ duration: 0.35 }}
     >
-      <div className="flex items-center gap-2 rounded-full border border-border bg-background/90 px-3 py-1.5 shadow-nav backdrop-blur-xl">
-        <motion.span
-          className={`h-2 w-2 rounded-full ${pulse ? 'bg-primary' : 'bg-success'}`}
-          animate={pulse ? { scale: [1, 1.35, 1], opacity: [0.7, 1, 0.7] } : { scale: 1 }}
-          transition={{ duration: 1.4, repeat: Infinity }}
-        />
+      <div className="flex items-center gap-2 rounded-full border border-violet/20 bg-white/90 py-1 pr-3 pl-1 shadow-nav backdrop-blur-xl">
+        <LiveFlowMark className="h-6 w-6" />
         <span className="text-[11px] font-medium text-ink">
-          {pulse ? 'Live Flow · in your workflow' : 'Live Flow'}
+          {pulse ? 'in your workflow' : 'Live Flow'}
         </span>
       </div>
     </motion.div>

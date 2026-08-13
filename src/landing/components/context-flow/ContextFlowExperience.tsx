@@ -12,6 +12,7 @@ import {
 import { AppWindow } from './AppWindow';
 import { FlowProgress } from './FlowProgress';
 import { theme } from '../../../theme/tokens';
+import { AppIconBadge } from '../shared/AppIcon';
 
 const PHASE_ORDER: FlowPhase[] = ['speak', 'understand', 'transform', 'deliver'];
 
@@ -76,11 +77,18 @@ export function ContextFlowExperience() {
       id="context"
       ref={sectionRef}
       aria-labelledby="context-flow-heading"
-      className="bg-background px-4 py-24 sm:px-6 lg:py-28"
+      className="relative overflow-hidden bg-background px-4 py-24 sm:px-6 lg:py-28"
     >
-      <div className="mx-auto max-w-5xl">
+      <div
+        className="pointer-events-none absolute inset-0"
+        style={{
+          background:
+            'radial-gradient(ellipse 50% 45% at 90% 10%, color-mix(in srgb, var(--sky) 16%, transparent), transparent 55%), radial-gradient(ellipse 40% 40% at 0% 90%, color-mix(in srgb, var(--violet) 12%, transparent), transparent 50%)',
+        }}
+      />
+      <div className="relative mx-auto max-w-6xl">
         <div className="mx-auto max-w-2xl text-center">
-          <p className="text-xs font-semibold tracking-[0.18em] text-primary uppercase">
+          <p className="text-xs font-semibold tracking-[0.18em] text-sky uppercase">
             Context
           </p>
           <h2
@@ -89,7 +97,7 @@ export function ContextFlowExperience() {
           >
             One thought.
             <br />
-            <span className="font-serif italic text-primary">The right words.</span>
+            <span className="font-serif italic text-violet">The right words.</span>
           </h2>
           <p className="mt-4 text-base text-muted sm:text-lg">
             Same voice. Different apps. Live Flow shapes the output for where you are.
@@ -195,20 +203,23 @@ export function ContextFlowExperience() {
               {FLOW_DESTINATIONS.map((d) => {
                 const on = d.id === destinationId;
                 return (
-                  <button
+                  <motion.button
                     key={d.id}
                     type="button"
                     onClick={() => selectApp(d.id)}
+                    whileHover={reduce ? undefined : { y: -1, scale: 1.02 }}
+                    whileTap={reduce ? undefined : { scale: 0.97 }}
                     className="inline-flex items-center gap-2 rounded-full border px-3 py-1.5 text-xs font-medium transition"
                     style={{
                       borderColor: on ? `${d.accent}66` : theme.border,
                       background: on ? `${d.accent}12` : theme.surfaceAlt,
                       color: theme.ink,
+                      boxShadow: on ? `0 6px 16px ${d.accent}22` : 'none',
                     }}
                   >
-                    <span className="h-1.5 w-1.5 rounded-full" style={{ background: d.accent }} />
+                    <AppIconBadge name={d.name} accent={d.accent} size="xs" className={on ? '' : 'opacity-75'} />
                     {d.name}
-                  </button>
+                  </motion.button>
                 );
               })}
             </div>

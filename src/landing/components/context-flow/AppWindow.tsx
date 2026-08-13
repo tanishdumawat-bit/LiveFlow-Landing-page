@@ -1,6 +1,7 @@
 import { AnimatePresence, motion } from 'motion/react';
 import type { FlowDestination } from '../../data/contextFlow';
 import { mix, theme } from '../../../theme/tokens';
+import { AppIconBadge } from '../shared/AppIcon';
 
 type Props = {
   destination: FlowDestination;
@@ -31,7 +32,7 @@ export function AppWindow({ destination, phase, reduce }: Props) {
       }}
     >
       <div className="flex items-center gap-2 border-b border-border px-4 py-2.5">
-        <span className="h-2 w-2 rounded-full" style={{ background: destination.accent }} />
+        <AppIconBadge name={destination.name} accent={destination.accent} size="xs" />
         <span className="text-xs font-semibold text-ink">{destination.name}</span>
         <span className="text-[11px] text-muted">· {destination.windowTitle}</span>
         <span className="ml-auto text-[10px] font-medium tracking-wide text-muted">

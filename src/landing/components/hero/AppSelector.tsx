@@ -1,6 +1,7 @@
 import { motion, useReducedMotion } from 'motion/react';
 import { HERO_APPS, type HeroAppId } from '../../data/heroShowcase';
 import { mix, theme } from '../../../theme/tokens';
+import { AppIconBadge } from '../shared/AppIcon';
 
 type Props = {
   activeId: HeroAppId;
@@ -40,12 +41,11 @@ export function AppSelector({ activeId, onSelect }: Props) {
             }}
           >
             <span className="inline-flex items-center gap-2">
-              <span
-                className="h-1.5 w-1.5 rounded-full"
-                style={{
-                  background: app.accent,
-                  opacity: active ? 1 : 0.75,
-                }}
+              <AppIconBadge
+                name={app.name}
+                accent={app.accent}
+                size="xs"
+                className={active ? '' : 'opacity-70'}
               />
               {app.name}
             </span>

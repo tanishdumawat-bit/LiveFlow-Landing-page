@@ -1,25 +1,12 @@
 import { useEffect, useId, useRef, useState } from 'react';
 import { AnimatePresence, motion, useInView, useReducedMotion } from 'motion/react';
 import { FAQ_ITEMS } from '../data/faq';
-import { VoiceFlow } from '../animations/VoiceFlow';
+import { LiveFlowLogo } from './brand/LiveFlowLogo';
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 
-function FaqWave({ pulse }: { pulse: boolean }) {
-  const reduce = useReducedMotion();
-  return (
-    <div className="flex items-center gap-2">
-      <span className="relative flex h-7 w-7 items-center justify-center overflow-hidden rounded-full border border-border bg-background">
-        <VoiceFlow
-          state={pulse && !reduce ? 'listening' : 'idle'}
-          amplitude={pulse ? 0.85 : 0.4}
-          className="h-4 w-5"
-          showParticles={false}
-        />
-      </span>
-      <span className="text-[11px] font-medium tracking-wide text-muted">Live Flow</span>
-    </div>
-  );
+function FaqWave({ pulse: _pulse }: { pulse: boolean }) {
+  return <LiveFlowLogo markClassName="h-7 w-7" />;
 }
 
 export function FaqSection() {
@@ -76,6 +63,13 @@ export function FaqSection() {
       aria-labelledby={`${baseId}-heading`}
       className="relative overflow-hidden bg-background px-4 py-24 sm:px-6 lg:py-32"
     >
+      <div
+        className="pointer-events-none absolute inset-0"
+        style={{
+          background:
+            'radial-gradient(ellipse 50% 40% at 50% 0%, color-mix(in srgb, var(--violet) 12%, transparent), transparent 55%)',
+        }}
+      />
       <div className="relative mx-auto max-w-[1200px]">
         <div className="mb-10 text-center sm:mb-14">
           <motion.p
@@ -83,7 +77,7 @@ export function FaqSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.8 }}
             transition={{ duration: 0.55, ease: EASE }}
-            className="text-xs font-semibold tracking-[0.2em] text-primary uppercase"
+            className="text-xs font-semibold tracking-[0.2em] text-violet uppercase"
           >
             FAQs
           </motion.p>

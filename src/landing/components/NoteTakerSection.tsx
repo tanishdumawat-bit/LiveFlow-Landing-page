@@ -106,10 +106,17 @@ export function NoteTakerSection() {
           : 5;
 
   return (
-    <section id="note-taker" className="bg-surface-alt px-4 py-24 sm:px-6 lg:py-32">
-      <div className="mx-auto max-w-6xl" ref={ref}>
+    <section id="note-taker" className="relative overflow-hidden bg-surface-alt px-4 py-24 sm:px-6 lg:py-32">
+      <div
+        className="pointer-events-none absolute inset-0"
+        style={{
+          background:
+            'radial-gradient(ellipse 50% 40% at 10% 0%, color-mix(in srgb, var(--teal) 16%, transparent), transparent 55%), radial-gradient(ellipse 40% 40% at 100% 100%, color-mix(in srgb, var(--gold) 14%, transparent), transparent 50%)',
+        }}
+      />
+      <div className="relative mx-auto max-w-6xl" ref={ref}>
         <div className="max-w-2xl">
-          <p className="text-xs font-semibold tracking-[0.18em] text-success uppercase">
+          <p className="text-xs font-semibold tracking-[0.18em] text-teal uppercase">
             Note Taker
           </p>
           <RevealHeadline
@@ -229,7 +236,7 @@ export function NoteTakerSection() {
             <h3 className="text-3xl font-semibold tracking-tight text-ink sm:text-4xl">
               Meetings go in.
               <br />
-              <span className="font-serif italic text-success">Momentum comes out.</span>
+              <span className="font-serif italic text-teal">Momentum comes out.</span>
             </h3>
             <p className="mt-3 text-sm text-muted">
               Example meeting view — illustrative numbers, not measured product metrics.

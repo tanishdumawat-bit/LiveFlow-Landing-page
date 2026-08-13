@@ -1,7 +1,9 @@
 import { DOWNLOAD_URL } from '../data/apps';
+import { LiveFlowLogo } from './brand/LiveFlowLogo';
 
 const links = [
-  { href: '#difference', label: 'Product' },
+  { href: '#anywhere', label: 'Anywhere' },
+  { href: '#how', label: 'Product' },
   { href: '#note-taker', label: 'Note Taker' },
   { href: '#faq', label: 'FAQs' },
   { href: '#privacy', label: 'Privacy' },
@@ -11,14 +13,16 @@ const links = [
 
 export function Footer() {
   return (
-    <footer className="border-t border-border bg-surface-alt px-4 py-12 sm:px-6">
+    <footer className="border-t border-white/10 bg-midnight px-4 py-12 sm:px-6">
       <div className="mx-auto flex max-w-6xl flex-col gap-8 sm:flex-row sm:items-end sm:justify-between">
         <div>
-          <p className="text-lg font-semibold text-ink">Live Flow</p>
-          <p className="mt-1 text-sm text-muted">Voice, in flow.</p>
+          <a href="#top" className="group inline-flex" aria-label="Live Flow home">
+            <LiveFlowLogo tone="dark" markClassName="h-9 w-9" />
+          </a>
+          <p className="mt-3 text-sm text-[#9a8b82]">Voice, in flow.</p>
           <a
             href={DOWNLOAD_URL}
-            className="mt-4 inline-block text-sm font-medium text-primary hover:text-primary-dark"
+            className="mt-4 inline-block text-sm font-medium text-primary hover:text-gold"
           >
             Download for Mac
           </a>
@@ -29,14 +33,14 @@ export function Footer() {
               key={link.label}
               href={link.href}
               {...(link.external ? { target: '_blank', rel: 'noreferrer' } : {})}
-              className="text-sm text-muted transition hover:text-ink"
+              className="text-sm text-[#9a8b82] transition hover:text-cream"
             >
               {link.label}
             </a>
           ))}
         </nav>
       </div>
-      <p className="mx-auto mt-10 max-w-6xl text-xs text-muted">Made for macOS</p>
+      <p className="mx-auto mt-10 max-w-6xl text-xs text-[#6f635c]">Made for macOS</p>
     </footer>
   );
 }

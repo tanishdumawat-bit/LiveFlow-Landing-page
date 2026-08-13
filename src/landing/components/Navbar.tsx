@@ -1,13 +1,15 @@
 import { motion } from 'motion/react';
 import { DOWNLOAD_URL } from '../data/apps';
 import { useScrolled } from '../hooks';
-import { VoiceFlow } from '../animations/VoiceFlow';
+import { LiveFlowLogo } from './brand/LiveFlowLogo';
 
 const links = [
-  { href: '#difference', label: 'Product' },
+  { href: '#anywhere', label: 'Anywhere' },
+  { href: '#how', label: 'Product' },
+  { href: '#cleanup', label: 'Cleanup' },
   { href: '#note-taker', label: 'Note Taker' },
-  { href: '#faq', label: 'FAQs' },
   { href: '#privacy', label: 'Privacy' },
+  { href: '#faq', label: 'FAQs' },
 ];
 
 export function Navbar() {
@@ -21,19 +23,13 @@ export function Navbar() {
       className="pointer-events-none fixed inset-x-0 top-0 z-50 flex justify-center px-3 pt-3 sm:px-4 sm:pt-4"
     >
       <nav
-        className={`pointer-events-auto flex w-full max-w-5xl items-center justify-between gap-4 border border-white/70 bg-white/70 shadow-nav backdrop-blur-2xl transition-all duration-300 ${
+        className={`pointer-events-auto flex w-full max-w-6xl items-center justify-between gap-4 border border-white/70 bg-white/75 shadow-nav backdrop-blur-2xl transition-all duration-300 ${
           scrolled ? 'rounded-2xl px-4 py-2.5' : 'rounded-full px-5 py-3'
         }`}
         aria-label="Primary"
       >
-        <a
-          href="#top"
-          className="group flex items-center gap-2.5 text-sm font-semibold tracking-tight text-ink"
-        >
-          <span className="relative flex h-7 w-7 items-center justify-center overflow-hidden rounded-full border border-primary/25 bg-primary/10 transition group-hover:border-primary/45">
-            <VoiceFlow state="idle" className="h-4 w-6" amplitude={0.45} showParticles={false} />
-          </span>
-          Live Flow
+        <a href="#top" className="group" aria-label="Live Flow home">
+          <LiveFlowLogo markClassName="h-8 w-8" />
         </a>
 
         <div className="hidden items-center gap-6 md:flex">
@@ -44,7 +40,7 @@ export function Navbar() {
               className="group relative text-sm text-muted transition-colors hover:text-ink"
             >
               {link.label}
-              <span className="absolute inset-x-0 -bottom-1 h-px origin-left scale-x-0 bg-primary transition-transform duration-300 group-hover:scale-x-100" />
+              <span className="absolute inset-x-0 -bottom-1 h-px origin-left scale-x-0 bg-gradient-to-r from-primary to-violet transition-transform duration-300 group-hover:scale-x-100" />
             </a>
           ))}
         </div>

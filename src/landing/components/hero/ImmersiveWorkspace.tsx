@@ -10,6 +10,7 @@ import {
 } from '../../data/heroShowcase';
 import { FlowPath } from './FlowPath';
 import { mix, theme } from '../../../theme/tokens';
+import { AppIconBadge } from '../shared/AppIcon';
 
 type Props = {
   activeId: HeroAppId;
@@ -166,6 +167,7 @@ function WorkspacePane({
   reveal,
   reduce,
   onSelect,
+  floatSeed,
 }: {
   id: HeroAppId;
   primary: boolean;
@@ -173,6 +175,7 @@ function WorkspacePane({
   reveal: boolean;
   reduce: boolean;
   onSelect: (id: HeroAppId) => void;
+  floatSeed: number;
 }) {
   const app = getApp(id);
   const scale = ecosystem ? 0.72 : primary ? 1.08 : 0.62;
@@ -180,6 +183,7 @@ function WorkspacePane({
   const blur = ecosystem ? 0 : primary ? 0 : 2.5;
   const z = ecosystem ? 2 : primary ? 30 : 5;
   const rot = ecosystem ? 0 : primary ? 0 : id === 'slack' || id === 'chatgpt' ? -2.5 : 2.5;
+  const idle = !primary && !ecosystem;
 
   return (
     <motion.button
@@ -205,30 +209,60 @@ function WorkspacePane({
         ease: CAMERA_EASE,
       }}
     >
-      <div
-        className="relative overflow-hidden rounded-[18px] bg-white/75 backdrop-blur-xl"
-        style={{
-          boxShadow: primary
-            ? `0 20px 50px ${mix(theme.ink, 14)}, 0 0 0 1px ${app.accent}40, 0 0 28px ${app.accent}18`
-            : ecosystem
-              ? `0 10px 28px ${mix(theme.ink, 8)}, 0 0 0 1px ${app.accent}22`
-              : `0 8px 24px ${mix(theme.ink, 6)}`,
-          border: primary ? `1px solid ${app.accent}55` : `1px solid ${mix(theme.border, 70)}`,
-        }}
+      <motion.div
+        animate={
+          reduce || !idle
+            ? { y: 0 }
+            : { y: [0, -5, 0, 4, 0] }
+        }
+        transition={
+          reduce || !idle
+            ? { duration: 0.4 }
+            : {
+                duration: 6 + floatSeed,
+                repeat: Infinity,
+                ease: 'easeInOut',
+                delay: floatSeed * 0.6,
+              }
+        }
       >
-        <div className="flex h-8 items-center gap-2 px-3">
-          <span className="h-1.5 w-1.5 rounded-full" style={{ background: app.accent }} />
-          <span className="text-[10px] font-semibold tracking-wide text-ink">{app.name}</span>
-          {primary && !ecosystem && (
-            <span className="ml-auto text-[9px] font-medium tracking-wide text-muted uppercase">
-              Active
-            </span>
+        <div
+          className="relative overflow-hidden rounded-[18px] bg-white/75 backdrop-blur-xl"
+          style={{
+            boxShadow: primary
+              ? `0 20px 50px ${mix(theme.ink, 14)}, 0 0 0 1px ${app.accent}40, 0 0 28px ${app.accent}18`
+              : ecosystem
+                ? `0 10px 28px ${mix(theme.ink, 8)}, 0 0 0 1px ${app.accent}22`
+                : `0 8px 24px ${mix(theme.ink, 6)}`,
+            border: primary ? `1px solid ${app.accent}55` : `1px solid ${mix(theme.border, 70)}`,
+          }}
+        >
+          {primary && !ecosystem && !reduce && (
+            <motion.span
+              className="pointer-events-none absolute inset-0 rounded-[18px]"
+              style={{ border: `1px solid ${app.accent}` }}
+              animate={{ opacity: [0.5, 0], scale: [1, 1.04] }}
+              transition={{ duration: 1.6, repeat: Infinity, ease: 'easeOut' }}
+            />
           )}
+          <div className="flex h-9 items-center gap-2 px-3">
+            <AppIconBadge name={app.name} accent={app.accent} size="xs" />
+            <span className="text-[10px] font-semibold tracking-wide text-ink">{app.name}</span>
+            {primary && !ecosystem && (
+              <span className="ml-auto flex items-center gap-1 text-[9px] font-medium tracking-wide text-muted uppercase">
+                <span
+                  className="h-1.5 w-1.5 rounded-full"
+                  style={{ background: app.accent, boxShadow: `0 0 6px ${app.accent}` }}
+                />
+                Active
+              </span>
+            )}
+          </div>
+          <div className="overflow-hidden px-3 pb-3 pt-1 sm:min-h-[132px]">
+            <AppBody id={id} reveal={reveal && (primary || ecosystem)} />
+          </div>
         </div>
-        <div className="min-h-[120px] px-3 pb-3 sm:min-h-[140px]">
-          <AppBody id={id} reveal={reveal && (primary || ecosystem)} />
-        </div>
-      </div>
+      </motion.div>
     </motion.button>
   );
 }
@@ -295,7 +329,7 @@ export function ImmersiveWorkspace({
               from={{ x: 50, y: 52 }}
             />
 
-            {HERO_APPS.map((app) => (
+            {HERO_APPS.map((app, i) => (
               <WorkspacePane
                 key={app.id}
                 id={app.id}
@@ -304,6 +338,7 @@ export function ImmersiveWorkspace({
                 reveal={reveal}
                 reduce={reduce}
                 onSelect={onSelect}
+                floatSeed={i}
               />
             ))}
 
@@ -375,7 +410,7 @@ export function ImmersiveWorkspace({
       <div className="mx-auto w-full max-w-sm md:hidden">
         <div className="relative overflow-hidden rounded-[24px] bg-white/70 p-4 shadow-card-md backdrop-blur-xl">
           <div className="mb-3 flex items-center gap-2">
-            <span className="h-2 w-2 rounded-full" style={{ background: active.accent }} />
+            <AppIconBadge name={active.name} accent={active.accent} size="sm" />
             <span className="text-sm font-semibold text-ink">{active.name}</span>
             {contextFlash && (
               <span className="ml-auto text-[10px] font-medium tracking-wide text-muted uppercase">

@@ -3,6 +3,35 @@ import { motion, useReducedMotion } from 'motion/react';
 import { getApp, type FlowStage, type HeroAppId, type WorkspaceMode } from '../../data/heroShowcase';
 import { theme } from '../../../theme/tokens';
 
+function cardEdge(
+  from: { x: number; y: number },
+  to: { x: number; y: number },
+  halfW = 11.5,
+  halfH = 13.5,
+) {
+  const dx = to.x - from.x;
+  const dy = to.y - from.y;
+  let best = 1;
+  const consider = (t: number, axis: 'x' | 'y', x: number, y: number) => {
+    if (t <= 0.04 || t >= 1) return;
+    if (axis === 'x' && y >= to.y - halfH && y <= to.y + halfH) best = Math.min(best, t);
+    if (axis === 'y' && x >= to.x - halfW && x <= to.x + halfW) best = Math.min(best, t);
+  };
+  if (dx !== 0) {
+    const tl = (to.x - halfW - from.x) / dx;
+    consider(tl, 'x', to.x - halfW, from.y + dy * tl);
+    const tr = (to.x + halfW - from.x) / dx;
+    consider(tr, 'x', to.x + halfW, from.y + dy * tr);
+  }
+  if (dy !== 0) {
+    const tt = (to.y - halfH - from.y) / dy;
+    consider(tt, 'y', from.x + dx * tt, to.y - halfH);
+    const tb = (to.y + halfH - from.y) / dy;
+    consider(tb, 'y', from.x + dx * tb, to.y + halfH);
+  }
+  return { x: from.x + dx * best, y: from.y + dy * best };
+}
+
 type Props = {
   activeId: HeroAppId;
   stage: FlowStage | 'idle';
@@ -32,18 +61,19 @@ export function FlowPath({
     stage === 'delivering' || stage === 'complete' || stage === 'transforming';
   const active = stage !== 'idle' && mode === 'focus';
 
+  const end = useMemo(() => cardEdge(from, to), [from, to]);
+
   const d = useMemo(() => {
     const x1 = from.x;
     const y1 = from.y;
-    const x2 = to.x;
-    const y2 = to.y;
+    const x2 = end.x;
+    const y2 = end.y;
     const mx = (x1 + x2) / 2;
     const my = (y1 + y2) / 2;
-    // Soft curve — pulled magnetically toward destination
     const cx = mx + (x2 - x1) * 0.08;
     const cy = my - 8;
     return `M ${x1} ${y1} Q ${cx} ${cy} ${x2} ${y2}`;
-  }, [from.x, from.y, to.x, to.y]);
+  }, [from.x, from.y, end.x, end.y]);
 
   const particleCount =
     stage === 'transcribing' || stage === 'understanding'
@@ -64,7 +94,8 @@ export function FlowPath({
       >
         {['gmail', 'slack', 'notion', 'chatgpt', 'cursor', 'browser'].map((aid, i) => {
           const app = getApp(aid as HeroAppId);
-          const path = `M ${from.x} ${from.y} Q ${(from.x + app.x) / 2} ${(from.y + app.y) / 2 - 4} ${app.x} ${app.y}`;
+          const edge = cardEdge(from, { x: app.x, y: app.y });
+          const path = `M ${from.x} ${from.y} Q ${(from.x + edge.x) / 2} ${(from.y + edge.y) / 2 - 4} ${edge.x} ${edge.y}`;
           return (
             <motion.path
               key={aid}
@@ -73,9 +104,23 @@ export function FlowPath({
               stroke={app.accent}
               strokeWidth="0.15"
               strokeLinecap="round"
-              initial={{ pathLength: 0, opacity: 0 }}
-              animate={{ pathLength: 1, opacity: 0.35 }}
-              transition={{ duration: reduce ? 0 : 0.9, delay: reduce ? 0 : i * 0.08 }}
+              strokeDasharray="1.6 1.1"
+              initial={{ pathLength: 0, opacity: 0, strokeDashoffset: 0 }}
+              animate={{
+                pathLength: 1,
+                opacity: 0.4,
+                strokeDashoffset: reduce ? 0 : [0, -8],
+              }}
+              transition={{
+                pathLength: { duration: reduce ? 0 : 0.9, delay: reduce ? 0 : i * 0.08 },
+                opacity: { duration: reduce ? 0 : 0.9, delay: reduce ? 0 : i * 0.08 },
+                strokeDashoffset: {
+                  duration: 3.2,
+                  repeat: Infinity,
+                  ease: 'linear',
+                  delay: i * 0.12,
+                },
+              }}
             />
           );
         })}
@@ -155,7 +200,7 @@ export function FlowPath({
       {stage === 'transforming' && !reduce && (
         <>
           <motion.path
-            d={`M ${from.x} ${from.y} Q ${from.x - 6} ${(from.y + to.y) / 2} ${to.x - 4} ${to.y}`}
+            d={`M ${from.x} ${from.y} Q ${from.x - 6} ${(from.y + end.y) / 2} ${end.x - 2} ${end.y}`}
             fill="none"
             stroke={accent}
             strokeWidth="0.18"
@@ -165,7 +210,7 @@ export function FlowPath({
             transition={{ duration: 0.9 }}
           />
           <motion.path
-            d={`M ${from.x} ${from.y} Q ${from.x + 6} ${(from.y + to.y) / 2} ${to.x + 4} ${to.y}`}
+            d={`M ${from.x} ${from.y} Q ${from.x + 6} ${(from.y + end.y) / 2} ${end.x + 2} ${end.y}`}
             fill="none"
             stroke={accent}
             strokeWidth="0.18"
@@ -180,26 +225,39 @@ export function FlowPath({
       {!reduce &&
         Array.from({ length: particleCount }).map((_, i) => {
           const t0 = i / Math.max(particleCount, 1);
-          const mx = (from.x + to.x) / 2;
-          const my = (from.y + to.y) / 2 - 8;
+          const mx = (from.x + end.x) / 2;
+          const my = (from.y + end.y) / 2 - 8;
+          const color = i % 2 === 0 ? theme.primary : accent;
+          const animateProps = {
+            opacity: stage === 'complete' ? [0.9, 0] : [0, 0.95, 0],
+            cx: [from.x, mx, end.x],
+            cy: [from.y, my, end.y],
+          };
+          const transitionProps = {
+            duration: stage === 'delivering' ? 0.9 : 1.35,
+            delay: t0 * 0.35,
+            repeat: stage === 'complete' ? 0 : Infinity,
+            ease: 'easeInOut' as const,
+          };
           return (
-            <motion.circle
-              key={`${activeId}-${stage}-${i}`}
-              r="0.32"
-              fill={i % 2 === 0 ? theme.primary : accent}
-              initial={{ opacity: 0, cx: from.x, cy: from.y }}
-              animate={{
-                opacity: stage === 'complete' ? [0.9, 0] : [0, 0.95, 0],
-                cx: [from.x, mx, to.x],
-                cy: [from.y, my, to.y],
-              }}
-              transition={{
-                duration: stage === 'delivering' ? 0.9 : 1.35,
-                delay: t0 * 0.35,
-                repeat: stage === 'complete' ? 0 : Infinity,
-                ease: 'easeInOut',
-              }}
-            />
+            <g key={`${activeId}-${stage}-${i}`}>
+              {/* Glow trail */}
+              <motion.circle
+                r="0.85"
+                fill={color}
+                filter={`url(#fpb-${id})`}
+                initial={{ opacity: 0, cx: from.x, cy: from.y }}
+                animate={{ ...animateProps, opacity: (animateProps.opacity as number[]).map((o) => o * 0.5) }}
+                transition={transitionProps}
+              />
+              <motion.circle
+                r="0.32"
+                fill={color}
+                initial={{ opacity: 0, cx: from.x, cy: from.y }}
+                animate={animateProps}
+                transition={transitionProps}
+              />
+            </g>
           );
         })}
     </svg>

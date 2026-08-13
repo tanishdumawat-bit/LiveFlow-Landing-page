@@ -43,7 +43,7 @@ export const HERO_APPS: HeroApp[] = [
     accent: '#ff4b4b',
     accentSoft: 'rgba(255,75,75,0.35)',
     x: 50,
-    y: 10,
+    y: 22,
     depth: 0.2,
   },
   {
@@ -88,7 +88,7 @@ export const HERO_APPS: HeroApp[] = [
     accent: '#22d3ee',
     accentSoft: 'rgba(34,211,238,0.35)',
     x: 50,
-    y: 90,
+    y: 84,
     depth: 0.25,
   },
 ];

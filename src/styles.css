@@ -2,43 +2,60 @@
 @import 'lenis/dist/lenis.css';
 
 /*
- * Warm Coral theme — single source of truth.
- * Change hex values here only. Components use Tailwind utilities
- * (bg-primary, text-ink, border-border) or `theme` from src/theme/tokens.ts.
+ * Live Flow — warm editorial system.
+ * Coral stays the pulse. Violet, teal, gold, and midnight carry the rest.
  */
 :root {
-  --background: #fffdfb;
-  --foreground: #2b211d;
-  --muted: #8a7b75;
-  --surface: #fff1ec;
-  --surface-alt: #fff8f5;
-  --border: #ffe1d4;
-  --primary: #ff6b4a;
-  --primary-dark: #e8532f;
-  --primary-soft: #ffe4da;
-  --accent: #ffd166;
-  --accent-soft: #fff3d6;
-  --ink: #241b18;
+  --background: #fff7f1;
+  --foreground: #1c1410;
+  --muted: #7a6a62;
+  --surface: #ffeadd;
+  --surface-alt: #fff1e8;
+  --border: #f3d2c2;
+  --primary: #ff5a32;
+  --primary-dark: #e8431f;
+  --primary-soft: #ffd4c6;
+  --accent: #f4b942;
+  --accent-soft: #fff0c4;
+  --ink: #16110e;
   --card: #ffffff;
-  --filler: #e8d4c8;
-  --success: #5c8a62;
+  --filler: #e8cbb8;
+  --success: #0f9d8e;
   --on-primary: #ffffff;
   --traffic-red: #ff5f57;
   --traffic-yellow: #febc2e;
   --traffic-green: #28c840;
 
+  --violet: #7c5cff;
+  --violet-soft: #ece6ff;
+  --teal: #14b8a6;
+  --teal-soft: #d4f5f0;
+  --sky: #0ea5e9;
+  --sky-soft: #ddf3ff;
+  --blush: #ff7aa2;
+  --gold: #f4b942;
+  --midnight: #14110f;
+  --midnight-card: #1f1a17;
+  --cream: #fff7f1;
+
   --gradient-mic-orb: radial-gradient(
     circle at 40% 35%,
     #ff8a6a 0%,
-    var(--primary) 55%,
-    var(--primary-dark) 100%
+    var(--primary) 48%,
+    var(--violet) 100%
   );
-  --gradient-headline: linear-gradient(to right, var(--primary), var(--accent));
+  --gradient-headline: linear-gradient(105deg, var(--primary) 0%, var(--violet) 52%, var(--gold) 100%);
+  --gradient-aurora: radial-gradient(
+    120% 80% at 12% 8%,
+    color-mix(in srgb, var(--primary) 22%, transparent),
+    transparent 42%
+  );
   --glow-hero: radial-gradient(
     ellipse at center,
     var(--primary-soft) 0%,
-    var(--accent-soft) 40%,
-    transparent 70%
+    var(--violet-soft) 38%,
+    var(--accent-soft) 62%,
+    transparent 78%
   );
 }
 
@@ -62,6 +79,17 @@
   --color-traffic-red: var(--traffic-red);
   --color-traffic-yellow: var(--traffic-yellow);
   --color-traffic-green: var(--traffic-green);
+  --color-violet: var(--violet);
+  --color-violet-soft: var(--violet-soft);
+  --color-teal: var(--teal);
+  --color-teal-soft: var(--teal-soft);
+  --color-sky: var(--sky);
+  --color-sky-soft: var(--sky-soft);
+  --color-blush: var(--blush);
+  --color-gold: var(--gold);
+  --color-midnight: var(--midnight);
+  --color-midnight-card: var(--midnight-card);
+  --color-cream: var(--cream);
 
   --font-sans: 'Plus Jakarta Sans', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
     'Segoe UI', sans-serif;
@@ -76,6 +104,8 @@
   --shadow-card-lg: 0 24px 60px color-mix(in srgb, var(--ink) 8%, transparent);
   --shadow-stage: 0 30px 90px color-mix(in srgb, var(--ink) 12%, transparent);
   --shadow-ink: 0 12px 40px color-mix(in srgb, var(--ink) 25%, transparent);
+  --shadow-violet: 0 16px 40px color-mix(in srgb, var(--violet) 22%, transparent);
+  --shadow-teal: 0 16px 40px color-mix(in srgb, var(--teal) 20%, transparent);
 }
 
 @layer base {
@@ -100,12 +130,12 @@
   }
 
   ::selection {
-    background: var(--primary-soft);
-    color: var(--primary-dark);
+    background: color-mix(in srgb, var(--violet) 28%, var(--primary-soft));
+    color: var(--ink);
   }
 
   :focus-visible {
-    outline: 2px solid var(--primary);
+    outline: 2px solid var(--violet);
     outline-offset: 3px;
   }
 }
@@ -136,8 +166,8 @@
   }
 
   .btn-secondary:hover {
-    border-color: color-mix(in srgb, var(--primary) 40%, transparent);
-    color: var(--primary-dark);
+    border-color: color-mix(in srgb, var(--violet) 40%, transparent);
+    color: var(--ink);
     background: var(--card);
   }
 
@@ -151,6 +181,7 @@
 
   .text-headline-gradient {
     background-image: var(--gradient-headline);
+    -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
   }
@@ -166,7 +197,7 @@
   .orb-primary {
     background: radial-gradient(
       circle,
-      color-mix(in srgb, var(--primary) 12%, transparent),
+      color-mix(in srgb, var(--primary) 18%, transparent),
       transparent 65%
     );
   }
@@ -174,7 +205,7 @@
   .orb-accent {
     background: radial-gradient(
       circle,
-      color-mix(in srgb, var(--accent) 40%, transparent),
+      color-mix(in srgb, var(--accent) 42%, transparent),
       transparent 70%
     );
   }
@@ -182,8 +213,24 @@
   .orb-success {
     background: radial-gradient(
       circle,
-      color-mix(in srgb, var(--success) 10%, transparent),
+      color-mix(in srgb, var(--teal) 16%, transparent),
       transparent 65%
+    );
+  }
+
+  .orb-violet {
+    background: radial-gradient(
+      circle,
+      color-mix(in srgb, var(--violet) 20%, transparent),
+      transparent 68%
+    );
+  }
+
+  .orb-sky {
+    background: radial-gradient(
+      circle,
+      color-mix(in srgb, var(--sky) 16%, transparent),
+      transparent 68%
     );
   }
 
@@ -191,15 +238,15 @@
     background:
       linear-gradient(
         180deg,
-        color-mix(in srgb, var(--background) 55%, transparent) 0%,
-        color-mix(in srgb, var(--background) 28%, transparent) 18%,
-        color-mix(in srgb, var(--background) 18%, transparent) 40%,
-        color-mix(in srgb, var(--background) 35%, transparent) 62%,
-        color-mix(in srgb, var(--background) 82%, transparent) 100%
+        color-mix(in srgb, var(--background) 42%, transparent) 0%,
+        color-mix(in srgb, var(--background) 12%, transparent) 28%,
+        color-mix(in srgb, var(--background) 8%, transparent) 52%,
+        color-mix(in srgb, var(--background) 55%, transparent) 78%,
+        var(--background) 100%
       ),
       radial-gradient(
-        ellipse 70% 45% at 50% 22%,
-        color-mix(in srgb, var(--background) 55%, transparent),
+        ellipse 70% 45% at 50% 18%,
+        color-mix(in srgb, var(--background) 40%, transparent),
         transparent 68%
       );
   }
@@ -207,10 +254,14 @@
   .overlay-metrics {
     background: linear-gradient(
       180deg,
-      color-mix(in srgb, var(--background) 94%, transparent) 0%,
-      color-mix(in srgb, var(--background) 78%, transparent) 42%,
+      color-mix(in srgb, var(--background) 88%, transparent) 0%,
+      color-mix(in srgb, var(--violet-soft) 55%, transparent) 42%,
       color-mix(in srgb, var(--surface-alt) 96%, transparent) 100%
     );
+  }
+
+  .noise-overlay {
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   }
 }
 
@@ -227,8 +278,8 @@
 
   .glow-sage {
     box-shadow:
-      0 0 0 1px color-mix(in srgb, var(--success) 30%, transparent),
-      0 12px 36px color-mix(in srgb, var(--success) 14%, transparent);
+      0 0 0 1px color-mix(in srgb, var(--teal) 30%, transparent),
+      0 12px 36px color-mix(in srgb, var(--teal) 14%, transparent);
   }
 
   .glow-record {
@@ -239,19 +290,25 @@
 
   .glow-violet {
     box-shadow:
-      0 0 0 1px color-mix(in srgb, var(--primary) 35%, transparent),
-      0 12px 40px color-mix(in srgb, var(--primary) 16%, transparent);
+      0 0 0 1px color-mix(in srgb, var(--violet) 40%, transparent),
+      0 12px 40px color-mix(in srgb, var(--violet) 18%, transparent);
   }
 
   .glow-cyan {
     box-shadow:
-      0 0 0 1px color-mix(in srgb, var(--success) 30%, transparent),
-      0 10px 28px color-mix(in srgb, var(--success) 12%, transparent);
+      0 0 0 1px color-mix(in srgb, var(--sky) 30%, transparent),
+      0 10px 28px color-mix(in srgb, var(--sky) 12%, transparent);
+  }
+
+  .glow-gold {
+    box-shadow:
+      0 0 0 1px color-mix(in srgb, var(--gold) 40%, transparent),
+      0 12px 36px color-mix(in srgb, var(--gold) 16%, transparent);
   }
 
   .faq-scroll {
     scrollbar-width: thin;
-    scrollbar-color: color-mix(in srgb, var(--primary) 35%, transparent) transparent;
+    scrollbar-color: color-mix(in srgb, var(--violet) 35%, transparent) transparent;
   }
 
   .faq-scroll::-webkit-scrollbar {
@@ -264,10 +321,25 @@
 
   .faq-scroll::-webkit-scrollbar-thumb {
     border-radius: 999px;
-    background: color-mix(in srgb, var(--primary) 28%, transparent);
+    background: color-mix(in srgb, var(--violet) 28%, transparent);
   }
 
   .faq-scroll::-webkit-scrollbar-thumb:hover {
     background: color-mix(in srgb, var(--primary) 45%, transparent);
+  }
+
+  .mask-x-fade {
+    mask-image: linear-gradient(90deg, transparent, black 8%, black 92%, transparent);
+  }
+
+  .lf-mark {
+    filter: drop-shadow(0 6px 12px color-mix(in srgb, var(--primary) 34%, transparent));
+    transition: filter 280ms ease, transform 280ms ease;
+  }
+
+  a:hover .lf-mark,
+  .group:hover .lf-mark {
+    transform: rotate(-6deg) scale(1.06);
+    filter: drop-shadow(0 8px 16px color-mix(in srgb, var(--violet) 38%, transparent));
   }
 }

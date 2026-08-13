@@ -162,6 +162,13 @@ export function MetricsSpeed() {
       aria-label="Speed comparison"
       className="relative overflow-hidden bg-surface-alt px-4 py-24 sm:px-6 lg:py-32"
     >
+      <div
+        className="pointer-events-none absolute inset-0"
+        style={{
+          background:
+            'radial-gradient(ellipse 50% 40% at 80% 0%, color-mix(in srgb, var(--gold) 20%, transparent), transparent 55%), radial-gradient(ellipse 40% 50% at 0% 80%, color-mix(in srgb, var(--violet) 12%, transparent), transparent 50%)',
+        }}
+      />
       <div className="relative mx-auto max-w-5xl text-center">
         <motion.h2
           initial={{ opacity: 0, y: 18 }}
@@ -170,7 +177,7 @@ export function MetricsSpeed() {
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           className="font-serif text-4xl leading-[1.15] tracking-tight text-ink sm:text-5xl lg:text-6xl"
         >
-          Your keyboard has a <em className="italic">speed limit.</em>
+          Your keyboard has a <em className="text-primary italic">speed limit.</em>
         </motion.h2>
 
         <motion.p

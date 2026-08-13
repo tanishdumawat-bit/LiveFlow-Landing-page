@@ -1,89 +1,40 @@
 import { useEffect, useRef, type ReactNode } from 'react';
-import { useReducedMotion } from 'motion/react';
-import './codrops-animations.css';
-
-/**
- * Codrops enter animations for scroll sections.
- * @see https://tympanus.net/Development/PageTransitions/
- */
-export type CodropsEnter =
-  | 'moveFromBottom'
-  | 'moveFromRight'
-  | 'moveFromLeft'
-  | 'moveFromTop'
-  | 'moveFromBottomFade'
-  | 'moveFromRightFade'
-  | 'scaleUp'
-  | 'scaleUpDown'
-  | 'scaleUpCenter'
-  | 'rotateRoomBottomIn'
-  | 'rotateCubeBottomIn';
-
-const ENTER_CLASS: Record<CodropsEnter, string> = {
-  moveFromBottom: 'pt-page-moveFromBottom',
-  moveFromRight: 'pt-page-moveFromRight',
-  moveFromLeft: 'pt-page-moveFromLeft',
-  moveFromTop: 'pt-page-moveFromTop',
-  moveFromBottomFade: 'pt-page-moveFromBottomFade',
-  moveFromRightFade: 'pt-page-moveFromRightFade',
-  scaleUp: 'pt-page-scaleUp',
-  scaleUpDown: 'pt-page-scaleUpDown',
-  scaleUpCenter: 'pt-page-scaleUpCenter',
-  rotateRoomBottomIn: 'pt-page-rotateRoomBottomIn',
-  rotateCubeBottomIn: 'pt-page-rotateCubeBottomIn',
-};
+import { motion, useReducedMotion } from 'motion/react';
 
 type SectionRevealProps = {
   children: ReactNode;
   className?: string;
-  variant?: CodropsEnter;
+  variant?: string;
 };
 
-export function SectionReveal({
-  children,
-  className = '',
-  variant = 'moveFromBottom',
-}: SectionRevealProps) {
+/**
+ * Scroll entrance — fade/rise only.
+ * Codrops 3D page classes were leaving tall sections at opacity 0
+ * (blank holes between marquees) when IntersectionObserver missed.
+ */
+export function SectionReveal({ children, className = '' }: SectionRevealProps) {
   const reduce = useReducedMotion();
   const ref = useRef<HTMLDivElement>(null);
-  const played = useRef(false);
 
   useEffect(() => {
     const node = ref.current;
     if (!node || reduce) return;
-
-    const animClass = ENTER_CLASS[variant];
-
-    // Start hidden until first play (mirrors Codrops page visibility)
-    node.style.opacity = '0';
-
-    const io = new IntersectionObserver(
-      ([entry]) => {
-        if (!entry?.isIntersecting || played.current) return;
-        played.current = true;
-        node.style.opacity = '1';
-        node.classList.add(animClass);
-        const onEnd = () => {
-          node.classList.remove(animClass);
-          node.removeEventListener('animationend', onEnd);
-        };
-        node.addEventListener('animationend', onEnd);
-        io.disconnect();
-      },
-      { threshold: 0.12, rootMargin: '0px 0px -8% 0px' },
-    );
-
-    io.observe(node);
-    return () => io.disconnect();
-  }, [variant, reduce]);
+    const fallback = window.setTimeout(() => {
+      node.style.opacity = '1';
+    }, 1200);
+    return () => window.clearTimeout(fallback);
+  }, [reduce]);
 
   return (
-    <div
+    <motion.div
       ref={ref}
       className={className}
-      style={reduce ? undefined : { willChange: 'transform, opacity' }}
+      initial={reduce ? false : { opacity: 0, y: 24 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.06, margin: '0px 0px -4% 0px' }}
+      transition={{ duration: 0.65, ease: [0.16, 1, 0.3, 1] }}
     >
       {children}
-    </div>
+    </motion.div>
   );
 }

@@ -1,5 +1,5 @@
 /**
- * JS/inline-style access to the Warm Coral theme.
+ * JS/inline-style access to the Live Flow theme.
  * Hex values live only in `src/styles.css` `:root`. Change them there.
  */
 export const theme = {
@@ -19,6 +19,17 @@ export const theme = {
   filler: 'var(--filler)',
   success: 'var(--success)',
   onPrimary: 'var(--on-primary)',
+  violet: 'var(--violet)',
+  violetSoft: 'var(--violet-soft)',
+  teal: 'var(--teal)',
+  tealSoft: 'var(--teal-soft)',
+  sky: 'var(--sky)',
+  skySoft: 'var(--sky-soft)',
+  blush: 'var(--blush)',
+  gold: 'var(--gold)',
+  midnight: 'var(--midnight)',
+  midnightCard: 'var(--midnight-card)',
+  cream: 'var(--cream)',
   micOrb: 'var(--gradient-mic-orb)',
 } as const;
 
