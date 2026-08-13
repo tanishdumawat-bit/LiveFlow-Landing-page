@@ -160,7 +160,7 @@ export function MetricsSpeed() {
       ref={sectionRef}
       id="speed"
       aria-label="Speed comparison"
-      className="relative overflow-hidden bg-[#F2E6D3] px-4 py-24 sm:px-6 lg:py-32"
+      className="relative overflow-hidden bg-[#F5F6F8] px-4 py-24 sm:px-6 lg:py-32"
     >
       <div className="relative mx-auto max-w-5xl text-center">
         <motion.h2
@@ -178,7 +178,7 @@ export function MetricsSpeed() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.6 }}
           transition={{ delay: 0.12, duration: 0.7 }}
-          className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-[#5C534C] sm:text-lg"
+          className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-[#5C5F66] sm:text-lg"
         >
           Typing tops out around 35 WPM. Speaking lands closer to 180–200+. Live Flow is built so
           your words keep up — up to about 5× faster than a keyboard.
@@ -190,9 +190,9 @@ export function MetricsSpeed() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.4 }}
             transition={{ delay: 0.15, duration: 0.75, ease: [0.16, 1, 0.3, 1] }}
-            className="relative flex min-h-[280px] flex-col overflow-hidden rounded-[28px] border border-[#E9DECB] bg-[#FFFFFF] p-7 text-left sm:min-h-[320px] sm:p-8"
+            className="relative flex min-h-[280px] flex-col overflow-hidden rounded-[28px] border border-[#E6E8EC] bg-[#FFFFFF] p-7 text-left sm:min-h-[320px] sm:p-8"
           >
-            <p className="text-sm font-medium text-[#5C534C]">Keyboard</p>
+            <p className="text-sm font-medium text-[#5C5F66]">Keyboard</p>
             <AnimatedWpm
               value={KEYBOARD_WPM}
               inView={inView}
@@ -201,7 +201,7 @@ export function MetricsSpeed() {
 
             <div className="relative mt-8 h-16 overflow-hidden">
               <motion.p
-                className="absolute whitespace-nowrap text-sm leading-relaxed text-[#5C534C]/70"
+                className="absolute whitespace-nowrap text-sm leading-relaxed text-[#5C5F66]/70"
                 animate={reduce || !live ? { x: 0 } : { x: ['0%', '-45%'] }}
                 transition={{ duration: 18, repeat: Infinity, ease: 'linear' }}
               >
@@ -212,7 +212,7 @@ export function MetricsSpeed() {
             </div>
 
             <div className="mt-auto pt-10">
-              <span className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-[#E9DECB] bg-[#FAF3E9] text-[#5C534C]">
+              <span className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-[#E6E8EC] bg-[#FFFFFF] text-[#5C5F66]">
                 <MicIcon />
               </span>
             </div>
@@ -223,7 +223,7 @@ export function MetricsSpeed() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.4 }}
             transition={{ delay: 0.28, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            className="relative flex min-h-[320px] flex-col overflow-hidden rounded-[28px] border border-[#E9DECB] text-left shadow-[0_24px_60px_rgba(42,36,32,0.10)] sm:min-h-[360px]"
+            className="relative flex min-h-[320px] flex-col overflow-hidden rounded-[28px] border border-[#E6E8EC] text-left shadow-[0_24px_60px_rgba(42,36,32,0.10)] sm:min-h-[360px]"
           >
             <motion.div
               className="absolute inset-0 scale-110 bg-cover bg-center"
@@ -236,7 +236,7 @@ export function MetricsSpeed() {
               className="absolute inset-0"
               style={{
                 background:
-                  'linear-gradient(180deg, rgba(250,243,233,0.92) 0%, rgba(250,243,233,0.72) 42%, rgba(242,230,211,0.94) 100%)',
+                  'linear-gradient(180deg, rgba(255,255,255,0.94) 0%, rgba(255,255,255,0.78) 42%, rgba(245,246,248,0.96) 100%)',
               }}
             />
 
@@ -251,7 +251,7 @@ export function MetricsSpeed() {
               </div>
               <p className="mt-1 text-xs text-[#8A4A24]/80">Illustrative · ~180–200+ speaking pace</p>
 
-              <div className="pointer-events-none relative mt-6 flex-1 drop-shadow-[0_1px_0_rgba(250,243,233,0.9)]">
+              <div className="pointer-events-none relative mt-6 flex-1 drop-shadow-[0_1px_0_rgba(255,255,255,0.9)]">
                 <MovingCurveText active={live} />
               </div>
 

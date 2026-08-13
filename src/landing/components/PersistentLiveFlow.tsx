@@ -27,7 +27,7 @@ export function PersistentLiveFlow() {
       }}
       transition={{ duration: 0.35 }}
     >
-      <div className="flex items-center gap-2 rounded-full border border-[#E9DECB] bg-[#FFFFFF]/90 px-3 py-1.5 shadow-[0_12px_40px_rgba(42,36,32,0.12)] backdrop-blur-xl">
+      <div className="flex items-center gap-2 rounded-full border border-[#E6E8EC] bg-[#FFFFFF]/90 px-3 py-1.5 shadow-[0_12px_40px_rgba(42,36,32,0.12)] backdrop-blur-xl">
         <motion.span
           className={`h-2 w-2 rounded-full ${pulse ? 'bg-[#C4501E]' : 'bg-[#4A7C6F]'}`}
           animate={pulse ? { scale: [1, 1.35, 1], opacity: [0.7, 1, 0.7] } : { scale: 1 }}

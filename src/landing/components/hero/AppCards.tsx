@@ -50,32 +50,28 @@ function CardChrome({
     <motion.div
       id={`hero-card-${id}`}
       role="tabpanel"
-      layout
-      className="relative flex h-full flex-col overflow-hidden rounded-2xl border"
+      className="relative flex h-full flex-col overflow-hidden rounded-2xl border bg-white"
       style={{
-        background: primary ? '#FFFFFF' : '#FAF3E9',
-        borderColor: primary ? accent : '#E9DECB',
+        borderColor: primary ? accent : '#E6E8EC',
         boxShadow: primary
-          ? `0 0 0 1px ${accent}33, 0 18px 40px rgba(42,36,32,0.10)`
-          : '0 10px 28px rgba(42,36,32,0.06)',
+          ? `0 0 0 1px ${accent}35, 0 16px 40px rgba(42,36,32,0.10)`
+          : '0 4px 16px rgba(42,36,32,0.04)',
       }}
       animate={{
-        scale: primary ? 1 : 0.96,
-        opacity: primary ? 1 : 0.9,
-        y: primary ? 0 : 6,
-        filter: 'blur(0px)',
+        opacity: primary ? 1 : 0.55,
+        scale: primary ? 1 : 0.98,
       }}
-      transition={{ type: 'spring', stiffness: 260, damping: 28 }}
+      transition={{ type: 'spring', stiffness: 280, damping: 28 }}
     >
-      <div className="flex items-center gap-2 border-b border-[#E9DECB] px-3 py-2.5">
+      <div className="flex h-10 shrink-0 items-center gap-2 border-b border-[#E6E8EC] px-3">
         <span className="h-2 w-2 rounded-full" style={{ background: accent }} />
         <span className="text-[11px] font-semibold tracking-wide text-[#2A2420]">{title}</span>
       </div>
-      <div className="min-h-0 flex-1 px-3 py-2.5 text-[11px] leading-relaxed text-[#2A2420]">
+      <div className="min-h-0 flex-1 overflow-hidden px-3 py-2.5 text-[11px] leading-relaxed text-[#2A2420]">
         {children}
       </div>
-      <div className="mt-auto flex items-center justify-between border-t border-[#E9DECB] px-3 py-2">
-        <span className="text-[10px] font-medium tracking-wide text-[#5C534C]">Live Flow</span>
+      <div className="flex h-9 shrink-0 items-center justify-between border-t border-[#E6E8EC] px-3">
+        <span className="text-[10px] font-medium tracking-wide text-[#5C5F66]">Live Flow</span>
         <MiniWave color={accent} active={primary} />
       </div>
     </motion.div>
@@ -86,10 +82,10 @@ function GmailBody({ reveal }: { reveal: boolean }) {
   return (
     <div className="space-y-2">
       <p>
-        <span className="text-[#5C534C]">To:</span> sarah@company.com
+        <span className="text-[#5C5F66]">To:</span> sarah@company.com
       </p>
       <p>
-        <span className="text-[#5C534C]">Subject:</span> Project update
+        <span className="text-[#5C5F66]">Subject:</span> Project update
       </p>
       <AnimatePresence mode="wait">
         {reveal ? (
@@ -105,13 +101,13 @@ function GmailBody({ reveal }: { reveal: boolean }) {
               morning.
             </p>
             <p>Talk soon!</p>
-            <p className="text-[#5C534C]">— Chinmay</p>
+            <p className="text-[#5C5F66]">— Chinmay</p>
           </motion.div>
         ) : (
           <motion.div key="empty" className="space-y-1.5 pt-2">
-            <div className="h-2 w-[80%] rounded bg-[#F2E6D3]" />
-            <div className="h-2 w-full rounded bg-[#F2E6D3]" />
-            <div className="h-2 w-[60%] rounded bg-[#F2E6D3]" />
+            <div className="h-2 w-[80%] rounded bg-[#F5F6F8]" />
+            <div className="h-2 w-full rounded bg-[#F5F6F8]" />
+            <div className="h-2 w-[60%] rounded bg-[#F5F6F8]" />
           </motion.div>
         )}
       </AnimatePresence>
@@ -129,7 +125,7 @@ function SlackBody({ reveal }: { reveal: boolean }) {
             key="msg"
             initial={{ opacity: 0, y: 8, filter: 'blur(6px)' }}
             animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
-            className="rounded-lg bg-[#F2E6D3] p-2"
+            className="rounded-lg bg-[#F5F6F8] p-2"
           >
             <p className="mb-1 text-[10px] font-semibold text-[#8A4A24]">Chinmay</p>
             <p>
@@ -140,7 +136,7 @@ function SlackBody({ reveal }: { reveal: boolean }) {
             </p>
           </motion.div>
         ) : (
-          <motion.div key="empty" className="h-16 rounded-lg bg-[#F2E6D3]" />
+          <motion.div key="empty" className="h-16 rounded-lg bg-[#F5F6F8]" />
         )}
       </AnimatePresence>
     </div>
@@ -152,21 +148,21 @@ function NotionBody({ reveal }: { reveal: boolean }) {
     <div className="space-y-2">
       <p className="text-sm font-semibold text-[#2A2420]">Project Update</p>
       <p>
-        <span className="text-[#5C534C]">Status:</span> In Progress
+        <span className="text-[#5C5F66]">Status:</span> In Progress
       </p>
-      <p className="text-[#5C534C]">Update</p>
+      <p className="text-[#5C5F66]">Update</p>
       <AnimatePresence mode="wait">
         {reveal ? (
           <motion.div key="n" initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
             <p className="mb-2">&quot;I&apos;ll have the proposal ready tomorrow morning.&quot;</p>
-            <p className="text-[#5C534C]">Next Steps</p>
+            <p className="text-[#5C5F66]">Next Steps</p>
             <ul className="mt-1 list-disc space-y-0.5 pl-4">
               <li>Review proposal</li>
               <li>Finalize deck</li>
             </ul>
           </motion.div>
         ) : (
-          <div className="h-12 rounded bg-[#F2E6D3]" />
+          <div className="h-12 rounded bg-[#F5F6F8]" />
         )}
       </AnimatePresence>
     </div>
@@ -176,11 +172,11 @@ function NotionBody({ reveal }: { reveal: boolean }) {
 function ChatGptBody({ reveal }: { reveal: boolean }) {
   return (
     <div className="space-y-2">
-      <p className="text-[#5C534C]">User</p>
-      <p className="rounded-lg bg-[#F2E6D3] p-2">
+      <p className="text-[#5C5F66]">User</p>
+      <p className="rounded-lg bg-[#F5F6F8] p-2">
         &quot;Help me draft an update to share with the team.&quot;
       </p>
-      <p className="text-[#5C534C]">Assistant</p>
+      <p className="text-[#5C5F66]">Assistant</p>
       <AnimatePresence mode="wait">
         {reveal ? (
           <motion.div
@@ -197,7 +193,7 @@ function ChatGptBody({ reveal }: { reveal: boolean }) {
             </ul>
           </motion.div>
         ) : (
-          <div className="h-14 rounded-lg bg-[#F2E6D3]" />
+          <div className="h-14 rounded-lg bg-[#F5F6F8]" />
         )}
       </AnimatePresence>
     </div>
@@ -223,7 +219,7 @@ function CursorBody({ reveal }: { reveal: boolean }) {
 sendUpdate(update);`}
           </motion.span>
         ) : (
-          <span className="text-[#D3B49B]">{`const update = { … }`}</span>
+          <span className="text-[#C8CCD4]">{`const update = { … }`}</span>
         )}
       </code>
     </pre>
@@ -234,14 +230,14 @@ function BrowserBody({ reveal }: { reveal: boolean }) {
   return (
     <div className="space-y-2">
       <p className="font-semibold text-[#2A2420]">Project Roadmap</p>
-      <p className="text-[#5C534C]">Latest update</p>
+      <p className="text-[#5C5F66]">Latest update</p>
       <AnimatePresence mode="wait">
         {reveal ? (
           <motion.p key="b" initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
             Proposal will be ready tomorrow morning.
           </motion.p>
         ) : (
-          <div className="h-3 w-4/5 rounded bg-[#F2E6D3]" />
+          <div className="h-3 w-4/5 rounded bg-[#F5F6F8]" />
         )}
       </AnimatePresence>
       <div className="mt-2 flex h-12 items-end gap-1.5">
@@ -281,43 +277,22 @@ type CardsProps = Props & {
 };
 
 export function AppCardsRow({ activeId, stage, delivered, order }: CardsProps) {
-  const reduce = useReducedMotion();
   const reveal = delivered || stage === 'delivering';
 
   return (
     <>
-      {/* Desktop / tablet fan */}
-      <div
-        className="relative mx-auto hidden max-w-6xl perspective-[1400px] md:block"
-        style={{ perspective: '1400px' }}
-      >
-        <div className="relative flex items-stretch justify-center gap-3 px-2 lg:gap-4">
-          {order.map((id, index) => {
+      {/* Desktop: equal aligned row */}
+      <div className="mx-auto hidden w-full max-w-5xl md:block">
+        <div className="grid grid-cols-6 items-stretch gap-3">
+          {order.map((id) => {
             const app = getApp(id);
             const primary = id === activeId;
-            const offset = index - (order.length - 1) / 2;
             return (
-              <motion.div
-                key={id}
-                className="h-[280px] w-[150px] shrink-0 lg:h-[300px] lg:w-[168px]"
-                style={{
-                  transformStyle: 'preserve-3d',
-                  zIndex: primary ? 20 : 10 - Math.abs(offset),
-                }}
-                animate={
-                  reduce
-                    ? undefined
-                    : {
-                        rotateY: primary ? 0 : offset * -4,
-                        x: primary ? 0 : offset * 2,
-                      }
-                }
-                transition={{ type: 'spring', stiffness: 180, damping: 24 }}
-              >
+              <div key={id} className="h-[260px] min-w-0 lg:h-[280px]">
                 <CardChrome id={id} title={app.name} accent={app.accent} primary={primary}>
                   <CardContent id={id} reveal={primary && reveal} />
                 </CardChrome>
-              </motion.div>
+              </div>
             );
           })}
         </div>
@@ -325,7 +300,7 @@ export function AppCardsRow({ activeId, stage, delivered, order }: CardsProps) {
 
       {/* Mobile: single primary card */}
       <div className="mx-auto w-full max-w-sm md:hidden">
-        <div className="h-[320px]">
+        <div className="h-[300px]">
           <CardChrome
             id={activeId}
             title={getApp(activeId).name}

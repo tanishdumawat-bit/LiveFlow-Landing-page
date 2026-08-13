@@ -72,7 +72,7 @@ export function TextTransform({ from, to, phase, className = '' }: TextTransform
                 letterSpacing: ['0em', '0.02em', '0.01em'],
               }}
               transition={{ duration: 1.1, repeat: Infinity, ease: 'easeInOut' }}
-              className="whitespace-pre-wrap text-[15px] leading-relaxed text-[#5C534C]"
+              className="whitespace-pre-wrap text-[15px] leading-relaxed text-[#5C5F66]"
             >
               {from}
             </motion.p>

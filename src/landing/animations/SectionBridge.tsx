@@ -33,19 +33,19 @@ export function SectionBridge({ from = 'Voice', to = 'Action' }: SectionBridgePr
       <motion.div style={reduce ? undefined : { opacity, y }} className="mx-auto max-w-5xl">
         <div className="mb-3 flex items-center justify-center gap-3">
           <motion.div
-            className="h-px flex-1 origin-right bg-gradient-to-l from-[#E9DECB] to-transparent"
+            className="h-px flex-1 origin-right bg-gradient-to-l from-[#E6E8EC] to-transparent"
             style={reduce ? undefined : { scaleX: lineScale }}
           />
-          <span className="text-[10px] font-medium tracking-[0.18em] text-[#5C534C]/80 uppercase">
+          <span className="text-[10px] font-medium tracking-[0.18em] text-[#5C5F66]/80 uppercase">
             Continue
           </span>
           <motion.div
-            className="h-px flex-1 origin-left bg-gradient-to-r from-[#E9DECB] to-transparent"
+            className="h-px flex-1 origin-left bg-gradient-to-r from-[#E6E8EC] to-transparent"
             style={reduce ? undefined : { scaleX: lineScale }}
           />
         </div>
         <div className="flex items-center gap-3">
-          <span className="shrink-0 text-[10px] font-medium tracking-[0.2em] text-[#5C534C] uppercase">
+          <span className="shrink-0 text-[10px] font-medium tracking-[0.2em] text-[#5C5F66] uppercase">
             {from}
           </span>
           <motion.div
@@ -54,7 +54,7 @@ export function SectionBridge({ from = 'Voice', to = 'Action' }: SectionBridgePr
           >
             <VoiceFlow state="processing" className="h-8 w-full" showParticles={!reduce} />
           </motion.div>
-          <span className="shrink-0 text-[10px] font-medium tracking-[0.2em] text-[#5C534C] uppercase">
+          <span className="shrink-0 text-[10px] font-medium tracking-[0.2em] text-[#5C5F66] uppercase">
             {to}
           </span>
         </div>

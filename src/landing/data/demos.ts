@@ -76,25 +76,6 @@ export const SHORTCUT_TRIGGER = 'my intro';
 export const SHORTCUT_EXPAND =
   "Hi Chinmay, hope you're doing well. Just wanted to share a quick update…";
 
-export const CORRECTION_STEPS = [
-  { label: 'You say', text: "Let's meet at 2 PM…" },
-  { label: 'You correct', text: 'Actually, make that 3 PM.' },
-  { label: 'Live Flow writes', text: "Let's meet at 3 PM." },
-  { label: 'You edit', text: 'Remove the last sentence.' },
-  { label: 'Result', text: "Let's meet at 3 PM." },
-] as const;
-
-export const DEV_SPEECH =
-  'Create a function called get user profile that takes a user ID and returns the user from the database.';
-
-export const DEV_CODE = `async function getUserProfile(userId: string) {
-  return db.user.findUnique({
-    where: { id: userId }
-  });
-}`;
-
-export const DEV_LABELS = ['TypeScript', 'React', 'API', 'Function', 'Database', 'Cursor'] as const;
-
 export const NOTE_MEETING_LINES = [
   "Let's launch this on Friday.",
   'Tanish will handle final QA.',
@@ -120,24 +101,3 @@ export const MEETING_INTEL_EXAMPLE = {
   openQuestions: 2,
   followUps: 1,
 };
-
-/**
- * Real measured metrics — leave empty / null to hide the "What we measure" section.
- * Populate only with verified numbers.
- */
-export type MeasuredMetric = {
-  id: string;
-  label: string;
-  value: string | number | null;
-};
-
-export const MEASURED_METRICS: MeasuredMetric[] = [
-  { id: 'words', label: 'Words dictated', value: null },
-  { id: 'minutes', label: 'Minutes saved', value: null },
-  { id: 'apps', label: 'Apps tested', value: null },
-  { id: 'meetings', label: 'Meetings captured', value: null },
-  { id: 'stt', label: 'Transcription accuracy', value: null },
-  { id: 'context', label: 'Context accuracy', value: null },
-];
-
-export const HAS_MEASURED_METRICS = MEASURED_METRICS.some((m) => m.value != null && m.value !== '');

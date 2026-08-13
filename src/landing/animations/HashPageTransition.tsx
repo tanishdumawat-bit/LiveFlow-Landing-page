@@ -99,12 +99,12 @@ export function HashPageTransition() {
       {/* Outgoing page */}
       <div
         className={`pt-page pt-page-current ${active.outClass}`}
-        style={{ background: '#FAF3E9' }}
+        style={{ background: '#FFFFFF' }}
       />
       {/* Incoming page */}
       <div
         className={`pt-page pt-page-current ${active.inClass}`}
-        style={{ background: '#F2E6D3' }}
+        style={{ background: '#F5F6F8' }}
       />
     </div>
   );

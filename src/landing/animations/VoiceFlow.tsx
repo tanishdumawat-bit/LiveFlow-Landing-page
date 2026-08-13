@@ -37,7 +37,7 @@ export function VoiceFlow({
   const amp = amplitude ?? STATE_AMP[state];
   const active = state !== 'idle' && state !== 'complete';
   const color = state === 'listening' || state === 'transcribing' ? '#C4501E' : '#4A7C6F';
-  const secondary = '#D3B49B';
+  const secondary = '#C8CCD4';
 
   const paths = useMemo(
     () => ({

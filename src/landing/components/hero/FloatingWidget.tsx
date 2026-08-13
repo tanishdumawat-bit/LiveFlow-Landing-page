@@ -76,6 +76,7 @@ const STAGE_LABEL: Record<FlowStage | 'idle', string> = {
   understanding: 'Understanding…',
   transforming: 'Transforming…',
   delivering: 'Inserted',
+  complete: 'Delivered',
 };
 
 export function FloatingWidget({ stage, activeAppId, seconds, onMicClick }: Props) {
@@ -101,10 +102,7 @@ export function FloatingWidget({ stage, activeAppId, seconds, onMicClick }: Prop
       />
 
       <div
-        className="relative flex items-center justify-between gap-4 rounded-[999px] border border-[#E9DECB] px-5 py-4 shadow-[0_20px_60px_rgba(42,36,32,0.12),inset_0_1px_0_rgba(255,255,255,0.8)] backdrop-blur-2xl sm:px-7 sm:py-5"
-        style={{
-          background: 'linear-gradient(180deg, #FFFFFF 0%, #FAF3E9 100%)',
-        }}
+        className="relative flex items-center justify-between gap-4 rounded-[999px] border border-[#E6E8EC] bg-white px-5 py-4 shadow-[0_16px_48px_rgba(42,36,32,0.10)] sm:px-7 sm:py-5"
       >
         <div className="flex min-w-0 flex-1 flex-col gap-1.5 pl-1">
           <div className="flex items-center gap-2.5">
@@ -118,7 +116,7 @@ export function FloatingWidget({ stage, activeAppId, seconds, onMicClick }: Prop
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -4 }}
               className="text-xs font-medium"
-              style={{ color: live ? '#C4501E' : active ? accent : '#5C534C' }}
+              style={{ color: live ? '#C4501E' : active ? accent : '#5C5F66' }}
             >
               {STAGE_LABEL[stage]}
             </motion.p>

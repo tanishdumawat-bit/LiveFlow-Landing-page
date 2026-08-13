@@ -9,7 +9,7 @@ function FaqWave({ pulse }: { pulse: boolean }) {
   const reduce = useReducedMotion();
   return (
     <div className="flex items-center gap-2">
-      <span className="relative flex h-7 w-7 items-center justify-center overflow-hidden rounded-full border border-[#E9DECB] bg-[#FAF3E9]">
+      <span className="relative flex h-7 w-7 items-center justify-center overflow-hidden rounded-full border border-[#E6E8EC] bg-[#FFFFFF]">
         <VoiceFlow
           state={pulse && !reduce ? 'listening' : 'idle'}
           amplitude={pulse ? 0.85 : 0.4}
@@ -17,7 +17,7 @@ function FaqWave({ pulse }: { pulse: boolean }) {
           showParticles={false}
         />
       </span>
-      <span className="text-[11px] font-medium tracking-wide text-[#5C534C]">Live Flow</span>
+      <span className="text-[11px] font-medium tracking-wide text-[#5C5F66]">Live Flow</span>
     </div>
   );
 }
@@ -74,7 +74,7 @@ export function FaqSection() {
       ref={sectionRef}
       id="faq"
       aria-labelledby={`${baseId}-heading`}
-      className="relative overflow-hidden bg-[#FAF3E9] px-4 py-24 sm:px-6 lg:py-32"
+      className="relative overflow-hidden bg-[#FFFFFF] px-4 py-24 sm:px-6 lg:py-32"
     >
       <div className="relative mx-auto max-w-[1200px]">
         <div className="mb-10 text-center sm:mb-14">
@@ -105,17 +105,17 @@ export function FaqSection() {
           whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
           viewport={{ once: true, amount: 0.2 }}
           transition={{ delay: 0.15, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          className="hidden overflow-hidden rounded-[32px] border border-[#E9DECB] bg-[#F2E6D3] shadow-[0_24px_60px_rgba(42,36,32,0.08)] lg:grid lg:min-h-[560px] lg:grid-cols-[0.95fr_1.15fr]"
+          className="hidden overflow-hidden rounded-[32px] border border-[#E6E8EC] bg-[#F5F6F8] shadow-[0_24px_60px_rgba(42,36,32,0.08)] lg:grid lg:min-h-[560px] lg:grid-cols-[0.95fr_1.15fr]"
         >
           <motion.div
             initial={reduce ? false : { opacity: 0, x: -12 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.28, duration: 0.55, ease: EASE }}
-            className="flex flex-col border-r border-[#E9DECB]/80 bg-[#EFE4D2]/90"
+            className="flex flex-col border-r border-[#E6E8EC]/80 bg-[#EFE4D2]/90"
           >
-            <div className="border-b border-[#E9DECB]/70 px-7 py-5">
-              <p className="text-xs font-semibold tracking-[0.16em] text-[#5C534C] uppercase">
+            <div className="border-b border-[#E6E8EC]/70 px-7 py-5">
+              <p className="text-xs font-semibold tracking-[0.16em] text-[#5C5F66] uppercase">
                 Questions
               </p>
             </div>
@@ -163,7 +163,7 @@ export function FaqSection() {
                     className={`group relative flex w-full items-center gap-3 rounded-2xl px-4 py-3.5 text-left text-[15px] leading-snug transition-colors ${
                       selected
                         ? 'bg-[#C4501E]/12 font-medium text-[#2A2420] shadow-[inset_0_0_0_1px_rgba(196,80,30,0.18)]'
-                        : 'text-[#5C534C] hover:bg-white/45 hover:text-[#2A2420]'
+                        : 'text-[#5C5F66] hover:bg-white/45 hover:text-[#2A2420]'
                     }`}
                   >
                     <span
@@ -192,9 +192,9 @@ export function FaqSection() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.36, duration: 0.55, ease: EASE }}
-            className="flex flex-col bg-[#FAF3E9]/55 px-8 py-7"
+            className="flex flex-col bg-[#FFFFFF]/55 px-8 py-7"
           >
-            <p className="text-xs font-semibold tracking-[0.16em] text-[#5C534C] uppercase">
+            <p className="text-xs font-semibold tracking-[0.16em] text-[#5C5F66] uppercase">
               Answer
             </p>
 
@@ -218,10 +218,10 @@ export function FaqSection() {
                   className="flex flex-1 flex-col"
                 >
                   <p className="text-sm font-medium text-[#8A4A24]">{active.question}</p>
-                  <div className="mt-4 flex-1 rounded-[22px] border border-[#E9DECB] bg-white p-6 shadow-[0_12px_36px_rgba(42,36,32,0.05)]">
+                  <div className="mt-4 flex-1 rounded-[22px] border border-[#E6E8EC] bg-white p-6 shadow-[0_12px_36px_rgba(42,36,32,0.05)]">
                     <p className="text-[17px] leading-relaxed text-[#2A2420]">{active.answer}</p>
                     {active.detail && (
-                      <p className="mt-4 text-[15px] leading-relaxed text-[#5C534C]">
+                      <p className="mt-4 text-[15px] leading-relaxed text-[#5C5F66]">
                         {active.detail}
                       </p>
                     )}
@@ -229,9 +229,9 @@ export function FaqSection() {
                 </motion.div>
               </AnimatePresence>
 
-              <div className="mt-6 flex items-center justify-between border-t border-[#E9DECB]/70 pt-5">
+              <div className="mt-6 flex items-center justify-between border-t border-[#E6E8EC]/70 pt-5">
                 <FaqWave pulse={wavePulse} />
-                <span className="text-[11px] text-[#5C534C]/80">
+                <span className="text-[11px] text-[#5C5F66]/80">
                   {FAQ_ITEMS.findIndex((q) => q.id === activeId) + 1} / {FAQ_ITEMS.length}
                 </span>
               </div>
@@ -252,7 +252,7 @@ export function FaqSection() {
             return (
               <div
                 key={item.id}
-                className="overflow-hidden rounded-2xl border border-[#E9DECB] bg-white"
+                className="overflow-hidden rounded-2xl border border-[#E6E8EC] bg-white"
               >
                 <button
                   type="button"
@@ -283,10 +283,10 @@ export function FaqSection() {
                       transition={{ duration: 0.32, ease: EASE }}
                       className="overflow-hidden"
                     >
-                      <div className="border-t border-[#E9DECB] bg-[#FAF3E9]/60 px-4 py-4">
+                      <div className="border-t border-[#E6E8EC] bg-[#FFFFFF]/60 px-4 py-4">
                         <p className="text-[15px] leading-relaxed text-[#2A2420]">{item.answer}</p>
                         {item.detail && (
-                          <p className="mt-3 text-sm leading-relaxed text-[#5C534C]">
+                          <p className="mt-3 text-sm leading-relaxed text-[#5C5F66]">
                             {item.detail}
                           </p>
                         )}

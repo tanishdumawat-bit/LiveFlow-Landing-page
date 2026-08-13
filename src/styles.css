@@ -2,17 +2,17 @@
 @import 'lenis/dist/lenis.css';
 
 @theme {
-  --color-bg: #faf3e9;
-  --color-bg-secondary: #f2e6d3;
+  --color-bg: #ffffff;
+  --color-bg-secondary: #f5f6f8;
   --color-surface: #ffffff;
-  --color-surface-soft: #f2e6d3;
+  --color-surface-soft: #f5f6f8;
   --color-surface-elevated: #ffffff;
-  --color-border: #e9decb;
-  --color-border-strong: #d3b49b;
+  --color-border: #e6e8ec;
+  --color-border-strong: #c8ccd4;
   --color-text: #2a2420;
-  --color-muted: #5c534c;
-  --color-muted-soft: #7a7168;
-  --color-filler: #d3b49b;
+  --color-muted: #5c5f66;
+  --color-muted-soft: #7a7e86;
+  --color-filler: #c8ccd4;
   --color-accent: #c4501e;
   --color-accent-dark: #8a4a24;
   --color-sage: #4a7c6f;
