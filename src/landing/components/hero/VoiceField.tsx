@@ -258,9 +258,9 @@ export function VoiceField() {
             {pulse === 'strike' ? 'Cleaning up' : pulse === 'clean' ? 'Ready' : 'Relay · listening'}
           </p>
           <h1 className="text-[clamp(2.4rem,7.4vw,6rem)] leading-[1.12] font-semibold tracking-tight">
-            <span className="block text-ink">Don’t type,</span>
+            <span className="block text-ink">Type with the</span>
             <span className="mt-1 block overflow-visible py-[0.12em] font-serif italic text-headline-gradient">
-              just speak.
+              speed of thought.
             </span>
           </h1>
           <motion.p

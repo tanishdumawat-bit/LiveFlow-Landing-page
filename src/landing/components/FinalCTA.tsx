@@ -62,8 +62,8 @@ export function FinalCTA() {
       <div className="relative mx-auto flex max-w-4xl flex-col items-center text-center">
         <p className="text-xs font-semibold tracking-[0.22em] text-gold uppercase">Start flowing</p>
         <h2 className="mt-4 font-serif text-5xl tracking-tight text-cream italic sm:text-6xl lg:text-7xl">
-          Don’t type.
-          <span className="mt-1 block text-primary">Just speak.</span>
+          Type with the
+          <span className="mt-1 block text-primary">speed of thought.</span>
         </h2>
         <p className="mt-5 max-w-lg text-base text-[#cbb8ae] sm:text-lg">
           Effortless voice dictation on your Mac. Fillers out, meaning in, cursor wherever you left it.
