@@ -1,1 +1,2 @@
-export const DOWNLOAD_URL = '/downloads/Live%20Flow_0.1.2.dmg';
+export const DOWNLOAD_FILENAME = 'Relay.dmg';
+export const DOWNLOAD_URL = `/downloads/${DOWNLOAD_FILENAME}`;

@@ -1,5 +1,5 @@
 import { motion } from 'motion/react';
-import { DOWNLOAD_URL } from '../data/apps';
+import { DOWNLOAD_FILENAME, DOWNLOAD_URL } from '../data/apps';
 import { useScrolled } from '../hooks';
 import { LiveFlowLogo } from './brand/LiveFlowLogo';
 
@@ -46,6 +46,7 @@ export function Navbar() {
 
         <motion.a
           href={DOWNLOAD_URL}
+          download={DOWNLOAD_FILENAME}
           whileHover={{ scale: 1.03, y: -1 }}
           whileTap={{ scale: 0.98 }}
           className="inline-flex items-center gap-1.5 rounded-full bg-primary px-4 py-2 text-sm font-medium text-white shadow-cta transition hover:bg-primary-dark"

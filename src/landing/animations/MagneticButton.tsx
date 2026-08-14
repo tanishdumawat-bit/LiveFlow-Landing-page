@@ -7,9 +7,16 @@ type MagneticButtonProps = {
   children: ReactNode;
   className?: string;
   strength?: number;
+  download?: string | boolean;
 };
 
-export function MagneticButton({ href, children, className = '', strength = 18 }: MagneticButtonProps) {
+export function MagneticButton({
+  href,
+  children,
+  className = '',
+  strength = 18,
+  download,
+}: MagneticButtonProps) {
   const reduce = useReducedMotion();
   const ref = useRef<HTMLAnchorElement>(null);
   const x = useMotionValue(0);
@@ -35,6 +42,7 @@ export function MagneticButton({ href, children, className = '', strength = 18 }
     <motion.a
       ref={ref}
       href={href}
+      download={download}
       style={{ x: sx, y: sy }}
       onMouseMove={onMove}
       onMouseLeave={onLeave}

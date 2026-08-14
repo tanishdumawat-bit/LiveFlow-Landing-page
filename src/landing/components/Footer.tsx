@@ -1,4 +1,4 @@
-import { DOWNLOAD_URL } from '../data/apps';
+import { DOWNLOAD_FILENAME, DOWNLOAD_URL } from '../data/apps';
 import { LiveFlowLogo } from './brand/LiveFlowLogo';
 
 const links = [
@@ -21,6 +21,7 @@ export function Footer() {
           <p className="mt-3 text-sm text-[#9a8b82]">Voice, in flow.</p>
           <a
             href={DOWNLOAD_URL}
+            download={DOWNLOAD_FILENAME}
             className="mt-4 inline-block text-sm font-medium text-primary hover:text-gold"
           >
             Download for Mac

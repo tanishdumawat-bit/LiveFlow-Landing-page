@@ -1,6 +1,6 @@
 import { useEffect, useId, useRef } from 'react';
 import { animate, useReducedMotion } from 'motion/react';
-import { DOWNLOAD_URL } from '../data/apps';
+import { DOWNLOAD_FILENAME, DOWNLOAD_URL } from '../data/apps';
 import { MagneticButton } from '../animations/MagneticButton';
 
 function OrbitLabel({ text }: { text: string }) {
@@ -73,6 +73,7 @@ export function FinalCTA() {
           <OrbitLabel text="TALK 4× FASTER  ·  RELAY  ·  OPTION + SPACE" />
           <MagneticButton
             href={DOWNLOAD_URL}
+            download={DOWNLOAD_FILENAME}
             className="relative z-10 inline-flex h-14 items-center rounded-full bg-primary px-8 text-sm font-semibold text-white shadow-cta-lg hover:bg-primary-dark"
           >
             Download for Mac
