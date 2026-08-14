@@ -102,7 +102,7 @@ function GmailBody({ reveal }: { reveal: boolean }) {
               morning.
             </p>
             <p>Talk soon!</p>
-            <p className="text-muted">— Chinmay</p>
+            <p className="text-muted"> -  Chinmay</p>
           </motion.div>
         ) : (
           <motion.div key="empty" className="space-y-1.5 pt-2">
@@ -130,7 +130,7 @@ function SlackBody({ reveal }: { reveal: boolean }) {
           >
             <p className="mb-1 text-[10px] font-semibold text-primary-dark">Chinmay</p>
             <p>
-              Just a quick update — I&apos;ll have the proposal ready tomorrow morning.
+              Just a quick update - I&apos;ll have the proposal ready tomorrow morning.
               <br />
               <br />
               Let me know if you need anything else!

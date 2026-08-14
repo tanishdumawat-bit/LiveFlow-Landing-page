@@ -17,7 +17,7 @@ const AFTER_POINTS: Point[] = [
   { x: 93, y: 38 },
 ];
 
-/** Fixed "beads" the string always passes through — clouds sit exactly on these. */
+/** Fixed "beads" the string always passes through - clouds sit exactly on these. */
 const ANCHORS: Point[] = [...BEFORE_POINTS, ORB_POINT, ...AFTER_POINTS];
 
 /**
@@ -176,7 +176,7 @@ function Cloud({
 /**
  * A strung-together wave of thought clouds: raw fragments drift in on the
  * left, pass through the Relay anchor, and land as clean sentences on
- * the right — all visible at once, gently bobbing on a shared string.
+ * the right - all visible at once, gently bobbing on a shared string.
  */
 export function CorrectionBridge() {
   const ref = useRef<HTMLDivElement>(null);
@@ -187,7 +187,7 @@ export function CorrectionBridge() {
 
   useAnimationFrame((t) => {
     if (reduce || !inView) return;
-    // Throttle to ~24fps — plenty smooth for a gentle wave, cheaper on re-renders.
+    // Throttle to ~24fps - plenty smooth for a gentle wave, cheaper on re-renders.
     if (t - lastUpdate.current < 42) return;
     lastUpdate.current = t;
     setPathD(smoothPath(buildFlowingPoints(t / 1000, true)));

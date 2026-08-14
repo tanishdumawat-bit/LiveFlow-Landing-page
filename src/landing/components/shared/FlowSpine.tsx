@@ -1,7 +1,7 @@
 import { motion, useReducedMotion, useScroll, useSpring, useTransform } from 'motion/react';
 
 /**
- * A glowing bead that rides scroll — the visual thread tying sections together.
+ * A glowing bead that rides scroll - the visual thread tying sections together.
  */
 export function FlowSpine() {
   const reduce = useReducedMotion();

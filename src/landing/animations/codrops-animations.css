@@ -1,4 +1,4 @@
-/* Codrops Page Transitions — adapted for Relay
+/* Codrops Page Transitions - adapted for Relay
  * Original: https://tympanus.net/Development/PageTransitions/
  * https://github.com/codrops/PageTransitions
  */
@@ -11,7 +11,7 @@
   transform-style: preserve-3d;
 }
 
-/* Scroll document: perspective only — do not force full-viewport height */
+/* Scroll document: perspective only - do not force full-viewport height */
 .pt-perspective-flow {
   perspective: 1200px;
   transform-style: preserve-3d;

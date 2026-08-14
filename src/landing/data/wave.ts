@@ -22,7 +22,7 @@ export type WaveScene = {
 export const WAVE_SCENES: WaveScene[] = [
   {
     id: 'ship',
-    clean: 'Let’s ship this tonight. The voice layer is ready — this is going to be huge.',
+    clean: 'Let’s ship this tonight. The voice layer is ready - this is going to be huge.',
     words: [
       { id: 'a1', spoken: 'hey', kind: 'filler', clean: null },
       { id: 'a2', spoken: 'so', kind: 'filler', clean: null },
@@ -42,7 +42,7 @@ export const WAVE_SCENES: WaveScene[] = [
       { id: 'a16', spoken: 'voice', kind: 'keep', cap: true },
       { id: 'a17', spoken: 'layer', kind: 'keep' },
       { id: 'a18', spoken: 'is', kind: 'keep' },
-      { id: 'a19', spoken: 'ready', kind: 'keep', punct: '—' },
+      { id: 'a19', spoken: 'ready', kind: 'keep', punct: ' - ' },
       { id: 'a20', spoken: 'this', kind: 'keep' },
       { id: 'a21', spoken: 'is', kind: 'keep' },
       { id: 'a22', spoken: 'gonna', kind: 'correction', clean: 'going to' },
@@ -52,14 +52,14 @@ export const WAVE_SCENES: WaveScene[] = [
   },
   {
     id: 'every-app',
-    clean: 'What if you just speak — and it lands in every app?',
+    clean: 'What if you just speak - and it lands in every app?',
     words: [
       { id: 'b1', spoken: 'uh', kind: 'filler', clean: null },
       { id: 'b2', spoken: 'what', kind: 'keep', cap: true },
       { id: 'b3', spoken: 'if', kind: 'keep' },
       { id: 'b4', spoken: 'you', kind: 'keep' },
       { id: 'b5', spoken: 'just', kind: 'keep' },
-      { id: 'b6', spoken: 'speak', kind: 'keep', punct: '—' },
+      { id: 'b6', spoken: 'speak', kind: 'keep', punct: ' - ' },
       { id: 'b7', spoken: 'and', kind: 'keep' },
       { id: 'b8', spoken: 'it', kind: 'keep' },
       { id: 'b9', spoken: 'like', kind: 'filler', clean: null },

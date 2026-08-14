@@ -13,7 +13,7 @@ const PILLARS = [
     id: 'speak',
     kicker: '01',
     title: 'Speak naturally',
-    copy: 'Ramble, pause, change your mind mid-sentence. Relay hears what you meant — not a transcript of the mess.',
+    copy: 'Ramble, pause, change your mind mid-sentence. Relay hears what you meant - not a transcript of the mess.',
     tint: 'var(--primary-soft)',
     accent: 'var(--primary)',
   },
@@ -187,12 +187,12 @@ export function HowItWorks() {
           </h2>
           <p className="mt-4 max-w-xl text-base leading-relaxed text-muted sm:text-lg">
             Ramble. Correct yourself. Change the day. Relay catches fillers, mid-sentence
-            rewrites, and repeats — then writes the thing you meant.
+            rewrites, and repeats - then writes the thing you meant.
           </p>
           <MetricStrip
             className="mt-10 max-w-xl"
             items={[
-              { to: 5, suffix: '×', label: 'Faster than typing' },
+              { to: 3, suffix: '×', label: 'Faster than typing' },
               { to: 3, label: 'Cleanup layers' },
               { to: 1, label: 'Shortcut' },
             ]}

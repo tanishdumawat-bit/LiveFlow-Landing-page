@@ -1,13 +1,13 @@
 import { motion, useReducedMotion, type MotionValue } from 'motion/react';
 
 type Props = {
-  /** Active app's accent color — the aura subtly follows it. */
+  /** Active app's accent color - the aura subtly follows it. */
   accent: string;
   y?: MotionValue<string>;
 };
 
 /**
- * Fully generated ambient background — no product photo, just warm
+ * Fully generated ambient background - no product photo, just warm
  * gradient light + a faint dot grid, so the hero reads as pure brand color.
  */
 export function HeroAura({ accent, y }: Props) {

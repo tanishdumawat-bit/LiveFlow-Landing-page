@@ -1,7 +1,7 @@
 import { SpeechWave } from './hero/SpeechWave';
 
 /**
- * The spoken-wave cleanup — lives below the hero so the first screen can stay wild.
+ * The spoken-wave cleanup - lives below the hero so the first screen can stay wild.
  */
 export function SpeechWaveSection() {
   return (

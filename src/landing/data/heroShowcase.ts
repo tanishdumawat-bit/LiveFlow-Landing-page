@@ -29,7 +29,7 @@ export type HeroApp = {
   name: string;
   accent: string;
   accentSoft: string;
-  /** Spatial layout in % of workspace (0–100). */
+  /** Spatial layout in % of workspace (0-100). */
   x: number;
   y: number;
   /** Depth bias: higher = further back when inactive. */
@@ -93,7 +93,7 @@ export const HERO_APPS: HeroApp[] = [
   },
 ];
 
-/** Shared spoken thought — constant across destinations. */
+/** Shared spoken thought - constant across destinations. */
 export const HERO_SPEECH = 'I wanted to share a quick update on the project.';
 
 export const HERO_RAW_WORDS = [
@@ -130,7 +130,7 @@ export const HERO_OUTPUTS: Record<HeroAppId, AppOutput> = {
       '',
       'Hi Sarah,',
       '',
-      'Just wanted to share a quick update on the project. We’re making good progress — I’ll follow up with details shortly.',
+      'Just wanted to share a quick update on the project. We’re making good progress - I’ll follow up with details shortly.',
       '',
       'Best,',
       'Chinmay',
@@ -139,7 +139,7 @@ export const HERO_OUTPUTS: Record<HeroAppId, AppOutput> = {
   slack: {
     title: '#product-team',
     lines: [
-      'Quick project update — we’re making good progress and I’ll share the next update shortly.',
+      'Quick project update - we’re making good progress and I’ll share the next update shortly.',
     ],
   },
   notion: {

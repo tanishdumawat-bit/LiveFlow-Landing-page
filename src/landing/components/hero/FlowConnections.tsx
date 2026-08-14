@@ -1,7 +1,7 @@
 import { motion, useReducedMotion } from 'motion/react';
 import { theme } from '../../../theme/tokens';
 
-/** Soft organic energy paths weaving between cards — decorative SVG layer. */
+/** Soft organic energy paths weaving between cards - decorative SVG layer. */
 export function FlowConnections({ accent }: { accent: string }) {
   const reduce = useReducedMotion();
 

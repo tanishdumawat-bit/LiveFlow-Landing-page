@@ -1,4 +1,4 @@
-/** Orbital correction scenes — messy speech in, polished writing out. */
+/** Orbital correction scenes - messy speech in, polished writing out. */
 
 export type TokenKind = 'keep' | 'filler' | 'correction' | 'repetition';
 
@@ -31,7 +31,7 @@ export const ORBIT_SCENES: OrbitScene[] = [
     id: 'ship',
     rawLine:
       'hey so um wait we should like actually ship this tonight I mean the the voice layer is ready this is gonna be huge',
-    clean: 'Let’s ship this tonight. The voice layer is ready — this is going to be huge.',
+    clean: 'Let’s ship this tonight. The voice layer is ready - this is going to be huge.',
     tokens: [
       { id: 's1', text: 'hey so um wait', kind: 'filler' },
       { id: 's2', text: 'we should', kind: 'keep' },
@@ -48,7 +48,7 @@ export const ORBIT_SCENES: OrbitScene[] = [
     id: 'every-app',
     rawLine:
       'uh what if you just speak and it like lands in every app wait the the whole Mac is listening now this is insane',
-    clean: 'What if you just speak — and it lands in every app?',
+    clean: 'What if you just speak - and it lands in every app?',
     tokens: [
       { id: 'e1', text: 'uh', kind: 'filler' },
       { id: 'e2', text: 'what if you just speak', kind: 'keep' },

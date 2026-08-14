@@ -1,10 +1,10 @@
-/** Demo content for product storytelling. Illustrative — not measured product metrics. */
+/** Demo content for product storytelling. Illustrative - not measured product metrics. */
 
 export const DIFFERENCE_RAW =
   "Hey so um can you tell Chinmay that testing is almost done but we found two issues and I think we should fix them before we deploy.";
 
 export const DIFFERENCE_POLISHED =
-  'Hey Chinmay — quick update: testing is almost complete. We found two issues that we should fix before deployment.';
+  'Hey Chinmay - quick update: testing is almost complete. We found two issues that we should fix before deployment.';
 
 export const CONTEXT_SPEECH = "I'll send Chinmay an update about the testing.";
 
@@ -23,7 +23,7 @@ export const CONTEXT_APPS: ContextApp[] = [
     accent: '#611f69',
     label: 'Team message',
     output:
-      'Hey Chinmay — quick update: testing is almost done. Found two issues we’re fixing before deployment.',
+      'Hey Chinmay - quick update: testing is almost done. Found two issues we’re fixing before deployment.',
   },
   {
     id: 'gmail',
@@ -31,7 +31,7 @@ export const CONTEXT_APPS: ContextApp[] = [
     accent: '#ea4335',
     label: 'Email',
     output:
-      'Subject: Testing update\n\nHi Chinmay,\n\nJust wanted to share a quick update on testing — nearly complete, with two issues to fix before we deploy.\n\nBest,',
+      'Subject: Testing update\n\nHi Chinmay,\n\nJust wanted to share a quick update on testing - nearly complete, with two issues to fix before we deploy.\n\nBest,',
   },
   {
     id: 'cursor',

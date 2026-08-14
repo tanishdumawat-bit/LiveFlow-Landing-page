@@ -37,7 +37,7 @@ const CLEAN_BITS = [
 ];
 
 /**
- * Relay landing — WhisperFlow energy, Relay product.
+ * Relay landing - WhisperFlow energy, Relay product.
  */
 export function LandingPage() {
   return (
@@ -57,7 +57,7 @@ export function LandingPage() {
             tone="teal"
             from="Anywhere"
             to="Voice"
-            items={['35 wpm typing', '195 wpm speaking', '5× the keyboard', 'thought → text']}
+            items={['35 wpm typing', '190 wpm speaking', '3× the keyboard', 'thought → text']}
           />
 
           <SectionReveal variant="moveFromBottom">
@@ -92,7 +92,7 @@ export function LandingPage() {
             tone="midnight"
             from="How"
             to="Yours"
-            items={['Your key', 'Your Mac', 'Your session', 'Never an archive']}
+            items={['You start', 'Your Mac', 'Your session', 'Never an archive']}
           />
 
           <SectionReveal variant="rotateRoomBottomIn">

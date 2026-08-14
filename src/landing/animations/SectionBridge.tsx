@@ -8,7 +8,7 @@ type SectionBridgeProps = {
 };
 
 /**
- * Visual seam between “pages” (sections) — voice energy travels across.
+ * Visual seam between “pages” (sections) - voice energy travels across.
  */
 export function SectionBridge({ from = 'Voice', to = 'Action' }: SectionBridgeProps) {
   const ref = useRef<HTMLDivElement>(null);

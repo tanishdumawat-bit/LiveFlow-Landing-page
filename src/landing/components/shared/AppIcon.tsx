@@ -45,7 +45,7 @@ const BADGE_SIZE: Record<NonNullable<AppIconBadgeProps['size']>, { box: string; 
   md: { box: 'h-7 w-7', icon: 'h-4 w-4' },
 };
 
-/** Colored rounded badge with the app's icon in white — the standard "app chip". */
+/** Colored rounded badge with the app's icon in white - the standard "app chip". */
 export function AppIconBadge({ name, accent, size = 'sm', className = '' }: AppIconBadgeProps) {
   const { box, icon } = BADGE_SIZE[size];
   return (

@@ -254,7 +254,7 @@ function CenterStage({
           </motion.p>
         ) : (
           <p className="text-[12px] leading-relaxed text-muted/80 italic sm:text-[13px]">
-            {cleaning ? 'Fillers, corrections, repetitions — all of it.' : 'Speak the way you think.'}
+            {cleaning ? 'Fillers, corrections, repetitions - all of it.' : 'Speak the way you think.'}
           </p>
         )}
       </div>

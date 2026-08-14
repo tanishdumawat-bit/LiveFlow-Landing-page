@@ -6,7 +6,7 @@ import { ImmersiveWorkspace } from './hero/ImmersiveWorkspace';
 import { MetricStrip } from './shared/MetricStrip';
 
 /**
- * Spatial “use it anywhere” stage — the old hero workspace, now a filled
+ * Spatial “use it anywhere” stage - the old hero workspace, now a filled
  * section of its own so the page never drops into empty white.
  */
 export function AnywhereSection() {
@@ -38,21 +38,22 @@ export function AnywhereSection() {
       />
       <div className="relative mx-auto max-w-6xl">
         <div className="mx-auto max-w-2xl text-center">
-          <p className="text-xs font-semibold tracking-[0.2em] text-sky uppercase">Use it anywhere</p>
+          <p className="text-xs font-semibold tracking-[0.2em] text-sky uppercase">Across your work</p>
           <h2 className="mt-3 text-4xl font-semibold tracking-tight text-ink sm:text-5xl">
             One voice.
-            <span className="block font-serif text-violet italic">Every workflow.</span>
+            <span className="block font-serif text-violet italic">The right words.</span>
           </h2>
-          <p className="mt-4 text-base text-muted sm:text-lg">
-            Tap an app. Watch the same thought reshape itself — email, message, note, prompt.
+          <p className="mt-5 text-base leading-relaxed text-muted sm:text-lg">
+            The same spoken thought becomes an email, a message, a note, or a prompt, written for
+            the application in front of you.
           </p>
           <MetricStrip
             align="center"
             className="mx-auto mt-10 max-w-xl"
             items={[
-              { to: 6, suffix: '+', label: 'Apps' },
-              { to: 1, label: 'Voice' },
-              { to: 4, label: 'Forms' },
+              { to: 6, suffix: '+', label: 'Destinations' },
+              { to: 1, label: 'Spoken thought' },
+              { to: 4, label: 'Written forms' },
             ]}
           />
         </div>

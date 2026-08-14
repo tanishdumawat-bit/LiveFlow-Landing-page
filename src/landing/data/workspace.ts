@@ -25,7 +25,7 @@ export const WORKSPACE_APPS: WorkspaceApp[] = [
     tone: 'Professional email',
     speech: SHARED_SPEECH,
     output:
-      'Hi Alex,\n\nI wanted to give you an update on the project. Progress is looking good — happy to share details tomorrow morning.\n\nBest,',
+      'Hi Alex,\n\nI wanted to give you an update on the project. Progress is looking good - happy to share details tomorrow morning.\n\nBest,',
   },
   {
     id: 'slack',
@@ -33,7 +33,7 @@ export const WORKSPACE_APPS: WorkspaceApp[] = [
     accent: '#611f69',
     tone: 'Team message',
     speech: SHARED_SPEECH,
-    output: 'Quick update — project is progressing well. Will share more tomorrow.',
+    output: 'Quick update - project is progressing well. Will share more tomorrow.',
   },
   {
     id: 'notion',
@@ -66,6 +66,6 @@ export const WORKSPACE_APPS: WorkspaceApp[] = [
     accent: '#5ce1e6',
     tone: 'Research note',
     speech: SHARED_SPEECH,
-    output: 'Project update — capture key findings and next actions for tomorrow’s share-out.',
+    output: 'Project update - capture key findings and next actions for tomorrow’s share-out.',
   },
 ];

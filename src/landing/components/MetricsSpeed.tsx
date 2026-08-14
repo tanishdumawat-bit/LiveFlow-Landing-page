@@ -10,8 +10,8 @@ import {
 } from 'motion/react';
 
 const KEYBOARD_WPM = 35;
-/** Illustrative speaking pace range — marketed as up to ~5× vs typical typing. */
-const FLOW_WPM = 195;
+/** Illustrative speaking pace range - marketed as up to ~3× vs typical typing. */
+const FLOW_WPM = 190;
 const CURVED_TEXT =
   "Would you like to set up the file? I can create a new one from scratch, or pull in something you're already working on…";
 
@@ -187,8 +187,8 @@ export function MetricsSpeed() {
           transition={{ delay: 0.12, duration: 0.7 }}
           className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-muted sm:text-lg"
         >
-          Typing tops out around 35 WPM. Speaking lands closer to 180–200+. Relay is built so
-          your words keep up — up to about 5× faster than a keyboard.
+          Typing tops out around 35 WPM. Speaking lands closer to 180-200+. Relay is built so
+          your words keep up - up to about 3× faster than a keyboard.
         </motion.p>
 
         <div className="mt-14 grid grid-cols-1 items-stretch gap-4 sm:mt-16 md:grid-cols-[0.9fr_1.55fr] md:gap-5">
@@ -250,7 +250,7 @@ export function MetricsSpeed() {
                   className="font-serif text-5xl tracking-tight text-ink sm:text-6xl lg:text-7xl"
                 />
               </div>
-              <p className="mt-1 text-xs text-primary-dark/80">Illustrative · ~180–200+ speaking pace</p>
+              <p className="mt-1 text-xs text-primary-dark/80">Illustrative · ~180-200+ speaking pace</p>
 
               <div className="pointer-events-none relative mt-6 flex-1 drop-shadow-[0_1px_0_color-mix(in_srgb,var(--card)_90%,transparent)]">
                 <MovingCurveText active={live} />

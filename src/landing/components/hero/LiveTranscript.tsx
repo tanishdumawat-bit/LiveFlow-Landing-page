@@ -12,7 +12,7 @@ type Props = {
 };
 
 /**
- * Live transcription strip — communicates RAW SPEECH → CLEAN TEXT
+ * Live transcription strip - communicates RAW SPEECH → CLEAN TEXT
  * without changing the hero layout.
  */
 export function LiveTranscript({ stage, accent }: Props) {

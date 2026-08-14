@@ -1,26 +1,44 @@
-import { motion, useReducedMotion } from 'motion/react';
-import { RevealHeadline } from '../animations/RevealHeadline';
+import { motion, useInView, useReducedMotion } from 'motion/react';
+import { useRef } from 'react';
 import { VoiceFlow } from '../animations/VoiceFlow';
 
-const STEPS = [
-  'You start a session',
-  'Temporary audio is captured',
-  'Relay processes the input',
-  'Result appears',
-  'Temporary data is discarded according to your session',
-];
+const PILLARS = [
+  {
+    n: '01',
+    title: 'You choose when to speak',
+    body: 'Relay only captures audio when you explicitly start a session.',
+  },
+  {
+    n: '02',
+    title: 'Your connection is private',
+    body: 'Every user gets a secure, unique key. Your credentials aren’t exposed to the apps you use.',
+  },
+  {
+    n: '03',
+    title: 'No permanent voice archive',
+    body: 'Audio is used for the active session and temporary session data is discarded according to the session lifecycle.',
+  },
+] as const;
 
-const HIGHLIGHTS = [
-  'Your API key — configured in Settings',
-  'Local preferences on your Mac',
-  'Explicit recording — you start the session',
-];
+const STATEMENTS = [
+  'Private by design.',
+  'Explicit by default.',
+  'Nothing happens until you speak.',
+] as const;
+
+const ease = [0.22, 1, 0.36, 1] as const;
 
 export function PrivacySection() {
-  const reduce = useReducedMotion();
+  const reduce = !!useReducedMotion();
+  const sectionRef = useRef<HTMLElement>(null);
+  const inView = useInView(sectionRef, { once: false, amount: 0.35 });
 
   return (
-    <section id="privacy" className="relative overflow-hidden bg-midnight px-4 py-24 sm:px-6 lg:py-32">
+    <section
+      id="privacy"
+      ref={sectionRef}
+      className="relative overflow-hidden bg-midnight px-4 py-24 sm:px-6 lg:py-32"
+    >
       <div
         className="pointer-events-none absolute inset-0"
         style={{
@@ -30,25 +48,32 @@ export function PrivacySection() {
       />
       <div className="noise-overlay pointer-events-none absolute inset-0 opacity-[0.06]" />
 
-      <div className="relative mx-auto grid max-w-6xl items-start gap-12 lg:grid-cols-2">
+      <div className="relative mx-auto grid max-w-6xl items-start gap-12 lg:grid-cols-2 lg:gap-16">
         <div>
           <p className="text-xs font-semibold tracking-[0.2em] text-gold uppercase">Privacy</p>
-          <RevealHeadline
-            as="h2"
-            lines={['Your voice', 'stays yours.']}
-            className="mt-3 text-4xl font-semibold tracking-tight text-cream sm:text-5xl"
-          />
-          <p className="mt-5 max-w-lg text-base leading-relaxed text-[#cbb8ae] sm:text-lg">
-            Relay is designed with privacy in mind. Audio is processed only when you
-            explicitly start a session. Temporary captures are not meant to become a
-            permanent archive.
+          <h2 className="mt-4 text-4xl font-semibold tracking-tight text-cream sm:text-5xl lg:text-[3.4rem]">
+            <span className="block">Your voice</span>
+            <span className="mt-1 block font-serif italic">stays yours.</span>
+          </h2>
+          <p className="mt-6 max-w-md text-base leading-relaxed text-[#cbb8ae] sm:text-lg">
+            Relay is built to give you the speed of voice without giving up control of your data.
           </p>
-          <ul className="mt-4 space-y-3">
-            {HIGHLIGHTS.map((item) => (
-              <li key={item} className="flex items-start gap-2.5 text-sm text-cream">
-                <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-teal" aria-hidden="true" />
-                {item}
-              </li>
+          <p className="mt-4 max-w-md text-base leading-relaxed text-[#9a8b82] sm:text-[17px]">
+            You decide when Relay listens, what gets processed, and what remains after your session
+            ends.
+          </p>
+          <ul className="mt-10 space-y-2.5">
+            {STATEMENTS.map((line, i) => (
+              <motion.li
+                key={line}
+                initial={reduce ? false : { opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.8 }}
+                transition={{ duration: 0.55, delay: 0.08 + i * 0.1, ease }}
+                className="text-sm font-semibold tracking-tight text-cream sm:text-[15px]"
+              >
+                {line}
+              </motion.li>
             ))}
           </ul>
         </div>
@@ -57,35 +82,69 @@ export function PrivacySection() {
           <p className="text-[11px] font-semibold tracking-[0.14em] text-teal uppercase">
             Session architecture
           </p>
-          <ol className="mt-5 space-y-4 text-sm text-cream">
-            {STEPS.map((label, i) => (
-              <li key={label} className="flex items-start gap-3">
-                <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-teal/30 bg-teal/10 text-[11px] text-teal">
-                  {i + 1}
-                </span>
-                <span>{label}</span>
-              </li>
+          <ol className="mt-6 space-y-6">
+            {PILLARS.map((item, i) => (
+              <motion.li
+                key={item.n}
+                initial={reduce ? false : { opacity: 0, y: 14 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.5 }}
+                transition={{ duration: 0.6, delay: 0.12 + i * 0.14, ease }}
+                className="grid grid-cols-[auto_1fr] gap-x-3 gap-y-1"
+              >
+                <motion.span
+                  className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-teal/30 bg-teal/10 text-[11px] font-medium text-teal"
+                  animate={
+                    reduce || !inView
+                      ? undefined
+                      : {
+                          boxShadow: [
+                            '0 0 0 0 rgba(20,184,166,0)',
+                            '0 0 12px 1px rgba(20,184,166,0.35)',
+                            '0 0 0 0 rgba(20,184,166,0)',
+                          ],
+                          borderColor: [
+                            'rgba(20,184,166,0.3)',
+                            'rgba(20,184,166,0.7)',
+                            'rgba(20,184,166,0.3)',
+                          ],
+                        }
+                  }
+                  transition={{
+                    duration: 3.2,
+                    delay: i * 0.45,
+                    repeat: Infinity,
+                    ease: 'easeInOut',
+                  }}
+                >
+                  {item.n}
+                </motion.span>
+                <p className="self-center text-sm font-semibold text-cream">{item.title}</p>
+                <span aria-hidden="true" />
+                <p className="text-sm leading-relaxed text-[#cbb8ae]">{item.body}</p>
+              </motion.li>
             ))}
           </ol>
 
           <div className="relative mt-8 h-16 overflow-hidden rounded-xl border border-white/10 bg-midnight">
             <motion.div
               animate={
-                reduce
+                reduce || !inView
                   ? undefined
                   : {
-                      opacity: [1, 1, 0.15],
-                      filter: ['blur(0px)', 'blur(0px)', 'blur(8px)'],
+                      opacity: [0.85, 1, 0.18],
+                      scale: [1, 1.015, 1],
+                      filter: ['blur(0px)', 'blur(0px)', 'blur(7px)'],
                     }
               }
-              transition={{ duration: 4, repeat: Infinity, times: [0, 0.55, 1] }}
+              transition={{ duration: 4.2, repeat: Infinity, times: [0, 0.52, 1], ease: 'easeInOut' }}
             >
               <VoiceFlow state="listening" className="h-16 w-full" amplitude={0.85} />
             </motion.div>
             <motion.p
               className="pointer-events-none absolute inset-0 flex items-center justify-center text-sm text-cream"
-              animate={reduce ? undefined : { opacity: [0, 0, 1] }}
-              transition={{ duration: 4, repeat: Infinity, times: [0, 0.55, 1] }}
+              animate={reduce || !inView ? undefined : { opacity: [0, 0, 1] }}
+              transition={{ duration: 4.2, repeat: Infinity, times: [0, 0.52, 1] }}
             >
               Result stays. Waveform fades.
             </motion.p>

@@ -15,7 +15,7 @@ type LogoProps = {
 };
 
 /**
- * Relay mark — speech pulse that lands. Matches the coral waveform lockup.
+ * Relay mark - speech pulse that lands. Matches the coral waveform lockup.
  */
 export function RelayMark({ className = 'h-5 w-auto', title }: MarkProps) {
   const uid = useId().replace(/:/g, '');

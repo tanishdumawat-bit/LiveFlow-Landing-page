@@ -8,7 +8,7 @@ type SectionRevealProps = {
 };
 
 /**
- * Scroll entrance — fade/rise only.
+ * Scroll entrance - fade/rise only.
  * Codrops 3D page classes were leaving tall sections at opacity 0
  * (blank holes between marquees) when IntersectionObserver missed.
  */

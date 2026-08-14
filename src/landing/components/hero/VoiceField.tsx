@@ -20,7 +20,6 @@ type Speck = {
 };
 
 const SCENE = WAVE_SCENES[0]!;
-const CLEAN = SCENE.clean;
 
 function fragments() {
   const items: { text: string; written?: string | null; kind: TokenKind | 'punct'; drops: boolean }[] =
@@ -73,7 +72,7 @@ function kindColor(kind: TokenKind | 'punct') {
 const BUCKETS = [
   { id: 'filler', label: 'Filler', color: 'var(--primary)', hint: 'um, wait, like' },
   { id: 'fix', label: 'Correction', color: 'var(--violet)', hint: 'gonna, the the' },
-  { id: 'punct', label: 'Punctuation', color: 'var(--gold)', hint: '.  —' },
+  { id: 'punct', label: 'Punctuation', color: 'var(--gold)', hint: '.   - ' },
 ] as const;
 
 type Pulse = 'orbit' | 'strike' | 'clean';
@@ -252,7 +251,7 @@ export function VoiceField() {
       )}
 
       <div className="pointer-events-none absolute top-1/2 left-1/2 z-20 w-[min(92vw,760px)] -translate-x-1/2 -translate-y-1/2 px-4 text-center isolate">
-        <div className="absolute top-1/2 left-1/2 h-64 w-[28rem] max-w-[90%] -translate-x-1/2 -translate-y-1/2 rounded-full bg-background/80 blur-2xl sm:h-80" />
+        <div className="absolute top-1/2 left-1/2 h-[22rem] w-[34rem] max-w-[94%] -translate-x-1/2 -translate-y-1/2 rounded-full bg-background/90 blur-2xl sm:h-[26rem]" />
         <div className="relative">
           <p className="mb-3 text-[11px] font-semibold tracking-[0.28em] text-primary uppercase">
             {pulse === 'strike' ? 'Cleaning up' : pulse === 'clean' ? 'Ready' : 'Relay · listening'}
@@ -263,13 +262,6 @@ export function VoiceField() {
               speed of thought.
             </span>
           </h1>
-          <motion.p
-            className="mx-auto mt-6 max-w-xl px-2 font-serif text-[15px] leading-snug text-ink italic sm:text-xl"
-            animate={{ opacity: pulse === 'clean' ? 1 : 0.22, y: pulse === 'clean' ? 0 : 8 }}
-            transition={{ duration: 0.5 }}
-          >
-            {CLEAN}
-          </motion.p>
           <ul className="mt-5 flex flex-wrap items-center justify-center gap-2 sm:gap-3">
             {BUCKETS.map((b) => {
               const on =
