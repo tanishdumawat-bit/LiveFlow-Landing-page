@@ -14,7 +14,6 @@ const HIGHLIGHTS = [
   'Your API key — configured in Settings',
   'Local preferences on your Mac',
   'Explicit recording — you start the session',
-  'No unnecessary permanent audio archive',
 ];
 
 export function PrivacySection() {
@@ -44,7 +43,7 @@ export function PrivacySection() {
             explicitly start a session. Temporary captures are not meant to become a
             permanent archive.
           </p>
-          <ul className="mt-8 space-y-3">
+          <ul className="mt-4 space-y-3">
             {HIGHLIGHTS.map((item) => (
               <li key={item} className="flex items-start gap-2.5 text-sm text-cream">
                 <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-teal" aria-hidden="true" />

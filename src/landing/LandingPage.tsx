@@ -7,7 +7,6 @@ import { CircularCleanupSection } from './components/CircularCleanupSection';
 import { SpeechWaveSection } from './components/SpeechWaveSection';
 import { HowItWorks } from './components/HowItWorks';
 import { MetricsSpeed } from './components/MetricsSpeed';
-import { ContextFlowExperience } from './components/context-flow/ContextFlowExperience';
 import { PersistentLiveFlow } from './components/PersistentLiveFlow';
 import { PrivacySection } from './components/PrivacySection';
 import { FaqSection } from './components/FaqSection';
@@ -90,18 +89,8 @@ export function LandingPage() {
           </SectionReveal>
 
           <MarqueeRibbon
-            tone="gold"
-            reverse
-            from="How"
-            to="Context"
-            items={['Same speech', 'Different destination', 'Email · ping · note · prompt']}
-          />
-
-          <ContextFlowExperience />
-
-          <MarqueeRibbon
             tone="midnight"
-            from="Context"
+            from="How"
             to="Yours"
             items={['Your key', 'Your Mac', 'Your session', 'Never an archive']}
           />
