@@ -268,7 +268,7 @@ function WorkspacePane({
 }
 
 /**
- * One spatial workspace — apps as destinations, Live Flow as anchor, camera follows focus.
+ * One spatial workspace — apps as destinations, Relay as anchor, camera follows focus.
  */
 export function ImmersiveWorkspace({
   activeId,
@@ -342,7 +342,7 @@ export function ImmersiveWorkspace({
               />
             ))}
 
-            {/* Live Flow anchor — overlaps the world */}
+            {/* Relay anchor — overlaps the world */}
             <motion.div
               className="pointer-events-none absolute left-1/2 top-[52%] z-40 -translate-x-1/2 -translate-y-1/2"
               animate={{
@@ -375,7 +375,7 @@ export function ImmersiveWorkspace({
                   </svg>
                 </div>
                 <p className="mt-2 text-[10px] font-semibold tracking-[0.14em] text-ink uppercase">
-                  Live Flow
+                  Relay
                 </p>
                 <AnimatePresence>
                   {contextFlash && !ecosystem && (

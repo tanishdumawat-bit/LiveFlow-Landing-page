@@ -1,5 +1,4 @@
 import { CircularCorrection } from './orbit/CircularCorrection';
-import { AppMarquee } from './shared/AppMarquee';
 
 export function CircularCleanupSection() {
   return (
@@ -19,7 +18,6 @@ export function CircularCleanupSection() {
           <CircularCorrection />
         </div>
       </div>
-      <AppMarquee />
     </section>
   );
 }

@@ -109,7 +109,7 @@ export const CONTEXT_SIGNALS = [
 export const VOCAB_CHIPS = [
   'Chinmay',
   'myPOS',
-  'Live Flow',
+  'Relay',
   'Agent Studio',
   'Supabase',
   'OpenAI',

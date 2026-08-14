@@ -1,5 +1,5 @@
 /**
- * JS/inline-style access to the Live Flow theme.
+ * JS/inline-style access to the Relay theme.
  * Hex values live only in `src/styles.css` `:root`. Change them there.
  */
 export const theme = {

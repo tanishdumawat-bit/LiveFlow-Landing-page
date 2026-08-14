@@ -7,7 +7,6 @@ const links = [
   { href: '#anywhere', label: 'Anywhere' },
   { href: '#how', label: 'Product' },
   { href: '#cleanup', label: 'Cleanup' },
-  { href: '#note-taker', label: 'Note Taker' },
   { href: '#privacy', label: 'Privacy' },
   { href: '#faq', label: 'FAQs' },
 ];
@@ -28,8 +27,8 @@ export function Navbar() {
         }`}
         aria-label="Primary"
       >
-        <a href="#top" className="group" aria-label="Live Flow home">
-          <LiveFlowLogo markClassName="h-8 w-8" />
+        <a href="#top" className="group" aria-label="Relay home">
+          <LiveFlowLogo markClassName="h-4 w-auto sm:h-5" />
         </a>
 
         <div className="hidden items-center gap-6 md:flex">

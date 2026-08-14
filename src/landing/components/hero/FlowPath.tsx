@@ -38,12 +38,12 @@ type Props = {
   mode: WorkspaceMode;
   /** Destination in % of workspace box. */
   to: { x: number; y: number };
-  /** Origin (Live Flow) in %. */
+  /** Origin (Relay) in %. */
   from?: { x: number; y: number };
 };
 
 /**
- * Magnetic voice/info path from Live Flow → active application.
+ * Magnetic voice/info path from Relay → active application.
  * Stage drives waveform energy, particle travel, and settle.
  */
 export function FlowPath({

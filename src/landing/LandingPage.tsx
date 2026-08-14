@@ -9,7 +9,6 @@ import { HowItWorks } from './components/HowItWorks';
 import { MetricsSpeed } from './components/MetricsSpeed';
 import { ContextFlowExperience } from './components/context-flow/ContextFlowExperience';
 import { PersistentLiveFlow } from './components/PersistentLiveFlow';
-import { NoteTakerSection } from './components/NoteTakerSection';
 import { PrivacySection } from './components/PrivacySection';
 import { FaqSection } from './components/FaqSection';
 import { FinalCTA } from './components/FinalCTA';
@@ -39,7 +38,7 @@ const CLEAN_BITS = [
 ];
 
 /**
- * Live Flow landing — WhisperFlow energy, Live Flow product.
+ * Relay landing — WhisperFlow energy, Relay product.
  */
 export function LandingPage() {
   return (
@@ -53,18 +52,22 @@ export function LandingPage() {
         <main className="pt-perspective-flow">
           <Hero />
 
-          <MarqueeRibbon
-            tone="gold"
-            from="Orbit"
-            to="Anywhere"
-            items={['Gmail', 'Slack', 'Notion', 'Cursor', 'ChatGPT', 'Browser', 'Notes']}
-          />
-
           <AnywhereSection />
 
           <MarqueeRibbon
-            tone="coral"
+            tone="teal"
             from="Anywhere"
+            to="Voice"
+            items={['35 wpm typing', '195 wpm speaking', '5× the keyboard', 'thought → text']}
+          />
+
+          <SectionReveal variant="moveFromBottom">
+            <MetricsSpeed />
+          </SectionReveal>
+
+          <MarqueeRibbon
+            tone="coral"
+            from="Voice"
             to="Writing"
             items={[...RAW_BITS, ...CLEAN_BITS]}
           />
@@ -87,20 +90,9 @@ export function LandingPage() {
           </SectionReveal>
 
           <MarqueeRibbon
-            tone="teal"
-            from="How"
-            to="Voice"
-            items={['35 wpm typing', '195 wpm speaking', '5× the keyboard', 'thought → text']}
-          />
-
-          <SectionReveal variant="moveFromBottom">
-            <MetricsSpeed />
-          </SectionReveal>
-
-          <MarqueeRibbon
             tone="gold"
             reverse
-            from="Voice"
+            from="How"
             to="Context"
             items={['Same speech', 'Different destination', 'Email · ping · note · prompt']}
           />
@@ -108,20 +100,8 @@ export function LandingPage() {
           <ContextFlowExperience />
 
           <MarqueeRibbon
-            tone="coral"
-            reverse
-            from="Context"
-            to="Meetings"
-            items={['Decisions', 'Owners', 'Action items', 'The waveform fades']}
-          />
-
-          <SectionReveal variant="moveFromBottom">
-            <NoteTakerSection />
-          </SectionReveal>
-
-          <MarqueeRibbon
             tone="midnight"
-            from="Meetings"
+            from="Context"
             to="Yours"
             items={['Your key', 'Your Mac', 'Your session', 'Never an archive']}
           />

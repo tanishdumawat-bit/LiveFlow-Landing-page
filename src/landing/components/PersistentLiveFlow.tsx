@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { LiveFlowMark } from './brand/LiveFlowLogo';
 
 /**
- * Small persistent Live Flow presence that stays visible while exploring the page.
+ * Small persistent Relay presence that stays visible while exploring the page.
  */
 export function PersistentLiveFlow() {
   const reduce = useReducedMotion();
@@ -29,9 +29,9 @@ export function PersistentLiveFlow() {
       transition={{ duration: 0.35 }}
     >
       <div className="flex items-center gap-2 rounded-full border border-violet/20 bg-white/90 py-1 pr-3 pl-1 shadow-nav backdrop-blur-xl">
-        <LiveFlowMark className="h-6 w-6" />
+        <LiveFlowMark className="h-3.5 w-auto" />
         <span className="text-[11px] font-medium text-ink">
-          {pulse ? 'in your workflow' : 'Live Flow'}
+          {pulse ? 'Relay · in your workflow' : 'Relay'}
         </span>
       </div>
     </motion.div>

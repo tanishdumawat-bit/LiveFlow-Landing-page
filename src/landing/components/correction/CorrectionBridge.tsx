@@ -86,7 +86,7 @@ function LiveFlowOrb() {
         </svg>
       </div>
       <p className="whitespace-nowrap text-[10px] font-semibold tracking-[0.14em] text-ink uppercase">
-        Live Flow
+        Relay
       </p>
     </div>
   );
@@ -175,7 +175,7 @@ function Cloud({
 
 /**
  * A strung-together wave of thought clouds: raw fragments drift in on the
- * left, pass through the Live Flow anchor, and land as clean sentences on
+ * left, pass through the Relay anchor, and land as clean sentences on
  * the right — all visible at once, gently bobbing on a shared string.
  */
 export function CorrectionBridge() {

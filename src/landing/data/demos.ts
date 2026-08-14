@@ -59,7 +59,7 @@ export const CONTEXT_APPS: ContextApp[] = [
 export const VOCAB_TERMS = [
   'Chinmay',
   'myPOS',
-  'Live Flow',
+  'Relay',
   'Agent Studio',
   'Supabase',
   'OpenAI',
@@ -75,29 +75,3 @@ export const STYLE_MODES = [
 export const SHORTCUT_TRIGGER = 'my intro';
 export const SHORTCUT_EXPAND =
   "Hi Chinmay, hope you're doing well. Just wanted to share a quick update…";
-
-export const NOTE_MEETING_LINES = [
-  "Let's launch this on Friday.",
-  'Tanish will handle final QA.',
-  'Sarah will send the customer communication.',
-];
-
-export const NOTE_EXTRACTION = {
-  decision: 'Launch Friday.',
-  actions: [
-    { owner: 'Tanish', task: 'Final QA' },
-    { owner: 'Sarah', task: 'Customer communication' },
-  ],
-  next: 'Complete QA before Friday.',
-  followUp: 'Draft customer communication.',
-};
-
-/** Example UI numbers for Meeting Intelligence — not measured product metrics. */
-export const MEETING_INTEL_EXAMPLE = {
-  durationMin: 45,
-  transcriptLines: 312,
-  decisions: 3,
-  actionItems: 5,
-  openQuestions: 2,
-  followUps: 1,
-};

@@ -70,7 +70,7 @@ export function FinalCTA() {
         </p>
 
         <div className="relative mt-12 flex h-[300px] w-[300px] items-center justify-center">
-          <OrbitLabel text="TALK 4× FASTER  ·  LIVE FLOW  ·  OPTION + SPACE" />
+          <OrbitLabel text="TALK 4× FASTER  ·  RELAY  ·  OPTION + SPACE" />
           <MagneticButton
             href={DOWNLOAD_URL}
             className="relative z-10 inline-flex h-14 items-center rounded-full bg-primary px-8 text-sm font-semibold text-white shadow-cta-lg hover:bg-primary-dark"

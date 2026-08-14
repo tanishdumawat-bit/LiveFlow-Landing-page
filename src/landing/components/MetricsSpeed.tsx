@@ -187,7 +187,7 @@ export function MetricsSpeed() {
           transition={{ delay: 0.12, duration: 0.7 }}
           className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-muted sm:text-lg"
         >
-          Typing tops out around 35 WPM. Speaking lands closer to 180–200+. Live Flow is built so
+          Typing tops out around 35 WPM. Speaking lands closer to 180–200+. Relay is built so
           your words keep up — up to about 5× faster than a keyboard.
         </motion.p>
 
@@ -242,7 +242,7 @@ export function MetricsSpeed() {
             <div className="overlay-metrics absolute inset-0" />
 
             <div className="relative z-10 flex h-full flex-col p-7 sm:p-8">
-              <p className="text-sm font-medium text-primary-dark">Live Flow</p>
+              <p className="text-sm font-medium text-primary-dark">Relay</p>
               <div className="mt-2 flex items-baseline gap-2">
                 <AnimatedWpm
                   value={FLOW_WPM}

@@ -107,7 +107,7 @@ export function FloatingWidget({ stage, activeAppId, seconds, onMicClick }: Prop
       >
         <div className="flex min-w-0 flex-1 flex-col gap-1.5 pl-1">
           <div className="flex items-center gap-2.5">
-            <span className="text-sm font-semibold tracking-tight text-ink">Live Flow</span>
+            <span className="text-sm font-semibold tracking-tight text-ink">Relay</span>
             <LeftWave active={live} accent={live ? theme.primary : accent} />
           </div>
           <AnimatePresence mode="wait">
@@ -134,7 +134,7 @@ export function FloatingWidget({ stage, activeAppId, seconds, onMicClick }: Prop
           )}
           <motion.button
             type="button"
-            aria-label="Live Flow microphone"
+            aria-label="Relay microphone"
             onClick={onMicClick}
             className="relative flex h-[64px] w-[64px] items-center justify-center rounded-full text-white sm:h-[72px] sm:w-[72px]"
             style={{

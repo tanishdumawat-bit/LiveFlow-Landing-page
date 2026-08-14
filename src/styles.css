@@ -2,7 +2,7 @@
 @import 'lenis/dist/lenis.css';
 
 /*
- * Live Flow — warm editorial system.
+ * Relay — warm editorial system.
  * Coral stays the pulse. Violet, teal, gold, and midnight carry the rest.
  */
 :root {
@@ -333,13 +333,13 @@
   }
 
   .lf-mark {
-    filter: drop-shadow(0 6px 12px color-mix(in srgb, var(--primary) 34%, transparent));
-    transition: filter 280ms ease, transform 280ms ease;
+    overflow: visible;
+    transition: transform 280ms ease, filter 280ms ease;
   }
 
   a:hover .lf-mark,
   .group:hover .lf-mark {
-    transform: rotate(-6deg) scale(1.06);
-    filter: drop-shadow(0 8px 16px color-mix(in srgb, var(--violet) 38%, transparent));
+    transform: scale(1.05);
+    filter: drop-shadow(0 6px 12px color-mix(in srgb, var(--primary) 32%, transparent));
   }
 }

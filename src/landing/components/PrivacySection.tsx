@@ -5,7 +5,7 @@ import { VoiceFlow } from '../animations/VoiceFlow';
 const STEPS = [
   'You start a session',
   'Temporary audio is captured',
-  'Live Flow processes the input',
+  'Relay processes the input',
   'Result appears',
   'Temporary data is discarded according to your session',
 ];
@@ -40,8 +40,8 @@ export function PrivacySection() {
             className="mt-3 text-4xl font-semibold tracking-tight text-cream sm:text-5xl"
           />
           <p className="mt-5 max-w-lg text-base leading-relaxed text-[#cbb8ae] sm:text-lg">
-            Live Flow is designed with privacy in mind. Audio is processed only when you
-            explicitly start a session. Temporary meeting captures are not meant to become a
+            Relay is designed with privacy in mind. Audio is processed only when you
+            explicitly start a session. Temporary captures are not meant to become a
             permanent archive.
           </p>
           <ul className="mt-8 space-y-3">

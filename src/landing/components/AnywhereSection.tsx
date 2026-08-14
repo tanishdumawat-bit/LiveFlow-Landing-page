@@ -3,6 +3,7 @@ import { motion, useReducedMotion } from 'motion/react';
 import { HERO_APPS, type HeroAppId } from '../data/heroShowcase';
 import { AppSelector } from './hero/AppSelector';
 import { ImmersiveWorkspace } from './hero/ImmersiveWorkspace';
+import { MetricStrip } from './shared/MetricStrip';
 
 /**
  * Spatial “use it anywhere” stage — the old hero workspace, now a filled
@@ -45,6 +46,15 @@ export function AnywhereSection() {
           <p className="mt-4 text-base text-muted sm:text-lg">
             Tap an app. Watch the same thought reshape itself — email, message, note, prompt.
           </p>
+          <MetricStrip
+            align="center"
+            className="mx-auto mt-10 max-w-xl"
+            items={[
+              { to: 6, suffix: '+', label: 'Apps' },
+              { to: 1, label: 'Voice' },
+              { to: 4, label: 'Forms' },
+            ]}
+          />
         </div>
 
         <div className="mt-8">

@@ -100,7 +100,7 @@ export function ContextFlowExperience() {
             <span className="font-serif italic text-violet">The right words.</span>
           </h2>
           <p className="mt-4 text-base text-muted sm:text-lg">
-            Same voice. Different apps. Live Flow shapes the output for where you are.
+            Same voice. Different apps. Relay shapes the output for where you are.
           </p>
         </div>
 
@@ -136,7 +136,7 @@ export function ContextFlowExperience() {
                 </svg>
               </motion.div>
               <div>
-                <p className="text-sm font-semibold text-ink">Live Flow</p>
+                <p className="text-sm font-semibold text-ink">Relay</p>
                 <p className="text-xs text-muted">
                   {phase === 'speak' && 'Listening…'}
                   {phase === 'understand' && 'Reading context…'}

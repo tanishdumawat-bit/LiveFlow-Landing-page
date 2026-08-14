@@ -6,7 +6,7 @@ import { LiveFlowLogo } from './brand/LiveFlowLogo';
 const EASE = [0.22, 1, 0.36, 1] as const;
 
 function FaqWave({ pulse: _pulse }: { pulse: boolean }) {
-  return <LiveFlowLogo markClassName="h-7 w-7" />;
+  return <LiveFlowLogo markClassName="h-4 w-auto" />;
 }
 
 export function FaqSection() {

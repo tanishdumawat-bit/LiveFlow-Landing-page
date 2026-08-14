@@ -255,7 +255,7 @@ export function VoiceField() {
         <div className="absolute top-1/2 left-1/2 h-64 w-[28rem] max-w-[90%] -translate-x-1/2 -translate-y-1/2 rounded-full bg-background/80 blur-2xl sm:h-80" />
         <div className="relative">
           <p className="mb-3 text-[11px] font-semibold tracking-[0.28em] text-primary uppercase">
-            {pulse === 'strike' ? 'Cleaning up' : pulse === 'clean' ? 'Ready' : 'Live Flow · listening'}
+            {pulse === 'strike' ? 'Cleaning up' : pulse === 'clean' ? 'Ready' : 'Relay · listening'}
           </p>
           <h1 className="text-[clamp(2.4rem,7.4vw,6rem)] leading-[1.12] font-semibold tracking-tight">
             <span className="block text-ink">Don’t type,</span>

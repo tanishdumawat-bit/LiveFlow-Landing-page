@@ -72,7 +72,7 @@ function CardChrome({
         {children}
       </div>
       <div className="flex h-9 shrink-0 items-center justify-between border-t border-border px-3">
-        <span className="text-[10px] font-medium tracking-wide text-muted">Live Flow</span>
+        <span className="text-[10px] font-medium tracking-wide text-muted">Relay</span>
         <MiniWave color={accent} active={primary} />
       </div>
     </motion.div>
